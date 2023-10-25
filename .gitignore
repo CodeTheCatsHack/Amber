@@ -365,4 +365,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # [custom]
-/ClientApp/
+/TestConsoleApp/
+/DimaConsoleSolution/
