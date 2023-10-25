@@ -1,0 +1,117 @@
+﻿@model CoreLibrary.Models.EFModels.User
+@{
+    Layout = "Layout/_LayoutUserAuth";
+    ViewData["Title"] = "Профиль";
+    ViewData["Active_Profile_Link"] = "active";
+}
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">Профиль</h3>
+    <div class="row mb-3">
+        <div class="col-lg-4">
+            <div class="card mb-3">
+                <div class="card-body text-center shadow">
+                    <img class="rounded-circle mb-3 mt-4" src="@Model.InformationUser?.Avatar" width="160" height="160" alt="Нету...">
+                    <form asp-controller="Users" asp-action="AvatarChanges">
+                        <div class="mb-3">
+                            <input class="form-control form-control-user" type="text" placeholder="Введите url новой фотографии..." name="avatar"/>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary d-block btn-user w-100" type="submit">Изменить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col">
+                    <form asp-controller="Users" asp-action="Edit">
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 fw-bold">Информация об аккаунте</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <strong>Логин</strong>
+                                            </label>
+                                            <input asp-for="Login" class="form-control form-control-user" type="text" placeholder="Введите логин..." name="login"/>
+                                            <br/>
+                                            <span asp-validation-for="Login" class="text-danger">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <strong>Смена пароля или подтверждение изменений</strong>
+                                            </label>
+                                            <input asp-for="Password" class="form-control form-control-user" type="password" placeholder="Подтвердите паролем изменения..." name="password">
+                                            <br/>
+                                            <span asp-validation-for="Password" class="text-danger">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-primary btn-sm" type="submit" value="Edit">Сохранить данные</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 fw-bold">Информация о пользователе</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <strong>Имя</strong>
+                                            </label>
+                                            <input asp-for="InformationUser.FirstName" class="form-control form-control-user" type="text" placeholder="Введите имя..." name="firstName"/>
+                                            <br/>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <strong>Фамилия</strong>
+                                            </label>
+                                            <input asp-for="InformationUser.LastName" class="form-control form-control-user" type="text" placeholder="Введите фамилию..." name="lastName"/>
+                                            <br/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <strong>Отчество</strong>
+                                            </label>
+                                            <input asp-for="InformationUser.MiddleName" class="form-control form-control-user" type="text" placeholder="Введите отчество..." name="middleName">
+                                            <br/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-primary btn-sm" type="submit" value="Edit">Сохранить данные</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="assets/js/bs-init.js?h=e2b0d57f2c4a9b0d13919304f87f79ae"></script>
+    <script src="assets/js/theme.js?h=79f403485707cf2617c5bc5a2d386bb0"></script>
+}

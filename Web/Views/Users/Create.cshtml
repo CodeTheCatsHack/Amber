@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model CoreLibrary.Models.EFModels.User
+
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<br/>
+<br/>
+<br/>
+
+<body class="bg-gradient-primary">
+<div class="container" style="padding-left: 0;padding-bottom: 0;padding-right: 0;padding-top: 0;box-shadow: 0px 0px 8px 1px rgb(0,0,0); border-radius: 10px;">
+    <div class="card shadow-lg o-hidden border-0 my-5">
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-flex">
+                    <div class="flex-grow-1 bg-register-image" style="background: url(/img/spytnik/register_spytnik.png?h=2ced7aa13a11fca381006018fb93f86a);"></div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h4 class="text-dark mb-4">Присоединяйтесь к нам!</h4>
+                        </div>
+                        <form asp-action="Create" class="user">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row mb-3">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input class="form-control form-control-user" type="text" id="exampleFirstName" placeholder="Имя" name="first_name"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input class="form-control form-control-user" type="text" id="exampleLastName" placeholder="Фамилия" name="last_name"/>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input asp-for="Login" class="form-control form-control-user" type="text" id="InputLogin" aria-describedby="loginHelp" placeholder="Логин..." name="login"/>
+                                <br/>
+                                <span asp-validation-for="Login" class="text-danger">
+                                </span>
+                            </div>
+                            <div class="mb-3">
+                                <input asp-for="Password" class="form-control form-control-user" type="password" id="InputPassword" placeholder="Пароль..." name="password">
+                                <br/>
+                                <span asp-validation-for="Password" class="text-danger">
+                                </span>
+                            </div>
+                            <button class="btn btn-primary d-block btn-user w-100" type="submit" value="Create">Зарегистрировать аккаунт</button>
+
+                        </form>
+                        <br/>
+                        @{
+                            if (ViewData["Error"] != null)
+                            {
+                                <div align="center">
+                                    <span class="text-danger">@ViewData["Error"]</span>
+                                </div>
+                            }
+                        }
+                        <br/>
+                        <div class="text-center">
+                            <a class="small" asp-controller="Users" asp-action="Login">У вас уже есть аккаунт? Тогда вам сюда!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+}

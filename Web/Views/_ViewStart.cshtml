@@ -1,0 +1,4 @@
+﻿@{
+    Layout = "Layout/_Layout";
+    ViewData["Url_Domen"] = Context.Request.Headers["x-forwarded-host"].ToString() == "" ? $"https://localhost:{Context.Connection.LocalPort}" : $"https://{Context.Request.Headers["x-forwarded-host"]}";
+}

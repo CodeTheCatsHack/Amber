@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BCrypt" Version="1.0.0"/>
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3"/>
+        <PackageReference Include="Clave.Expressionify" Version="7.0.0-dotnet7.43"/>
+        <PackageReference Include="EFCore.CheckConstraints" Version="7.0.2"/>
+        <PackageReference Include="EntityFramework" Version="6.4.4"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.13"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0"/>
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2"/>
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.NetTopologySuite" Version="7.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\CoreLibrary\CoreLibrary.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="Views\Task\Create.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Task\Delete.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Task\Edit.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Task\TaskTableData.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Chat\ChatTableData.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Chat\Create.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Chat\Delete.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Chat\Edit.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\AccessLevel\AccessLevelTableData.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\AccessLevel\Create.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\AccessLevel\Delete.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\AccessLevel\Edit.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Role\Delete.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Role\Edit.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Role\RoleTableData.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\InformationSystem\Administration\Create.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\InformationSystem\Administration\Delete.cshtml"/>
+    </ItemGroup>
+
+</Project>

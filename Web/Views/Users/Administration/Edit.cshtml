@@ -1,0 +1,47 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using CoreLibrary.Models.EFModels
+@model User
+
+@{
+    ViewData["Title"] = "Редактирование пользователя";
+    Layout = "Layout/_LayoutUserAuth";
+    ViewData["Active_UserTableData_Link"] = "active";
+}
+
+<div style="
+    align-content: center;
+    display: grid;
+    padding: 5% 20% 0 20%;
+">
+    <div class="card shadow">
+        <div class="card-header py-3 align-content-center">
+            <p class="text-primary m-0 fw-bold">@ViewData["Title"]</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <form asp-action="AdminEdit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="IdUser"/>
+                    <div class="form-group" style="padding: 2% 0 0 0;">
+                        <label class="control-label">Логин:</label>
+                        <input asp-for="Login" class="form-control"/>
+                        <span asp-validation-for="Login" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="padding: 2% 0 0 0;">
+                        <label class="control-label">Пароль:</label>
+                        <input asp-for="Password" class="form-control"/>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <br/>
+                    <div class="form-group" style="
+                            align-content: center;
+                            display: grid;
+                            padding: 10% 0 0 0;
+                        ">
+                        <input type="submit" value="Сохранить" class="btn btn-primary"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

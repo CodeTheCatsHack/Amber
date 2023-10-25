@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "Layout/_LayoutUserAuth";
+    ViewData["Title"] = "Картографический монитор";
+    ViewData["Active_Map_Link"] = "active";
+}
+
+<div id="map" style="width: 100%; height: 900px;"></div>
+
+<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest-maps.js"></script>
+<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest-maps.css"/>
+
+<script>
+    L.mapquest.key = 'bHXNmqKJ1ou1o3r2YyIw7reii6FN08pQ';
+    
+    var map = L.mapquest.map('map', {
+        center: [40, -74.5],
+        layers: L.mapquest.tileLayer('map'),
+        zoom: 9
+    });
+    var systemObjects = @Json.Serialize(ViewBag.Locations);
+       
+        for (var i = 0; i <= systemObjects.length; i++) {
+            var item = systemObjects[i];
+                          
+            L.marker([item.latitude, item.longitude]).addTo(map);
+        }
+</script>

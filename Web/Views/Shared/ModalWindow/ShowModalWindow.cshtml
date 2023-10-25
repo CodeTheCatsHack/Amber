@@ -1,0 +1,79 @@
+﻿@model Web.Models.ModalWindow?
+
+@{
+    if (Model is {Show: true })
+    {
+        <div id="backModalWindow" style="background: rgb(0,0,0,0.5); height: 100%; width: 100%; position: absolute; z-index: 1; align-content: center; display: inline-grid;">
+            <div class="modal-dialog" id="modalWindow">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">@Model.Title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" style="margin-left: 60%;" onclick="closeModal()"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        @Model.Message
+                    </div>
+
+                    <div class="modal-footer">
+                        @{
+                            if (Model.ShowButton)
+                            {
+                                foreach (var buttonModalWindow in Model.ButtonModalWindows)
+                                {
+                                    <button class="btn @buttonModalWindow.Color d-block btn-user w-100" type="button" id="@buttonModalWindow.Can">@buttonModalWindow.Title</button>
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<script type="text/javascript">
+
+    var modal = document.getElementById('modalWindow');
+    var backModal = document.getElementById('backModalWindow');
+
+    function closeModal() {
+
+        if (modal) {
+            modal.classList.add('hidden'); // Добавляем класс 'hidden' для запуска анимации исчезновения
+            setTimeout(function () {
+                modal.style.display = 'none'; // Скрываем окно после завершения анимации
+                modal.classList.remove('hidden'); // Удаляем класс 'hidden' для будущего отображения окна
+                backModal.style.display = 'none';
+                window.location.assign("/IS/Index");
+            }, 300); // Задержка в миллисекундах, соответствующая времени анимации (0.3 секунды в данном случае)
+        }
+    }
+
+    document.getElementById("button-logout").addEventListener("click", function () {
+        if (modal) {
+            modal.classList.add('hidden'); // Добавляем класс 'hidden' для запуска анимации исчезновения
+            setTimeout(function () {
+                modal.style.display = 'none'; // Скрываем окно после завершения анимации
+                modal.classList.remove('hidden'); // Удаляем класс 'hidden' для будущего отображения окна
+                backModal.style.display = 'none';
+                fetch('/Users/Logout', { method: 'GET' })
+                .then(data =>{
+                    location.reload();
+                });
+            }, 300); // Задержка в миллисекундах, соответствующая времени анимации (0.3 секунды в данном случае)
+        }
+    });
+
+    document.getElementById("button-no-logout").addEventListener("click", function () {
+        if (modal) {
+            modal.classList.add('hidden'); // Добавляем класс 'hidden' для запуска анимации исчезновения
+            setTimeout(function () {
+                modal.style.display = 'none'; // Скрываем окно после завершения анимации
+                modal.classList.remove('hidden'); // Удаляем класс 'hidden' для будущего отображения окна
+                backModal.style.display = 'none';
+                window.location.assign("/IS/Index");
+            }, 300); // Задержка в миллисекундах, соответствующая времени анимации (0.3 секунды в данном случае)
+        }
+    });
+</script>
