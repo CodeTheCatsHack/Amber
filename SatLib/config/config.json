@@ -1,4 +1,6 @@
 ﻿{
   "apitoken": "4QFK7P-DJVCFZ-5RSWNL-557A",
-  "baseurl" : "https://api.n2yo.com/rest/v1/satellite/"
+  "baseurl": "https://api.n2yo.com/rest/v1/satellite/",
+  "coneactivationangle": 30,
+  "recordingtime" : 1
 }

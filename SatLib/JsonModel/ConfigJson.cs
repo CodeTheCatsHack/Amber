@@ -15,5 +15,11 @@ namespace SatLib.JsonModel
 
         [JsonPropertyName("baseurl")]
         public string BaseUrl { get; set; } = null!;
+        
+        [JsonPropertyName("coneactivationangle")]
+        public double ConeActivationAngle { get; set; }
+
+        [JsonPropertyName("recordingtime")]
+        public long RecordingTime { get; set; }
     }
 }
