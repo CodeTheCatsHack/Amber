@@ -1,0 +1,36 @@
+@model CoreLibrary.Models.EFModels.Marker
+
+@{
+    ViewData["Title"] = "Редактировать маркер";
+    Layout = "Layout/_LayoutUserAuth";
+    ViewData["Active_LocationTableData_Link"] = "active";
+}
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">Редактировать маркер</h3>
+    <div class="card shadow">
+        <div class="card-body">
+            <form asp-action="Edit">
+                <input type="hidden" asp-for="IdMarker"/>
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control"/>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Latitude" class="form-label"></label>
+                    <textarea asp-for="Latitude" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Longitude" class="form-label"></label>
+                    <textarea asp-for="Longitude" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Radius" class="form-label"></label>
+                    <textarea asp-for="Radius" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <a asp-action="MarkerTableData" class="btn btn-secondary">Отмена</a>
+            </form>
+        </div>
+    </div>
+</div>

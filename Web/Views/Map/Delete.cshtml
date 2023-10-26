@@ -1,0 +1,47 @@
+@model CoreLibrary.Models.EFModels.Marker
+
+@{
+    ViewData["Title"] = "Удаление локации";
+    Layout = "Layout/_LayoutUserAuth";
+    ViewData["Active_LocationTableData_Link"] = "active";
+}
+
+<div style="padding: 2%">
+    <h1>@ViewData["Title"]</h1>
+
+    <div>
+        <h4>Локация</h4>
+        <hr/>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Latitude)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Latitude)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Longitude)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Longitude)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Radius)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Radius)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MapNavigation)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MapNavigation.IdMap)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="IdMarker"/>
+            <input type="submit" value="Удалить" class="btn btn-danger"/>
+        </form>
+    </div>
+</div>

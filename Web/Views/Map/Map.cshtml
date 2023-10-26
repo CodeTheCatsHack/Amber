@@ -1,0 +1,49 @@
+﻿@model CoreLibrary.Models.EFModels.Map
+@{
+    ViewData["Title"] = "Интерактивная Карта";
+    Layout = "Layout/_LayoutUserAuth";
+}
+
+<head>
+    <title>Карта с координатами</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=7090a039-9bef-4c3d-bb95-260d617ceaf1&lang=ru_RU" type="text/javascript"></script>
+</head>
+<body>
+<div id="map" style="width: 100%; height: 750px;"></div>
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">Позиция курсора</h3>
+    <div class="card shadow">
+        <div class="card-body">
+            <form>
+                <p>(нажмите на карту для выбора)</p>
+                <div class="mb-3">
+                    <label class="form-label">Широта</label>
+                    <textarea readonly="readonly" id="latitude" class="form-control" rows="1">0</textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Долгота</label>
+                    <textarea readonly="readonly" id="longitude" class="form-control" rows="1">0</textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+        ymaps.ready(function () {
+            var map = new ymaps.Map('map', {
+                center: [55.755814, 37.617635], // Координаты центра карты
+                zoom: 10 // Уровень масштабирования
+            });
+
+            map.events.add('click', function (e) {
+                var coords = e.get('coords');
+                var latitude = coords[0].toPrecision(6);
+                var longitude = coords[1].toPrecision(6);
+
+                document.getElementById('latitude').textContent = latitude;
+                document.getElementById('longitude').textContent = longitude;
+            });
+        });
+    </script>
+</body>

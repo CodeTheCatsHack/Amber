@@ -1,0 +1,116 @@
+@model Web.Models.ModelDataTable<CoreLibrary.Models.EFModels.User>
+
+@{
+    ViewData["Title"] = "Таблица данных пользователей";
+    Layout = "Layout/_LayoutUserAuth";
+    ViewData["Active_UserTableData_Link"] = "active";
+}
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">Таблица данных</h3>
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">@ViewData["Title"]</p>
+        </div>
+        <div class="card-body">
+            <form asp-action="UserTableData">
+                <div class="row">
+                    <div class="col-md-6 text-nowrap">
+                        <div class="row">
+                            <div class="col-md-6 text-nowrap">
+                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                                    <label class="form-label">
+                                        Показать&nbsp;
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-nowrap">
+                                <select class="d-inline-block form-select form-select-sm" asp-for="Take">
+                                    @for (var i = 0; i < Model.Models.Count; i += 10)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                </select>&nbsp;
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 text-nowrap">
+                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                                    <label class="form-label">
+                                        Пропустить&nbsp;
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-nowrap">
+                                <select class="d-inline-block form-select form-select-sm" asp-for="Skip">
+                                    @for (var i = 0; i < Model.Models.Count; i += 10)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                </select>&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="text-md-end dataTables_filter" id="dataTable_filter">
+                                <label class="form-label" style="width: inherit;">
+                                    <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" asp-for="Search">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-primary d-block btn-user w-100" type="submit" value="UserTableData">Применить фильтры</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                    <table class="table my-0">
+                        <thead>
+                        <tr>
+                            <th>
+                                Пользователь
+                            </th>
+                            <th>
+                                Логин
+                            </th>
+                            <th>
+                                Пароль
+                            </th>
+                            <th>
+                                Уровень доступа
+                            </th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model.Models)
+                        {
+                            <tr>
+                                <td>
+                                    <img class="rounded-circle me-2" width="30" height="30" src="@item.InformationUser!.Avatar">@item.InformationUser.FirstName @item.InformationUser.LastName
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Login)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Password)
+                                </td>
+                                <td>
+                                    <a asp-action="AdminEdit" asp-route-id="@item.IdUser">Редактировать</a> |
+                                    <a asp-action="AdminDelete" asp-route-id="@item.IdUser">Удалить</a>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Показатели с @(Model.Skip + 1) по @Model.Take из @Model.Models.Count</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿@using CoreLibrary.Models.ConditionalExpressions.Expansion
+@using Web.Models
+<!DOCTYPE html>
+<html lang="ru" style="background: var(--bs-white);">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>@ViewData["Title"] - Amber</title>
+    <link rel="canonical" href="@ViewData[" Url_Domen"]"/>
+    <meta property="og:url" content="@ViewData[" Url_Domen"]">
+    <meta name="twitter:title" content="Amber">
+    <meta name="twitter:image" content="/img/webLogo/favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/img/webLogo/favicon.png">
+    <meta name="description" content="Amber: Инновационные решения для геопозиционирования и снимков с спутников.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:description" content="Amber: Инновационные решения для геопозиционирования и снимков с спутников.">
+
+    <link rel="icon" type="image/png" sizes="512x512" href="~/img/webLogo/favicon.png?h=fd1ff92a7ceb3bd2dda94ea3792eb55c">
+    <link rel="icon" type="image/png" sizes="512x512" href="~/img/webLogo/favicon.png?h=fd1ff92a7ceb3bd2dda94ea3792eb55c">
+    <link rel="icon" type="image/png" sizes="512x512" href="~/img/webLogo/favicon.png?h=fd1ff92a7ceb3bd2dda94ea3792eb55c">
+    <link rel="icon" type="image/png" sizes="512x512" href="~/img/webLogo/favicon.png?h=fd1ff92a7ceb3bd2dda94ea3792eb55c">
+    <link rel="icon" type="image/png" sizes="512x512" href="~/img/webLogo/favicon.png?h=fd1ff92a7ceb3bd2dda94ea3792eb55c">
+    <link rel="stylesheet" asp-href-include="~/css/**/*.css"/>
+    <link rel="stylesheet" asp-href-include="~/lib/**/*.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+<body>
+@{ await Html.RenderPartialAsync("ModalWindow/ShowModalWindow", ViewData["ModalWindow"] != null ? (ModalWindow)ViewData["ModalWindow"]! : null); }
+<header>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Amber</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Create">Регистрация</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">Вход</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                    </li>
+
+                    @if (User.IsInIssuer())
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="InformationSystem" asp-action="Monitoring">Система мониторинга</a>
+                        </li>
+                    }
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Политика конфиденциальности</a>
+                    </li>
+
+                    @if (User.IsInIssuer())
+                    {
+                        <li class="nav-item" style="margin-left: auto;">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">Выход</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container" style="position: relative; height: 100vh; width: 100%;">
+    <main role="main" class="pb-3">
+        @(RenderBody())
+    </main>
+</div>
+<footer class="border-bottom footer text-muted" style="background-color: #4e73df; background-size: cover; bottom: 0; position: fixed; width:100%; height: 10%; box-shadow: 10px 10px 10px 10px rgb(0 0 0 / 40%);">
+    <div class="container" style="text-align: center; height: 100%; margin-top: 2%; color: white;">
+        &copy; 2023 - Amber - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="color: black">Privacy</a>
+    </div>
+</footer>
+
+@(await RenderSectionAsync("Scripts", false))
+<script asp-src-include="~/lib/**/*.js"></script>
+<script asp-src-include="~/js/**/*.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+@model CoreLibrary.Models.EFModels.User
+
+@{
+    ViewData["Title"] = "Удаление пользователя";
+    Layout = "Layout/_LayoutUserAuth";
+    ViewData["Active_UserTableData_Link"] = "active";
+}
+
+<div style="
+    align-content: center;
+    display: grid;
+    padding: 5% 30% 0 30%;
+">
+    <div class="card shadow">
+        <div class="card-header py-3 align-content-center">
+            <p class="text-primary m-0 fw-bold">@ViewData["Title"]</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group" style="padding: 2% 0 0 0;">
+                    <div class="card" style="padding: 2%;">
+                        <label class="control-label" style="font-style: italic;">Логин:@Html.DisplayFor(model => model.Login)</label>
+                    </div>
+                </div>
+                <div class="form-group" style="padding: 2% 0 0 0;">
+                    <div class="card" style="padding: 2%;">
+                        <label class="control-label" style="font-style: italic;">Пароль:@Html.DisplayFor(model => model.Password)</label>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <form asp-action="AdminDeleteConfirmed" style="align-content: center; display: grid; padding: 5% 0 0 0;">
+                    <input type="hidden" asp-for="IdUser"/>
+                    <input type="submit" value="Удалить" class="btn btn-danger"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

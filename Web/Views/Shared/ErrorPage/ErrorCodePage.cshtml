@@ -1,0 +1,14 @@
+﻿@model string
+
+@{
+    ViewData["Title"] = "Ошибка";
+}
+
+<div class="text-center mt-5">
+    <div class="error mx-auto" data-text="@Model">
+        <p class="m-0">@Model</p>
+    </div>
+    <p class="text-dark mb-5 lead">Вам явно не сюда, ведь здесь ничего нет.(</p>
+    <p class="text-black-50 mb-0">Если вам кажется, что цифры мерцают, вы слишком долго пробыли на данном сайте, пожалуйста отдохните!</p>
+    <a href="/">← Вернуться</a>
+</div>
