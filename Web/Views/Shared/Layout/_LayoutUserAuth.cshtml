@@ -51,15 +51,14 @@
                         <i class="far fa-user"></i><span>Профиль</span>&nbsp;
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link @ViewData["Active_MarkerTable_Link"]" asp-controller="Map" asp-action="MarkerTableData">
+                        <i class="fas fa-database"></i><span>Таблица данных маркеров</span>&nbsp;
+                    </a>
+                </li>
 
                 @if (User.GetClaimIssuer(ClaimTypes.Rsa)?.Value != null)
                 {
-                    @* <li class="nav-item"> *@
-                    @*     <a class="nav-link @ViewData["Active_MarkerTable_Link"]" asp-controller="Marker" asp-action="MarkerTableData"> *@
-                    @*         <i class="fas fa-database"></i><span>Таблица данных маркеров</span>&nbsp; *@
-                    @*     </a> *@
-                    @* </li> *@
-                    @* *@
                     @* <li class="nav-item"> *@
                     @*     <a class="nav-link @ViewData["Active_SateliteImageTable_Link"]" asp-controller="SateliteImage" asp-action="SateliteImageTableData"> *@
                     @*         <i class="fas fa-database"></i><span>Таблица снимков</span>&nbsp; *@
@@ -81,11 +80,11 @@
                         @*     </a> *@
                         @* </li> *@
                 }
-                <li class="nav-item">
-                    <a class="nav-link @ViewData["Active_Map_Link"]" asp-controller="Map" asp-action="MapTableData">
-                        <i class="fas fa-map-marked-alt"></i><span>Упр. картами</span>&nbsp;
-                    </a>
-                </li>
+                @* <li class="nav-item"> *@
+                @*     <a class="nav-link @ViewData["Active_Map_Link"]" asp-controller="Map" asp-action="MapTableData"> *@
+                @*         <i class="fas fa-map-marked-alt"></i><span>Упр. картами</span>&nbsp; *@
+                @*     </a> *@
+                @* </li> *@
                 <li class="nav-item">
                     <a class="nav-link @ViewData["Active_Map_Link"]" asp-controller="Map" asp-action="Map">
                         <i class="fas fa-map-marked-alt"></i><span>Карта</span>&nbsp;

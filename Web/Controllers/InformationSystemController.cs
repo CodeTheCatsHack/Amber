@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using SatLib;
+using SatLib.JsonModel;
 using SGPdotNET.CoordinateSystem;
 using Web.Controllers.Abstraction;
+using Web.Models;
 using Web.SignalRHub;
 
 namespace Web.Controllers;
@@ -27,21 +29,43 @@ public class InformationSystemController : AbstractController<HubMaps, ServiceMo
         var model = new Map
         {
             Name = "Карта по умолчанию",
-            Markers = new List<Marker>
-            {
-                new()
-                {
-                    Latitude = 64,
-                    Longitude = 34,
-                    Name = "Арх",
-                    Radius = 20
-                }
-            },
-            Satellites = new List<Satellite>()
+            Markers = DataBaseContext.Markers.ToList(),
+            Satellites = DataBaseContext.Satellites.ToList()
         };
-        Coordinate arh = new GeodeticCoordinate(1.58352, 11.52378, 14);
-        foreach (var set in await SatelliteApi.SearchSolutionAsync(arh, SatelliteApi.SatelliteCategory.All))
-            model.Satellites.Add(await DataBaseContext.Satellites.FindAsync(set.Norad));
-        return View(model);
+
+        var listSetellinesActive = new AboveJson();
+
+        var listSatellines = new List<Satellite>();
+
+        var listSatellinesA = new List<Satellite>();
+
+        foreach (var marker in model.Markers)
+        {
+            var geo = new GeodeticCoordinate(marker.Latitude, marker.Longitude, 14);
+            listSetellinesActive = SatelliteApi.RequestNearestSatellites(geo, 30, SatelliteApi.SatelliteCategory.All);
+            foreach (var satelliteJson in listSetellinesActive.Above)
+                if (DataBaseContext.Satellites
+                        .FirstOrDefault(x => x.IdSatellite == satelliteJson.SatId) != null)
+                    listSatellines.Add(DataBaseContext.Satellites
+                        .FirstOrDefault(x => x.IdSatellite == satelliteJson.SatId));
+
+            var set = await SatelliteApi.SearchSolutionAsync(geo, SatelliteApi.SatelliteCategory.All);
+            foreach (var satelliteJson in set)
+                if (DataBaseContext.Satellites
+                        .FirstOrDefault(x => x.IdSatellite == satelliteJson.Norad) != null)
+                    listSatellinesA.Add(DataBaseContext.Satellites
+                        .FirstOrDefault(x => x.IdSatellite == satelliteJson.Norad));
+        }
+
+        var dictionary =
+            new Dictionary<int, (List<Satellite>, List<Satellite>)>();
+
+        foreach (var marker in model.Markers) dictionary.Add(marker.IdMarker, (listSatellines, listSatellinesA));
+
+        return View(new ModelDataNewTable<Satellite>
+        {
+            Item1 = model,
+            Item2 = dictionary
+        });
     }
 }

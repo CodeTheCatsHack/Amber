@@ -16,13 +16,13 @@ public class Marker
 
     public double Longitude { get; set; }
 
-    public int Map { get; set; }
+    public int Map { get; set; } = 1;
 
     public double Radius { get; set; }
 
     [ForeignKey("Map")]
     [InverseProperty("Markers")]
-    public virtual Map MapNavigation { get; set; } = null!;
+    public virtual Map MapNavigation { get; set; }
 
     [InverseProperty("MarkerNavigation")]
     public virtual ICollection<SatelliteImage> SatelliteImages { get; set; } = new List<SatelliteImage>();
