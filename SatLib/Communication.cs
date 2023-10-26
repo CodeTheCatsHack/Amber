@@ -8,6 +8,6 @@ namespace SatLib
 {
     public class Communication
     {
-
+        
     }
 }

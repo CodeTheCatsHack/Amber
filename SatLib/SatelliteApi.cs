@@ -1,7 +1,9 @@
 ﻿using System.Net.Http.Json;
 using CoreLibrary.EFContext;
 using Microsoft.Extensions.DependencyInjection;
+using NetTopologySuite.Index.HPRtree;
 using SatLib.JsonModel;
+using SatLib.Model;
 using SGPdotNET.CoordinateSystem;
 using SGPdotNET.Observation;
 using SGPdotNET.Util;
@@ -227,7 +229,7 @@ namespace SatLib
         /// Функция поиска решения для фотографии заданной местности
         /// </summary>
         /// <param name="earthPoint">заданная местность</param>
-        public int SearchSolution(Coordinate earthPoint, SatelliteCategory category)
+        public async Task<List<SatelliteAnswer>?> SearchSolutionAsync(Coordinate earthPoint, SatelliteCategory category)
         {
             double step = 5.0;
             double currentAngle = 0;
@@ -250,21 +252,42 @@ namespace SatLib
                         int requiredSatelliteId = GetFirstRelevantSatelliteId(aboveWithCurrentAngle, earthPoint);
                         if (requiredSatelliteId > 0)
                         {
-                            return requiredSatelliteId;
+                            return new List<SatelliteAnswer>() {
+                                        new SatelliteAnswer() {
+                                            Norad = requiredSatelliteId
+                                        }
+                                    };
                         }
                     } // sit2
                     else
                     {
-
+                        List<Task<SatelliteAnswer>> tasks = new List<Task<SatelliteAnswer>>();
+                        foreach (AboveJson.SatelliteJson sat in aboveWithCurrentAngle.Above)
+                        {
+                            tasks.Add(ScanSatelliteWhileApproachingAsync(earthPoint, sat.SatId));                                                        
+                        }
+                        await Task.WhenAll(tasks);
+                        List<SatelliteAnswer> list = new List<SatelliteAnswer>(); 
+                        
+                        foreach (var task in tasks)
+                        {
+                            list.Add(task.Result);
+                        }
+                        return list;
                     }
                 }
             }
             while (currentAngle < 90.0);
 
-
-            return -1;
+            return null;
         }
 
+        /// <summary>
+        /// Получить релевантный спутник из купола
+        /// </summary>
+        /// <param name="above"></param>
+        /// <param name="earthPoint"></param>
+        /// <returns></returns>
         int GetFirstRelevantSatelliteId(AboveJson above, Coordinate earthPoint)
         {
             foreach (AboveJson.SatelliteJson satelliteJson in above.Above)
@@ -276,10 +299,82 @@ namespace SatLib
                 if (isSuccess)
                 {
                     return satelliteJson.SatId;
-                }
+                }                
             }
             return -1;
         }
+
+        /// <summary>
+        /// Сканировать спутник пока он приближается
+        /// </summary>
+        /// <param name="earthPoint"></param>
+        /// <param name="norad"></param>
+        /// <returns>Минуты, Норад</returns>
+        public Task<SatelliteAnswer> ScanSatelliteWhileApproachingAsync(Coordinate earthPoint, int norad)
+        {
+            Satellite satellite = RequestSatellite(norad);
+            int modMins = 1;
+
+            GeodeticCoordinate prevGeo, nextGeo = satellite.Predict().ToGeodetic();
+
+            while (!CalculateIsPointInCone(earthPoint, norad, DateTime.UtcNow.AddMinutes(modMins)))
+            {
+                prevGeo = nextGeo;
+                nextGeo = satellite.Predict(DateTime.UtcNow.AddMinutes(modMins)).ToGeodetic();
+                
+                double prevDist = earthPoint.DistanceTo(prevGeo);
+                double nextDist = earthPoint.DistanceTo(nextGeo);                
+
+                Console.WriteLine(prevDist + " > " + nextDist + "?");
+                if (prevDist < nextDist)
+                {
+                    Console.WriteLine("слетел (отдалется от точки): " + norad);
+                    return Task.FromResult(new SatelliteAnswer() 
+                    {
+                        Result = SatelliteAnswer.ResultEnum.Takeoff 
+                    });
+                }
+                modMins += 5;                
+            }
+
+            if (CalculateIsPointInCone(earthPoint, norad, DateTime.UtcNow.AddMinutes(modMins)))
+            {
+                if (CheckTiming(earthPoint, norad))
+                {
+                    return Task.FromResult(new SatelliteAnswer()
+                    {
+                        Result = SatelliteAnswer.ResultEnum.Success,
+                        Norad = norad,
+                        MinutesToArrive = modMins
+                    });
+                }
+                Console.WriteLine("не поместился в тайминг: " + norad);
+                return Task.FromResult(new SatelliteAnswer()
+                {
+                    Result = SatelliteAnswer.ResultEnum.WrongTiming,
+                    Norad = norad,
+                    MinutesToArrive = modMins
+                });
+            }
+            return Task.FromResult(new SatelliteAnswer()
+            {
+                Result = SatelliteAnswer.ResultEnum.Other,
+                Norad = norad,
+                MinutesToArrive = modMins
+            });
+        }        
+
+        /// <summary>
+        /// Проверяет спутник, будет ли он через время съёмки все ещё в зоне конуса (успеет ли засканировать)
+        /// </summary>
+        /// <param name="earthPoint"></param>
+        /// <param name="norad"></param>
+        /// <returns></returns>
+        public bool CheckTiming(Coordinate earthPoint, int norad)
+        {
+            return CalculateIsPointInCone(earthPoint, norad, DateTime.UtcNow.AddSeconds(_configurator.MainConfig.RecordingTime));
+        }
+        
 
         public enum SatelliteCategory
         {

@@ -2,6 +2,7 @@ using CoreLibrary;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using SatLib;
 using Serilog;
+using SGPdotNET.CoordinateSystem;
 using System.Security.Claims;
 using Web.Middleware;
 using Web.SignalRHub;
@@ -32,6 +33,9 @@ builder.Services.AddMvc(options => options.EnableEndpointRouting = false);
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
+
+Coordinate arh = new GeodeticCoordinate(64.58352, 40.52378, 14);
+await app.Services.GetRequiredService<SatelliteApi>().SearchSolutionAsync(arh, SatelliteApi.SatelliteCategory.Weather);
 
 if (app.Environment.IsDevelopment())
 {
