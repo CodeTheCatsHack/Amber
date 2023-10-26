@@ -26,9 +26,13 @@ public class MapController : AbstractController<HubMaps, ServiceMonitoringContex
         return View();
     }
 
-    public IActionResult Create()
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create([Bind("IdMarker, Name, Latitude, Longitude, Radius")] Marker Marker)
     {
-        return View();
+        DataBaseContext.Markers.Add(Marker);
+        await DataBaseContext.SaveChangesAsync();
+        return RedirectToAction(nameof(MarkerTableData));
     }
 
     [Authorize]
@@ -43,6 +47,7 @@ public class MapController : AbstractController<HubMaps, ServiceMonitoringContex
 
         return View();
     }
+
     //
     // public async Task<IActionResult> MarkerTableData()
     // {
@@ -70,26 +75,10 @@ public class MapController : AbstractController<HubMaps, ServiceMonitoringContex
     //     return View(MarkerObject);
     // }
     //
-    // public async Task<IActionResult> Create()
-    // {
-    //     ViewData["SystemObjects"] = await DataBaseContext.Markers.IncludePartialFullInfo().ConstrainOrganization(User.GetClaimIssuer(ClaimTypes.System)).ToListAsync();
-    //     return View();
-    // }
-    //
-    // [HttpPost]
-    // [ValidateAntiForgeryToken]
-    // public async Task<IActionResult> Create([Bind("IdMarker,SystemObjectId,Latitude,Longitude")] Marker Marker)
-    // {
-    //     if (ModelState.IsValid)
-    //     {
-    //         DataBaseContext.Add(Marker);
-    //         await DataBaseContext.SaveChangesAsync();
-    //         return RedirectToAction(nameof(MarkerTableData));
-    //     }
-    //     
-    //     ViewData["SystemObjects"] = await DataBaseContext.Markers.IncludePartialFullInfo().ConstrainOrganization(User.GetClaimIssuer(ClaimTypes.System)).ToListAsync();
-    //     return View(Marker);
-    // }
+    public async Task<IActionResult> Create()
+    {
+        return View();
+    }
     //
     // public async Task<IActionResult> Edit(int? id)
     // {
@@ -176,10 +165,10 @@ public class MapController : AbstractController<HubMaps, ServiceMonitoringContex
     ///     Метод отображения таблицы пользовательских аккаунтов.
     /// </summary>
     /// <returns></returns>
-    public async Task<IActionResult> MapTableData()
+    public async Task<IActionResult> MarkerTableData()
     {
-        var maps = await DataBaseContext.Maps.Take(10).ToListAsync();
-        var dataTable = new ModelDataTable<Map>(maps);
+        var maps = await DataBaseContext.Markers.Take(10).ToListAsync();
+        var dataTable = new ModelDataTable<Marker>(maps);
         return View(dataTable);
     }
 
@@ -189,9 +178,9 @@ public class MapController : AbstractController<HubMaps, ServiceMonitoringContex
     /// <param name="tempMaps"></param>
     /// <returns></returns>
     [HttpPost]
-    public async Task<IActionResult> MapTableData([Bind("Models,Search,Skip,Take")] ModelDataTable<Map> tempMaps)
+    public async Task<IActionResult> MarkerTableData([Bind("Models,Search,Skip,Take")] ModelDataTable<Marker> tempMaps)
     {
-        var query = DataBaseContext.Maps.ToList();
+        var query = DataBaseContext.Markers.ToList();
 
         tempMaps.Models = (tempMaps.Skip, tempMaps.Take) switch
         {

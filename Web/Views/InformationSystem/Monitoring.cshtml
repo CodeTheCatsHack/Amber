@@ -1,5 +1,4 @@
-﻿@using CoreLibrary.Models.EFModels
-@model CoreLibrary.Models.EFModels.Map?
+﻿@model Web.Models.ModelDataNewTable<CoreLibrary.Models.EFModels.Satellite>
 
 @{
     Layout = "Layout/_LayoutUserAuth";
@@ -12,7 +11,7 @@
         <h3 class="text-dark mb-0">Панель мониторинга</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Выгрузить статистику</a>
     </div>
 
-    @if (Model != null)
+    @foreach (var markerA in  Model.Item1.Markers.ToList())
     {
         <div class="row">
             <div class="col-md-6 col-xl-3 mb-4">
@@ -24,9 +23,9 @@
                                     <span>Кол-во Спутников</span>
                                 </div>
                                 <div class="text-dark fw-bold h5 mb-0">
-                                    @if (((Map)Model).Satellites.Count != 0)
+                                    @if (Model.Item1.Satellites.Count != 0)
                                     {
-                                        <span>@Model.Satellites.Count</span>
+                                        <span>@Model.Item1.Satellites.Count</span>
                                     }
                                     else
                                     {
@@ -50,7 +49,7 @@
                                     <span>Кол-во маркеров</span>
                                 </div>
                                 <div class="text-dark fw-bold h5 mb-0">
-                                    <span>@Model.Markers.Count</span>
+                                    <span>@Model.Item1.Markers.Count</span>
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -92,9 +91,6 @@
                                 <i class="fas fa-circle text-success">
                                 </i>&nbsp;Кол-во маркеров
                             </span>
-                            <span class="me-2">
-                                <i class="fas fa-circle text-info"></i>&nbsp;Кол-во Изображений
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -104,10 +100,10 @@
             <div class="col-lg-6 mb-4" style="height: 100%;">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="text-primary fw-bold m-0">Лист активных спутников</h6>
+                        <h6 class="text-primary fw-bold m-0">Лист активных спутников в близи</h6>
                     </div>
                     <ul class="list-group list-group-flush">
-                        @foreach (var sat in Model.Satellites.ToList())
+                        @foreach (var sat in Model.Item2.Where(x => x.Key == markerA.IdMarker).Select(x => x.Value).ToList()[0].Item1)
                         {
                             <li class="list-group-item">
                                 <div class="row align-items-center no-gutters">
@@ -122,7 +118,7 @@
                                 </div>
                             </li>
                         }
-                        @if (Model.Satellites.Count == 0)
+                        @if (Model.Item2.Where(x => x.Key == markerA.IdMarker).Select(x => x.Value).ToList()[0].Item1.Count == 0)
                         {
                             <li class="list-group-item">
                                 <div class="row align-items-center no-gutters">
@@ -138,9 +134,9 @@
                 </div>
             </div>
             <div class="card-header py-3">
-                <h6 class="text-primary fw-bold m-0">Лист ближайших спутников к метке</h6>
+                <h6 class="text-primary fw-bold m-0">Лист выбранных спутников для отправки данных</h6>
                 <ul class="list-group list-group-flush">
-                    @foreach (var sat in Model.Satellites.ToList())
+                    @foreach (var sat in Model.Item2.Where(x => x.Key == markerA.IdMarker).Select(x => x.Value).ToList()[0].Item2)
                     {
                         <li class="list-group-item">
                             <div class="row align-items-center no-gutters">
@@ -155,7 +151,7 @@
                             </div>
                         </li>
                     }
-                    @if (Model.Satellites.Count == 0)
+                    @if (Model.Item2.Where(x => x.Key == markerA.IdMarker).Select(x => x.Value).ToList()[0].Item2.Count == 0)
                     {
                         <li class="list-group-item">
                             <div class="row align-items-center no-gutters">
@@ -175,29 +171,21 @@
                         <h6 class="text-primary fw-bold m-0">Маркеры</h6>
                     </div>
                     <ul class="list-group list-group-flush">
-                        @foreach (var marker in Model.Markers.ToList())
-                        {
-                            <li class="list-group-item">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col me-2">
-                                        <h6 class="mb-0">
-                                            <strong>@marker.Name</strong>
-                                        </h6>
-                                        <span class="text-xs">Широта: @marker.Radius</span>
-                                        <span class="text-xs">Долгота: @marker.Radius</span>
-                                        <span class="text-xs">Радиус: @marker.Radius</span>
-                                    </div>
+                        <li class="list-group-item">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col me-2">
+                                    <h6 class="mb-0">
+                                        <strong>@markerA.Name</strong>
+                                    </h6>
+                                    <span class="text-xs">Широта: @markerA.Latitude</span>
+                                    <span class="text-xs">Долгота: @markerA.Longitude</span>
+                                    <span class="text-xs">Радиус: @markerA.Radius</span>
                                 </div>
-                            </li>
-                        }
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
-    }
-    else
-    {
-        <h3>На данный момент карта отсутствует!</h3>
-        <p>Аналитика заработает, после того, как вы создадите!</p>
     }
 </div>

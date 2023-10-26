@@ -1,13 +1,9 @@
-﻿namespace Web.Models;
+﻿using CoreLibrary.Models.EFModels;
+
+namespace Web.Models;
 
 public class ModelDataTable<TModel>
 {
-    public List<TModel>? Models { get; set; }
-    public int Skip { get; set; }
-    public int Take { get; set; } = 10;
-
-    public string? Search { get; set; }
-
     public ModelDataTable()
     {
     }
@@ -23,4 +19,17 @@ public class ModelDataTable<TModel>
     {
         Models = models;
     }
+
+    public List<TModel>? Models { get; set; }
+    public int Skip { get; set; }
+    public int Take { get; set; } = 10;
+
+    public string? Search { get; set; }
+}
+
+public class ModelDataNewTable<TSat>
+{
+    public Map? Item1 { get; set; }
+
+    public Dictionary<int, (List<Satellite>, List<Satellite>)> Item2 { get; set; } = new();
 }
