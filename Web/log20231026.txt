@@ -15424,3 +15424,950 @@ VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
 2023-10-26 14:56:45.360 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/_vs/browserLink - -
 2023-10-26 14:56:45.367 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/_framework/aspnetcore-browser-refresh.js - - - 200 12338 application/javascript;+charset=utf-8 11.1106ms
 2023-10-26 14:56:45.382 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 22.1592ms
+2023-10-26 15:27:12.638 +03:00 [INF] User profile is available. Using 'C:\Users\Zero\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-10-26 15:27:12.891 +03:00 [INF] Default Quartz.NET properties loaded from embedded resource file
+2023-10-26 15:27:12.951 +03:00 [DBG] TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+2023-10-26 15:27:12.968 +03:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2023-10-26 15:27:12.969 +03:00 [INF] Quartz Scheduler created
+2023-10-26 15:27:12.975 +03:00 [INF] RAMJobStore initialized.
+2023-10-26 15:27:12.995 +03:00 [INF] Quartz Scheduler 3.7.0.0 - 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2023-10-26 15:27:12.998 +03:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2023-10-26 15:27:13.001 +03:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2023-10-26 15:27:13.147 +03:00 [INF] Now listening on: https://localhost:7276
+2023-10-26 15:27:13.152 +03:00 [INF] Now listening on: http://localhost:5212
+2023-10-26 15:27:13.160 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-26 15:27:13.164 +03:00 [INF] Hosting environment: Development
+2023-10-26 15:27:13.166 +03:00 [INF] Content root path: Z:\Project\RiderProjects\Amber\Web
+2023-10-26 15:27:13.168 +03:00 [INF] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2023-10-26 15:27:13.171 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:27:14.124 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/ - -
+2023-10-26 15:27:14.322 +03:00 [INF] Cookies was not authenticated. Failure message: Ticket expired
+2023-10-26 15:27:14.335 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:27:14.492 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Web.Controllers.HomeController (Web).
+2023-10-26 15:27:14.544 +03:00 [INF] Executing ViewResult, running view Index.
+2023-10-26 15:27:14.775 +03:00 [INF] Executed ViewResult - view Index executed in 236.2903ms.
+2023-10-26 15:27:14.784 +03:00 [INF] Executed action Web.Controllers.HomeController.Index (Web) in 258.6303ms
+2023-10-26 15:27:14.862 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/ - - - 200 - text/html;+charset=utf-8 738.9760ms
+2023-10-26 15:27:24.807 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/ - -
+2023-10-26 15:27:24.816 +03:00 [INF] Cookies was not authenticated. Failure message: Ticket expired
+2023-10-26 15:27:24.818 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:27:24.820 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Web.Controllers.HomeController (Web).
+2023-10-26 15:27:24.826 +03:00 [INF] Executing ViewResult, running view Index.
+2023-10-26 15:27:24.832 +03:00 [INF] Executed ViewResult - view Index executed in 6.8533ms.
+2023-10-26 15:27:24.836 +03:00 [INF] Executed action Web.Controllers.HomeController.Index (Web) in 11.6207ms
+2023-10-26 15:27:24.870 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/ - - - 200 - text/html;+charset=utf-8 62.9049ms
+2023-10-26 15:27:27.287 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/Users/Login - -
+2023-10-26 15:27:27.294 +03:00 [INF] Cookies was not authenticated. Failure message: Ticket expired
+2023-10-26 15:27:27.297 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:27:27.307 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller Web.Controllers.UsersController (Web).
+2023-10-26 15:27:28.340 +03:00 [INF] Executing ViewResult, running view Login.
+2023-10-26 15:27:28.398 +03:00 [INF] Executed ViewResult - view Login executed in 59.643ms.
+2023-10-26 15:27:28.459 +03:00 [INF] Executed action Web.Controllers.UsersController.Login (Web) in 1148.6215ms
+2023-10-26 15:27:28.467 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/Users/Login - - - 200 - text/html;+charset=utf-8 1179.7906ms
+2023-10-26 15:27:30.086 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7276/Users/Login application/x-www-form-urlencoded 209
+2023-10-26 15:27:30.092 +03:00 [INF] CORS policy execution successful.
+2023-10-26 15:27:30.096 +03:00 [INF] Cookies was not authenticated. Failure message: Ticket expired
+2023-10-26 15:27:30.098 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:27:30.133 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(CoreLibrary.Models.EFModels.User) on controller Web.Controllers.UsersController (Web).
+2023-10-26 15:27:31.249 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2023-10-26 15:27:33.028 +03:00 [INF] Executed DbCommand (146ms) [Parameters=[@__login_0='Admin' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`idUser`, `u`.`GroundStateAdministrator`, `u`.`Login`, `u`.`Password`, `i`.`idInformationUser`, `i`.`Avatar`, `i`.`FirstName`, `i`.`LastName`, `i`.`MiddleName`, `i`.`User`
+FROM `User` AS `u`
+LEFT JOIN `InformationUser` AS `i` ON `u`.`idUser` = `i`.`User`
+WHERE `u`.`Login` = @__login_0
+2023-10-26 15:27:33.459 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `DecryptPassword`("2$$a110$paSdSqQvbY0SSt8CTQ7uBeGw7YfEBlrvrHAjXffaYS/8IxQQqFS5");
+2023-10-26 15:27:33.910 +03:00 [INF] Executing RedirectResult, redirecting to /Users/SuccessAuth.
+2023-10-26 15:27:33.911 +03:00 [INF] Executed action Web.Controllers.UsersController.Login (Web) in 3775.6177ms
+2023-10-26 15:27:33.914 +03:00 [INF] Session started; Key:738b554f-d83d-039c-bc31-f79a04895eb7, Id:fabe4570-a5ab-511a-1216-fd32d672a68a
+2023-10-26 15:27:33.922 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/Users/SuccessAuth - -
+2023-10-26 15:27:33.925 +03:00 [INF] Cookies was not authenticated. Failure message: Ticket expired
+2023-10-26 15:27:33.931 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7276/Users/Login application/x-www-form-urlencoded 209 - 302 0 - 3845.0160ms
+2023-10-26 15:27:34.150 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@__userId_0='5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`idUser`, `u`.`GroundStateAdministrator`, `u`.`Login`, `u`.`Password`, `i`.`idInformationUser`, `i`.`Avatar`, `i`.`FirstName`, `i`.`LastName`, `i`.`MiddleName`, `i`.`User`
+FROM `User` AS `u`
+LEFT JOIN `InformationUser` AS `i` ON `u`.`idUser` = `i`.`User`
+WHERE `u`.`idUser` = @__userId_0
+LIMIT 1
+2023-10-26 15:27:34.354 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `m`.`idMap`, `m`.`Description`, `m`.`InformationUser`, `m`.`Name`, `m`.`User`
+FROM `Map` AS `m`
+2023-10-26 15:27:34.367 +03:00 [INF] AuthenticationScheme: Cookies signed in.
+2023-10-26 15:27:34.371 +03:00 [INF] Route matched with {action = "SuccessAuth", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SuccessAuth() on controller Web.Controllers.UsersController (Web).
+2023-10-26 15:27:34.383 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-10-26 15:27:34.386 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2023-10-26 15:27:34.393 +03:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2023-10-26 15:27:34.400 +03:00 [INF] AuthenticationScheme: Cookies was challenged.
+2023-10-26 15:27:34.403 +03:00 [INF] Executed action Web.Controllers.UsersController.SuccessAuth (Web) in 28.503ms
+2023-10-26 15:27:34.405 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/Users/SuccessAuth - - - 302 0 - 482.5918ms
+2023-10-26 15:27:34.415 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/Users/Login?ReturnUrl=%2FUsers%2FSuccessAuth - -
+2023-10-26 15:27:34.691 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@__userId_0='5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`idUser`, `u`.`GroundStateAdministrator`, `u`.`Login`, `u`.`Password`, `i`.`idInformationUser`, `i`.`Avatar`, `i`.`FirstName`, `i`.`LastName`, `i`.`MiddleName`, `i`.`User`
+FROM `User` AS `u`
+LEFT JOIN `InformationUser` AS `i` ON `u`.`idUser` = `i`.`User`
+WHERE `u`.`idUser` = @__userId_0
+LIMIT 1
+2023-10-26 15:27:34.818 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `m`.`idMap`, `m`.`Description`, `m`.`InformationUser`, `m`.`Name`, `m`.`User`
+FROM `Map` AS `m`
+2023-10-26 15:27:34.857 +03:00 [INF] AuthenticationScheme: Cookies signed in.
+2023-10-26 15:27:34.859 +03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller Web.Controllers.UsersController (Web).
+2023-10-26 15:27:34.929 +03:00 [INF] Executing ViewResult, running view Login.
+2023-10-26 15:27:34.944 +03:00 [INF] Executed ViewResult - view Login executed in 15.6593ms.
+2023-10-26 15:27:34.946 +03:00 [INF] Executed action Web.Controllers.UsersController.Login (Web) in 84.5808ms
+2023-10-26 15:27:34.947 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/Users/Login?ReturnUrl=%2FUsers%2FSuccessAuth - - - 302 - text/html;+charset=utf-8 531.6863ms
+2023-10-26 15:27:34.961 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/Users/SuccessAuth - -
+2023-10-26 15:27:35.152 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__userId_0='5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`idUser`, `u`.`GroundStateAdministrator`, `u`.`Login`, `u`.`Password`, `i`.`idInformationUser`, `i`.`Avatar`, `i`.`FirstName`, `i`.`LastName`, `i`.`MiddleName`, `i`.`User`
+FROM `User` AS `u`
+LEFT JOIN `InformationUser` AS `i` ON `u`.`idUser` = `i`.`User`
+WHERE `u`.`idUser` = @__userId_0
+LIMIT 1
+2023-10-26 15:27:35.278 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `m`.`idMap`, `m`.`Description`, `m`.`InformationUser`, `m`.`Name`, `m`.`User`
+FROM `Map` AS `m`
+2023-10-26 15:27:35.282 +03:00 [INF] AuthenticationScheme: Cookies signed in.
+2023-10-26 15:27:35.284 +03:00 [INF] Route matched with {action = "SuccessAuth", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SuccessAuth() on controller Web.Controllers.UsersController (Web).
+2023-10-26 15:27:35.347 +03:00 [INF] Executing ViewResult, running view SuccessAuth.
+2023-10-26 15:27:35.352 +03:00 [INF] Executed ViewResult - view SuccessAuth executed in 6.6531ms.
+2023-10-26 15:27:35.359 +03:00 [INF] Executed action Web.Controllers.UsersController.SuccessAuth (Web) in 73.2667ms
+2023-10-26 15:27:35.364 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/Users/SuccessAuth - - - 200 - text/html;+charset=utf-8 402.0470ms
+2023-10-26 15:27:36.554 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - -
+2023-10-26 15:27:36.734 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__userId_0='5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`idUser`, `u`.`GroundStateAdministrator`, `u`.`Login`, `u`.`Password`, `i`.`idInformationUser`, `i`.`Avatar`, `i`.`FirstName`, `i`.`LastName`, `i`.`MiddleName`, `i`.`User`
+FROM `User` AS `u`
+LEFT JOIN `InformationUser` AS `i` ON `u`.`idUser` = `i`.`User`
+WHERE `u`.`idUser` = @__userId_0
+LIMIT 1
+2023-10-26 15:27:36.871 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `m`.`idMap`, `m`.`Description`, `m`.`InformationUser`, `m`.`Name`, `m`.`User`
+FROM `Map` AS `m`
+2023-10-26 15:27:36.877 +03:00 [INF] AuthenticationScheme: Cookies signed in.
+2023-10-26 15:27:36.882 +03:00 [INF] Route matched with {action = "Monitoring", controller = "InformationSystem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Monitoring() on controller Web.Controllers.InformationSystemController (Web).
+2023-10-26 15:27:38.014 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:27:41.085 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@__norad_0='2221'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:42.307 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@p0='2221', @p1='1', @p2='1', @p3='OPS 9317 (IDSCS 7)' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 02221U 66053H   23298.06601300 -.00000059  00000-0  00000-0 0  9992' (Nullable = false) (Size = 4000), @p6='2 02221   6.5360  55.0864 0079302 146.9435 213.5586  1.06868407 40701' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:42.555 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='26790'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:43.455 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='26790', @p1='1', @p2='1', @p3='ARIANE 44L+ DEB' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 26790U 92021Q   23295.58263153 -.00000158  00000-0  00000+0 0  9996' (Nullable = false) (Size = 4000), @p6='2 26790   3.4452  91.2738 6982319 316.6101 343.7296  2.23045059    04' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:43.640 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='27715'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:44.567 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@p0='27715', @p1='1', @p2='1', @p3='GALAXY 12' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 27715U 03013B   23298.58094502  .00000023  00000-0  00000-0 0  9991' (Nullable = false) (Size = 4000), @p6='2 27715   4.5128  80.1864 0000212  20.2158 180.4473  0.98983399 42409' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:44.819 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='28542'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:45.671 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@p0='28542', @p1='1', @p2='1', @p3='XTAR-EUR' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 28542U 05005A   23298.07480778  .00000147  00000-0  00000-0 0  9998' (Nullable = false) (Size = 4000), @p6='2 28542   1.8354  88.6645 0004689 143.3360 217.1536  1.00271915 68508' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:45.855 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='28790'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:46.731 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='28790', @p1='1', @p2='1', @p3='GALAXY 14' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 28790U 05030A   23299.07202104  .00000152  00000-0  00000+0 0  9992' (Nullable = false) (Size = 4000), @p6='2 28790   2.5219  86.5822 0001460 116.9287 249.5356  1.00272577 66628' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:46.910 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='29270'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:47.730 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='29270', @p1='1', @p2='1', @p3='EUTE HOT BIRD 13B (HB 8)' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 29270U 06032A   23298.86160330  .00000150  00000-0  00000-0 0  9998' (Nullable = false) (Size = 4000), @p6='2 29270   0.0949  58.0854 0003702 165.2996 153.8968  1.00271957 37624' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:47.912 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='32389'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:48.917 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='32389', @p1='1', @p2='1', @p3='ARIANE 5 R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 32389U 07063C   23298.50029462 -.00000009  00000-0  26729-3 0  9992' (Nullable = false) (Size = 4000), @p6='2 32389   5.3255 117.6606 7132220 329.9593   3.5965  2.30526175133467' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:49.108 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='35757'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:50.301 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='35757', @p1='1', @p2='1', @p3='ARIANE 5 R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 35757U 09044C   23298.83264832  .00004430  00000-0  12279-2 0  9998' (Nullable = false) (Size = 4000), @p6='2 35757   2.0584  19.3880 7111037  33.4086 355.6615  2.49698144123937' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:50.488 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='36101'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:51.483 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='36101', @p1='1', @p2='1', @p3='EUTE 36B (EUTE W7)' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 36101U 09065A   23298.86160330  .00000150  00000-0  00000-0 0  9998' (Nullable = false) (Size = 4000), @p6='2 36101   0.0740  25.1293 0005389 194.9728 159.9934  1.00274345 51036' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:51.668 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='36745'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:52.547 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='36745', @p1='1', @p2='1', @p3='ARABSAT 5A' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 36745U 10032B   23298.86716024  .00000148  00000-0  00000+0 0  9991' (Nullable = false) (Size = 4000), @p6='2 36745   0.0625  38.1611 0003576 152.1044 186.4308  1.00273910 48957' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:52.728 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='37392'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:53.697 +03:00 [INF] Executed DbCommand (67ms) [Parameters=[@p0='37392', @p1='1', @p2='1', @p3='INTELSAT NEW DAWN' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 37392U 11016A   23298.86160330  .00000150  00000-0  00000-0 0  9990' (Nullable = false) (Size = 4000), @p6='2 37392   0.0136 162.7645 0001741  68.1453 146.0705  1.00272209 43606' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:53.880 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@__norad_0='38741'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:55.406 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@p0='38741', @p1='1', @p2='1', @p3='HYLAS 2' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 38741U 12043B   23298.86716024  .00000149  00000-0  00000-0 0  9995' (Nullable = false) (Size = 4000), @p6='2 38741   0.0514  77.2587 0001786 146.1684 153.7961  1.00272609 41085' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:55.589 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='38778'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:56.468 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='38778', @p1='1', @p2='1', @p3='ASTRA 2F' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 38778U 12051A   23298.86716024  .00000144  00000-0  00000+0 0  9998' (Nullable = false) (Size = 4000), @p6='2 38778   0.0446 240.5767 0004426 339.6444 154.1532  1.00270827 40618' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:56.653 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='39191'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:57.521 +03:00 [INF] Executed DbCommand (68ms) [Parameters=[@p0='39191', @p1='1', @p2='1', @p3='O3B PFM' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 39191U 13031D   23298.37978052 -.00000019  00000-0  00000-0 0  9997' (Nullable = false) (Size = 4000), @p6='2 39191   0.0435   3.4102 0002568 209.5808 146.9983  5.00115926188354' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:57.712 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='39200'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:58.601 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@p0='39200', @p1='1', @p2='1', @p3='PSLV R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 39200U 13034B   23297.89740696  .00003849  00000-0  77015-3 0  9994' (Nullable = false) (Size = 4000), @p6='2 39200  17.7730 258.9514 5824732 208.2061 101.6065  4.30139152154956' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:27:58.784 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='39285'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:27:59.853 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='39285', @p1='1', @p2='1', @p3='ASTRA 2E' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 39285U 13056A   23298.86716024  .00000145  00000-0  00000-0 0  9990' (Nullable = false) (Size = 4000), @p6='2 39285   0.0704 329.1178 0002520 257.8856 147.6679  1.00271312 36759' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:00.036 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='39375'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:00.910 +03:00 [INF] Executed DbCommand (65ms) [Parameters=[@p0='39375', @p1='1', @p2='1', @p3='RADUGA-1M 3' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 39375U 13062A   23298.92398524  .00000153  00000-0  00000-0 0  9994' (Nullable = false) (Size = 4000), @p6='2 39375   3.4911  83.9952 0001468 322.6520 355.0593  1.00273458 36427' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:01.090 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='40364'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:01.736 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:28:01.983 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='40364', @p1='1', @p2='1', @p3='ASTRA 2G' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 40364U 14089A   23298.86716024  .00000144  00000-0  00000-0 0  9996' (Nullable = false) (Size = 4000), @p6='2 40364   0.0497  37.8257 0000980  60.3139 276.2605  1.00273960 32281' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:02.188 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='41320'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:03.096 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@p0='41320', @p1='1', @p2='1', @p3='BREEZE-M DEB' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 41320U 12026G   23296.04830644 -.00000027  00000-0  00000-0 0  9992' (Nullable = false) (Size = 4000), @p6='2 41320   9.8078 222.8626 4226375 248.4230  62.2459  1.76040200 50388' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:03.276 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='41384'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:04.170 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='41384', @p1='1', @p2='1', @p3='IRNSS 1F' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 41384U 16015A   23298.86716024  .00000157  00000-0  00000-0 0  9994' (Nullable = false) (Size = 4000), @p6='2 41384   3.0396 127.3901 0019801 174.1337  77.1108  1.00275809 27983' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:04.355 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='43088'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:05.296 +03:00 [INF] Executed DbCommand (66ms) [Parameters=[@p0='43088', @p1='1', @p2='1', @p3='FREGAT R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 43088U 17086B   23299.01113035 -.00000016  00000-0  00000+0 0  9991' (Nullable = false) (Size = 4000), @p6='2 43088   5.0859  76.2895 0131048   4.6805 355.5193  0.98389446 20957' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:05.506 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='43825'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:06.374 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='43825', @p1='1', @p2='1', @p3='ARIANE 5 R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 43825U 18100C   23298.63813016  .00004906  00000-0  61635-3 0  9997' (Nullable = false) (Size = 4000), @p6='2 43825   3.6286 117.4774 7089995 339.8821   2.4274  2.54140608 43074' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:06.567 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='44186'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:07.536 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='44186', @p1='1', @p2='1', @p3='ARABSAT 6A' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 44186U 19021A   23298.86716024  .00000148  00000-0  00000+0 0  9996' (Nullable = false) (Size = 4000), @p6='2 44186   0.0428  12.9015 0006495 229.2507 134.5285  1.00272268 16472' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:07.721 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='44475'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:08.812 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='44475', @p1='1', @p2='1', @p3='EDRS-C' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 44475U 19049A   23298.81913381  .00000149  00000-0  00000+0 0  9998' (Nullable = false) (Size = 4000), @p6='2 44475   0.0684 256.6499 0000796 305.8758 157.4973  1.00271704 15513' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:09.021 +03:00 [INF] Executed DbCommand (59ms) [Parameters=[@__norad_0='44800'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:09.951 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='44800', @p1='1', @p2='1', @p3='TIBA-1' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 44800U 19080A   23298.86160330  .00000150  00000-0  00000-0 0  9991' (Nullable = false) (Size = 4000), @p6='2 44800   0.0594  14.7473 0002341 198.9553 165.9689  1.00271973 14371' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:10.133 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='44904'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:11.180 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='44904', @p1='1', @p2='1', @p3='BLOCK DM-SL R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 44904U 19095B   23298.09235425 -.00000054  00000-0  00000-0 0  9999' (Nullable = false) (Size = 4000), @p6='2 44904   2.9187  86.1125 0070408 243.0877 116.4441  1.02970492 14441' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:11.364 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='45028'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:12.513 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='45028', @p1='1', @p2='1', @p3='ARIANE 5 DEB (SYLDA)' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 45028U 20005C   23298.63764304  .00081323  00000-0  82695-2 0  9992' (Nullable = false) (Size = 4000), @p6='2 45028   6.0535 240.6878 6339830 185.0017 162.9217  3.57364950 38099' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:12.695 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='46826'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:13.774 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='46826', @p1='1', @p2='1', @p3='NAVSTAR 80 (USA 309)' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 46826U 20078A   23299.06750498 -.00000034  00000-0  00000+0 0  9994' (Nullable = false) (Size = 4000), @p6='2 46826  54.2869 249.9633 0036963 194.7541 202.5595  2.00562590 22142' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:13.959 +03:00 [INF] Executed DbCommand (59ms) [Parameters=[@__norad_0='47306'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:14.833 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='47306', @p1='1', @p2='1', @p3='TURKSAT 5A' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 47306U 21001A   23298.86716024  .00000149  00000-0  00000+0 0  9995' (Nullable = false) (Size = 4000), @p6='2 47306   0.0396  75.2878 0000077 310.9598 350.8521  1.00271565 10312' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:15.030 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='49959'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:15.903 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='49959', @p1='1', @p2='1', @p3='SATCOM 3 DEB' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 49959U 79101AD  23299.18406928 -.00000101  00000-0  00000+0 0  9999' (Nullable = false) (Size = 4000), @p6='2 49959   6.9238 227.1358 4785640 209.7346 307.2055  1.80689686103535' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:16.099 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='51714'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:17.019 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='51714', @p1='1', @p2='1', @p3='STARLINK-3528' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 51714U 22016A   23298.26051361  .00002968  00000-0  20446-3 0  9991' (Nullable = false) (Size = 4000), @p6='2 51714  53.2172 258.6750 0001548  89.6990 270.4180 15.08843644 92626' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:17.208 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='52828'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:18.071 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='52828', @p1='1', @p2='1', @p3='ATLAS 5 CENTAUR DEB' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 52828U 14055DL  23298.96896819 -.00000176  00000-0  00000+0 0  9994' (Nullable = false) (Size = 4000), @p6='2 52828  20.6857 256.7866 4571354 327.5863  10.9723  1.81209474  9577' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:18.255 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='52934'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:19.173 +03:00 [INF] Executed DbCommand (65ms) [Parameters=[@p0='52934', @p1='1', @p2='1', @p3='FALCON 9 R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 52934U 22071B   23299.02071133  .00001525  00000-0  17426-2 0  9992' (Nullable = false) (Size = 4000), @p6='2 52934  16.2093 237.7449 7230387 174.4432 203.7544  2.30501225 10700' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:20.449 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='3292'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:21.406 +03:00 [INF] Executed DbCommand (81ms) [Parameters=[@p0='3292', @p1='1', @p2='1', @p3='TITAN 3C TRANSTAGE R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 03292U 68050J   23298.14360791 -.00000070  00000-0  00000-0 0  9998' (Nullable = false) (Size = 4000), @p6='2 03292   5.5773  60.6080 0170505 342.5811  40.4946  1.05593762 36304' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:21.588 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='3623'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:22.571 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@p0='3623', @p1='1', @p2='1', @p3='INTELSAT 3-F2' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 03623U 68116A   23298.58564425 -.00000110  00000-0  00000-0 0  9992' (Nullable = false) (Size = 4000), @p6='2 03623   6.5399 298.7496 0088977  71.1379 297.9101  0.90194207 74079' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:22.796 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='3947'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:23.668 +03:00 [INF] Executed DbCommand (66ms) [Parameters=[@p0='3947', @p1='1', @p2='1', @p3='INTELSAT 3-F4' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 03947U 69045A   23298.58712363 -.00000108  00000-0  00000-0 0  9996' (Nullable = false) (Size = 4000), @p6='2 03947   6.4016 292.8592 0021657  60.6765 321.4791  0.90044506 57276' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:23.893 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='4511'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:24.984 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='4511', @p1='1', @p2='1', @p3='ATLAS AGENA D R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 04511U 70046B   23298.83217494  .00000147  00000-0  00000-0 0  9992' (Nullable = false) (Size = 4000), @p6='2 04511   0.8096 271.7448 0029760 104.8958 343.4846  1.00421410 15852' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:25.175 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='6318'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:25.427 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:28:26.049 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@p0='6318', @p1='1', @p2='1', @p3='ATLAS AGENA R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 06318U 72101B   23297.53071329 -.00000059  00000-0  00000-0 0  9997' (Nullable = false) (Size = 4000), @p6='2 06318  10.5923 248.0222 1169595 143.7303 224.7551  1.02315404 17438' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:26.243 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='12984'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:27.140 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='12984', @p1='1', @p2='1', @p3='COSMOS 1247 DEB' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 12984U 81016F   23298.34995739 -.00000795  00000-0  00000-0 0  9995' (Nullable = false) (Size = 4000), @p6='2 12984  67.3933  74.8170 6435514   5.4306 358.9299  2.02675047310394' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:27.322 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='20799'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:28.370 +03:00 [INF] Executed DbCommand (207ms) [Parameters=[@p0='20799', @p1='1', @p2='1', @p3='GOES 2 AKM' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 20799U 77048G   23298.57946565  .00000089  00000-0  00000-0 0  9991' (Nullable = false) (Size = 4000), @p6='2 20799   6.5601 287.8727 0205311  76.7269 270.4208  1.00574002108110' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:28.562 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='22654'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:29.412 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='22654', @p1='1', @p2='1', @p3='ARSENE' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 22654U 93031B   23298.34180681 -.00000101  00000-0  00000-0 0  9993' (Nullable = false) (Size = 4000), @p6='2 22654   3.6788  75.6381 2820756 269.4836  53.0165  1.42203693153684' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:29.599 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='23239'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:30.722 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='23239', @p1='1', @p2='1', @p3='ARIANE 44L+ DEB' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 23239U 92021J   23298.31308935 -.00000105  00000-0  00000-0 0  9996' (Nullable = false) (Size = 4000), @p6='2 23239   3.9570  55.0681 6981439  21.8347 253.7908  2.23731568247380' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:30.911 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='23248'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:31.824 +03:00 [INF] Executed DbCommand (65ms) [Parameters=[@p0='23248', @p1='1', @p2='1', @p3='ETS 6 DEB' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 23248U 94056C   23298.30778097 -.00000128  00000-0  00000-0 0  9990' (Nullable = false) (Size = 4000), @p6='2 23248  12.3305 240.7046 5207179 181.9119 200.8992  1.70299078181259' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:32.008 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='24751'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:32.856 +03:00 [INF] Executed DbCommand (72ms) [Parameters=[@p0='24751', @p1='1', @p2='1', @p3='ARIANE 44L DEB' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 24751U 91003K   23297.95057848  .00000934  00000-0  25079-2 0  9992' (Nullable = false) (Size = 4000), @p6='2 24751   7.7043 124.0438 6234483 294.3186  14.2631  3.53900025320354' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:33.038 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='25312'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:34.042 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@p0='25312', @p1='1', @p2='1', @p3='BSAT-1B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 25312U 98024B   23298.00672130  .00000008  00000-0  00000-0 0  9997' (Nullable = false) (Size = 4000), @p6='2 25312   9.4857  52.7682 0003647 186.6786 188.9058  0.99119366 36585' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:34.225 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='25538'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:35.094 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='25538', @p1='1', @p2='1', @p3='ARIANE 44LP DEB' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 25538U 88109E   23298.33525332 -.00000160  00000-0 -12700-4 0  9992' (Nullable = false) (Size = 4000), @p6='2 25538   6.5188 123.2419 7201853 293.9956 350.4558  2.23137223204487' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:35.281 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='25546'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:36.178 +03:00 [INF] Executed DbCommand (66ms) [Parameters=[@p0='25546', @p1='1', @p2='1', @p3='BONUM 1' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 25546U 98068A   23298.50802006 -.00000008  00000-0  00000-0 0  9997' (Nullable = false) (Size = 4000), @p6='2 25546   8.8430  54.3489 0002699  28.5198 165.3155  0.99038021 90972' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:36.362 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='25558'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:37.177 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='25558', @p1='1', @p2='1', @p3='SATMEX 5' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 25558U 98070A   23298.79702330  .00000006  00000-0  00000-0 0  9990' (Nullable = false) (Size = 4000), @p6='2 25558   8.1410  60.5003 0004598  77.2998 226.4855  0.98720008 90929' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:37.358 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='25626'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:38.248 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='25626', @p1='1', @p2='1', @p3='GALAXY 26 (TELSTAR 6)' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 25626U 99005A   23298.43866301  .00000037  00000-0  00000-0 0  9999' (Nullable = false) (Size = 4000), @p6='2 25626   9.5692  55.6333 0005376 124.9397  53.9895  0.98996509 34433' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:38.433 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='26471'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:39.287 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='26471', @p1='1', @p2='1', @p3='ARIANE 44LP DEB (SPELDA)' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 26471U 00046C   23298.45110440  .00001792  00000-0  20030-2 0  9999' (Nullable = false) (Size = 4000), @p6='2 26471   3.5987  16.0732 5608839  13.4504 356.8384  4.50414341309082' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:39.469 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='26529'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:40.587 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@p0='26529', @p1='1', @p2='1', @p3='TITAN 3C TRANSTAGE DEB' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 26529U 65108AQ  23292.72946115 -.00000040  00000-0  74035-3 0  9994' (Nullable = false) (Size = 4000), @p6='2 26529  26.5996  77.5257 6825344 109.1961   1.9764  2.65426169 16011' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:40.769 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='26696'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:41.679 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@p0='26696', @p1='1', @p2='1', @p3='ARIANE 44L R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 26696U 01005C   23297.98070612  .00002202  00000-0  11196-2 0  9997' (Nullable = false) (Size = 4000), @p6='2 26696   6.7389 182.3922 6958044 299.4926   9.3051  2.66485291203330' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:41.865 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='26807'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:42.803 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='26807', @p1='1', @p2='1', @p3='ARIANE 3 DEB' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 26807U 88081H   23298.32363535 -.00000151  00000-0  00000-0 0  9990' (Nullable = false) (Size = 4000), @p6='2 26807   6.1844 284.9615 7051752 146.2351 358.8332  2.17357405191593' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:43.006 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='27378'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:44.139 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='27378', @p1='1', @p2='1', @p3='ECHOSTAR 7' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 27378U 02006A   23298.86160330  .00000135  00000-0  00000-0 0  9995' (Nullable = false) (Size = 4000), @p6='2 27378   1.5083  89.1358 0002405 100.5169 193.7717  0.99837536 40899' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:45.022 +03:00 [INF] Executed DbCommand (59ms) [Parameters=[@__norad_0='27832'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:45.911 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='27832', @p1='1', @p2='1', @p3='ARIANE 5 R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 27832U 03028C   23297.97357505 -.00000104  00000-0  63785-4 0  9998' (Nullable = false) (Size = 4000), @p6='2 27832   6.6637 122.5001 7186228 304.7896   7.1406  2.24785586167317' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:46.095 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='28904'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:46.957 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='28904', @p1='1', @p2='1', @p3='ARIANE 5 R/B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 28904U 05046C   23297.53190316  .00000088  00000-0  52292-3 0  9998' (Nullable = false) (Size = 4000), @p6='2 28904   6.7671 132.1875 7206478 291.7835   9.5067  2.29420443150056' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:47.141 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='29526'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:47.319 +03:00 [INF] Application is shutting down...
+2023-10-26 15:28:48.556 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='29526', @p1='1', @p2='1', @p3='ARABSAT 4B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 29526U 06051A   23298.82705766  .00000139  00000-0  00000+0 0  9993' (Nullable = false) (Size = 4000), @p6='2 29526   0.0512 316.0229 0006615 299.7471 101.9519  1.00274822 62217' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:48.740 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='32294'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:28:49.625 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[@p0='32294', @p1='1', @p2='1', @p3='SKYNET 5B' (Nullable = false) (Size = 100), @p4='Notbusy' (Nullable = false) (Size = 4000), @p5='1 32294U 07056B   23298.86716024  .00000139  00000-0  00000-0 0  9999' (Nullable = false) (Size = 4000), @p6='2 32294   2.7791  84.6406 0003809 129.1829 157.4536  1.00273838 58510' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Satellite` (`idSatellite`, `IsOffiicial`, `Map`, `SatName`, `Status`, `TleLine1`, `TleLine2`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-10-26 15:28:49.814 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__norad_0='33154'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:29:12.325 +03:00 [INF] User profile is available. Using 'C:\Users\Zero\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-10-26 15:29:12.540 +03:00 [INF] Default Quartz.NET properties loaded from embedded resource file
+2023-10-26 15:29:12.581 +03:00 [DBG] TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+2023-10-26 15:29:12.740 +03:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2023-10-26 15:29:12.742 +03:00 [INF] Quartz Scheduler created
+2023-10-26 15:29:12.744 +03:00 [INF] RAMJobStore initialized.
+2023-10-26 15:29:12.747 +03:00 [INF] Quartz Scheduler 3.7.0.0 - 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2023-10-26 15:29:12.748 +03:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2023-10-26 15:29:12.751 +03:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2023-10-26 15:29:12.876 +03:00 [INF] Now listening on: https://localhost:7276
+2023-10-26 15:29:12.879 +03:00 [INF] Now listening on: http://localhost:5212
+2023-10-26 15:29:12.882 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-26 15:29:12.883 +03:00 [INF] Hosting environment: Development
+2023-10-26 15:29:12.884 +03:00 [INF] Content root path: Z:\Project\RiderProjects\Amber\Web
+2023-10-26 15:29:12.891 +03:00 [INF] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2023-10-26 15:29:12.893 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:29:13.966 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/ - -
+2023-10-26 15:29:14.112 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:29:14.219 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Web.Controllers.HomeController (Web).
+2023-10-26 15:29:14.239 +03:00 [INF] Executing ViewResult, running view Index.
+2023-10-26 15:29:14.526 +03:00 [INF] Executed ViewResult - view Index executed in 280.9557ms.
+2023-10-26 15:29:14.568 +03:00 [INF] Executed action Web.Controllers.HomeController.Index (Web) in 345.2161ms
+2023-10-26 15:29:14.595 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/ - - - 200 - text/html;+charset=utf-8 631.3005ms
+2023-10-26 15:29:18.325 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - -
+2023-10-26 15:29:18.331 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:29:18.346 +03:00 [INF] Route matched with {action = "Monitoring", controller = "InformationSystem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Monitoring() on controller Web.Controllers.InformationSystemController (Web).
+2023-10-26 15:29:21.563 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2023-10-26 15:29:22.897 +03:00 [INF] Executed DbCommand (125ms) [Parameters=[@__norad_0='2221'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:29:23.389 +03:00 [INF] Executed DbCommand (66ms) [Parameters=[@__p_0='2221'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__p_0
+LIMIT 1
+2023-10-26 15:29:23.432 +03:00 [INF] Executing ViewResult, running view Monitoring.
+2023-10-26 15:29:23.511 +03:00 [INF] Executed ViewResult - view Monitoring executed in 80.6398ms.
+2023-10-26 15:29:23.615 +03:00 [INF] Executed action Web.Controllers.InformationSystemController.Monitoring (Web) in 5264.8911ms
+2023-10-26 15:29:23.629 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - - - 200 - text/html;+charset=utf-8 5304.5256ms
+2023-10-26 15:29:36.282 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:29:59.514 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:30:04.045 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - -
+2023-10-26 15:30:04.050 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:30:04.058 +03:00 [INF] Route matched with {action = "Monitoring", controller = "InformationSystem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Monitoring() on controller Web.Controllers.InformationSystemController (Web).
+2023-10-26 15:30:05.312 +03:00 [INF] Executed DbCommand (58ms) [Parameters=[@__p_0='2221'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__p_0
+LIMIT 1
+2023-10-26 15:30:05.319 +03:00 [INF] Executing ViewResult, running view Monitoring.
+2023-10-26 15:30:05.335 +03:00 [INF] Executed ViewResult - view Monitoring executed in 18.0173ms.
+2023-10-26 15:30:05.339 +03:00 [INF] Executed action Web.Controllers.InformationSystemController.Monitoring (Web) in 1279.5764ms
+2023-10-26 15:30:05.341 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - - - 200 - text/html;+charset=utf-8 1296.5333ms
+2023-10-26 15:30:23.722 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:30:47.940 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:31:02.955 +03:00 [INF] Application is shutting down...
+2023-10-26 15:31:02.984 +03:00 [INF] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED shutting down.
+2023-10-26 15:31:02.988 +03:00 [INF] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED paused.
+2023-10-26 15:31:02.996 +03:00 [DBG] Shutting down threadpool...
+2023-10-26 15:31:02.999 +03:00 [DBG] Waiting for 0 threads to complete.
+2023-10-26 15:31:03.001 +03:00 [DBG] No executing jobs remaining, all threads stopped.
+2023-10-26 15:31:03.001 +03:00 [DBG] Shutdown of threadpool complete.
+2023-10-26 15:31:03.008 +03:00 [INF] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2023-10-26 15:33:30.009 +03:00 [INF] User profile is available. Using 'C:\Users\Zero\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-10-26 15:33:30.233 +03:00 [INF] Default Quartz.NET properties loaded from embedded resource file
+2023-10-26 15:33:30.271 +03:00 [DBG] TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+2023-10-26 15:33:30.286 +03:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2023-10-26 15:33:30.287 +03:00 [INF] Quartz Scheduler created
+2023-10-26 15:33:30.290 +03:00 [INF] RAMJobStore initialized.
+2023-10-26 15:33:30.292 +03:00 [INF] Quartz Scheduler 3.7.0.0 - 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2023-10-26 15:33:30.294 +03:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2023-10-26 15:33:30.295 +03:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2023-10-26 15:33:30.421 +03:00 [INF] Now listening on: https://localhost:7276
+2023-10-26 15:33:30.424 +03:00 [INF] Now listening on: http://localhost:5212
+2023-10-26 15:33:30.429 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-26 15:33:30.430 +03:00 [INF] Hosting environment: Development
+2023-10-26 15:33:30.431 +03:00 [INF] Content root path: Z:\Project\RiderProjects\Amber\Web
+2023-10-26 15:33:30.436 +03:00 [INF] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2023-10-26 15:33:30.438 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:33:31.090 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/ - -
+2023-10-26 15:33:31.246 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:33:31.356 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Web.Controllers.HomeController (Web).
+2023-10-26 15:33:31.374 +03:00 [INF] Executing ViewResult, running view Index.
+2023-10-26 15:33:31.557 +03:00 [INF] Executed ViewResult - view Index executed in 186.1938ms.
+2023-10-26 15:33:31.810 +03:00 [INF] Executed action Web.Controllers.HomeController.Index (Web) in 450.8459ms
+2023-10-26 15:33:31.857 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/ - - - 200 - text/html;+charset=utf-8 769.2262ms
+2023-10-26 15:33:33.694 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - -
+2023-10-26 15:33:33.700 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:33:33.715 +03:00 [INF] Route matched with {action = "Monitoring", controller = "InformationSystem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Monitoring() on controller Web.Controllers.InformationSystemController (Web).
+2023-10-26 15:33:37.049 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2023-10-26 15:33:38.654 +03:00 [INF] Executed DbCommand (146ms) [Parameters=[@__norad_0='2221'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:33:39.164 +03:00 [INF] Executed DbCommand (70ms) [Parameters=[@__p_0='2221'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__p_0
+LIMIT 1
+2023-10-26 15:33:39.214 +03:00 [INF] Executing ViewResult, running view Monitoring.
+2023-10-26 15:33:39.266 +03:00 [INF] Executed ViewResult - view Monitoring executed in 54.5881ms.
+2023-10-26 15:33:39.349 +03:00 [INF] Executed action Web.Controllers.InformationSystemController.Monitoring (Web) in 5630.1935ms
+2023-10-26 15:33:39.361 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - - - 200 - text/html;+charset=utf-8 5666.9908ms
+2023-10-26 15:33:59.288 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:34:25.064 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:34:48.247 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:35:06.733 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - -
+2023-10-26 15:35:06.741 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:35:06.744 +03:00 [INF] Route matched with {action = "Monitoring", controller = "InformationSystem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Monitoring() on controller Web.Controllers.InformationSystemController (Web).
+2023-10-26 15:35:07.898 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@__p_0='2221'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__p_0
+LIMIT 1
+2023-10-26 15:35:07.907 +03:00 [INF] Executing ViewResult, running view Monitoring.
+2023-10-26 15:35:07.914 +03:00 [INF] Executed ViewResult - view Monitoring executed in 7.8629ms.
+2023-10-26 15:35:07.918 +03:00 [INF] Executed action Web.Controllers.InformationSystemController.Monitoring (Web) in 1169.6812ms
+2023-10-26 15:35:07.926 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - - - 200 - text/html;+charset=utf-8 1192.6711ms
+2023-10-26 15:35:09.864 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - -
+2023-10-26 15:35:09.867 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:35:09.868 +03:00 [INF] Route matched with {action = "Monitoring", controller = "InformationSystem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Monitoring() on controller Web.Controllers.InformationSystemController (Web).
+2023-10-26 15:35:10.916 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__p_0='2221'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__p_0
+LIMIT 1
+2023-10-26 15:35:10.921 +03:00 [INF] Executing ViewResult, running view Monitoring.
+2023-10-26 15:35:10.925 +03:00 [INF] Executed ViewResult - view Monitoring executed in 3.9409ms.
+2023-10-26 15:35:10.929 +03:00 [INF] Executed action Web.Controllers.InformationSystemController.Monitoring (Web) in 1058.1438ms
+2023-10-26 15:35:10.969 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - - - 200 - text/html;+charset=utf-8 1105.2288ms
+2023-10-26 15:35:13.024 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - -
+2023-10-26 15:35:13.027 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:35:13.029 +03:00 [INF] Route matched with {action = "Monitoring", controller = "InformationSystem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Monitoring() on controller Web.Controllers.InformationSystemController (Web).
+2023-10-26 15:35:14.015 +03:00 [INF] Executed DbCommand (59ms) [Parameters=[@__p_0='2221'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__p_0
+LIMIT 1
+2023-10-26 15:35:14.022 +03:00 [INF] Executing ViewResult, running view Monitoring.
+2023-10-26 15:35:14.027 +03:00 [INF] Executed ViewResult - view Monitoring executed in 5.1179ms.
+2023-10-26 15:35:14.030 +03:00 [INF] Executed action Web.Controllers.InformationSystemController.Monitoring (Web) in 997.5877ms
+2023-10-26 15:35:14.034 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - - - 200 - text/html;+charset=utf-8 1009.5086ms
+2023-10-26 15:35:14.058 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:35:42.861 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:36:11.483 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:36:40.207 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:36:55.662 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/Users/Edit - -
+2023-10-26 15:36:55.665 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:36:55.674 +03:00 [INF] Route matched with {action = "Edit", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Edit() on controller Web.Controllers.UsersController (Web).
+2023-10-26 15:36:55.764 +03:00 [INF] Executing ViewResult, running view Profile.
+2023-10-26 15:36:55.881 +03:00 [INF] Executed ViewResult - view Profile executed in 118.4196ms.
+2023-10-26 15:36:55.889 +03:00 [INF] Executed action Web.Controllers.UsersController.Edit (Web) in 211.7409ms
+2023-10-26 15:36:55.892 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/Users/Edit - - - 200 - text/html;+charset=utf-8 230.0577ms
+2023-10-26 15:36:56.160 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/Users/assets/js/bs-init.js?h=e2b0d57f2c4a9b0d13919304f87f79ae - -
+2023-10-26 15:36:56.160 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/Users/assets/js/theme.js?h=79f403485707cf2617c5bc5a2d386bb0 - -
+2023-10-26 15:36:56.162 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:36:56.162 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:36:56.165 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/Users/assets/js/bs-init.js?h=e2b0d57f2c4a9b0d13919304f87f79ae - - - 302 0 - 4.7817ms
+2023-10-26 15:36:56.165 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/Users/assets/js/theme.js?h=79f403485707cf2617c5bc5a2d386bb0 - - - 302 0 - 4.8822ms
+2023-10-26 15:36:56.197 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/Home/ErrorCodePage?errorCode=404 - -
+2023-10-26 15:36:56.199 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:36:56.219 +03:00 [INF] Route matched with {action = "ErrorCodePage", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ErrorCodePage(System.String) on controller Web.Controllers.HomeController (Web).
+2023-10-26 15:36:56.289 +03:00 [INF] Executing ViewResult, running view ErrorPage/ErrorCodePage.
+2023-10-26 15:36:56.295 +03:00 [INF] Executed ViewResult - view ErrorPage/ErrorCodePage executed in 7.8892ms.
+2023-10-26 15:36:56.297 +03:00 [INF] Executed action Web.Controllers.HomeController.ErrorCodePage (Web) in 72.8776ms
+2023-10-26 15:36:56.297 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/Home/ErrorCodePage?errorCode=404 - -
+2023-10-26 15:36:56.298 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/Home/ErrorCodePage?errorCode=404 - - - 200 - text/html;+charset=utf-8 100.9996ms
+2023-10-26 15:36:56.300 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:36:56.301 +03:00 [INF] Route matched with {action = "ErrorCodePage", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ErrorCodePage(System.String) on controller Web.Controllers.HomeController (Web).
+2023-10-26 15:36:56.307 +03:00 [INF] Executing ViewResult, running view ErrorPage/ErrorCodePage.
+2023-10-26 15:36:56.310 +03:00 [INF] Executed ViewResult - view ErrorPage/ErrorCodePage executed in 2.9751ms.
+2023-10-26 15:36:56.313 +03:00 [INF] Executed action Web.Controllers.HomeController.ErrorCodePage (Web) in 8.4984ms
+2023-10-26 15:36:56.315 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/Home/ErrorCodePage?errorCode=404 - - - 200 - text/html;+charset=utf-8 17.9638ms
+2023-10-26 15:37:00.929 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/Map/MapTableData - -
+2023-10-26 15:37:00.931 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:37:00.941 +03:00 [INF] Route matched with {action = "MapTableData", controller = "Map"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] MapTableData() on controller Web.Controllers.MapController (Web).
+2023-10-26 15:37:01.011 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-10-26 15:37:01.140 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__p_0='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT `m`.`idMap`, `m`.`Description`, `m`.`InformationUser`, `m`.`Name`, `m`.`User`
+FROM `Map` AS `m`
+LIMIT @__p_0
+2023-10-26 15:37:01.169 +03:00 [INF] Executing ViewResult, running view MapTableData.
+2023-10-26 15:37:01.216 +03:00 [INF] Executed ViewResult - view MapTableData executed in 48.7825ms.
+2023-10-26 15:37:01.249 +03:00 [INF] Executed action Web.Controllers.MapController.MapTableData (Web) in 305.4364ms
+2023-10-26 15:37:01.250 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/Map/MapTableData - - - 200 - text/html;+charset=utf-8 321.7890ms
+2023-10-26 15:37:08.730 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:37:11.177 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - -
+2023-10-26 15:37:11.179 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:37:11.180 +03:00 [INF] Route matched with {action = "Monitoring", controller = "InformationSystem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Monitoring() on controller Web.Controllers.InformationSystemController (Web).
+2023-10-26 15:37:12.299 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__p_0='2221'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__p_0
+LIMIT 1
+2023-10-26 15:37:12.307 +03:00 [INF] Executing ViewResult, running view Monitoring.
+2023-10-26 15:37:12.321 +03:00 [INF] Executed ViewResult - view Monitoring executed in 14.2342ms.
+2023-10-26 15:37:12.391 +03:00 [INF] Executed action Web.Controllers.InformationSystemController.Monitoring (Web) in 1206.5738ms
+2023-10-26 15:37:12.393 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - - - 200 - text/html;+charset=utf-8 1215.2643ms
+2023-10-26 15:37:38.631 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:38:03.207 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:38:32.898 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:38:56.688 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:39:23.176 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:39:46.268 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:40:15.893 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:40:42.118 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:41:07.413 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:41:30.547 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:41:57.968 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:42:23.919 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:42:51.407 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:43:19.608 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:43:43.891 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:44:09.346 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:44:35.025 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:45:01.223 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:45:30.343 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:45:54.760 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:46:22.499 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:46:51.244 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:47:14.392 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:47:44.230 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:48:13.093 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:48:36.611 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:48:45.523 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - -
+2023-10-26 15:48:45.526 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:48:45.529 +03:00 [INF] Route matched with {action = "Monitoring", controller = "InformationSystem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Monitoring() on controller Web.Controllers.InformationSystemController (Web).
+2023-10-26 15:48:47.267 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__norad_0='20799'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__norad_0
+LIMIT 1
+2023-10-26 15:48:47.391 +03:00 [INF] Executed DbCommand (60ms) [Parameters=[@__p_0='20799'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__p_0
+LIMIT 1
+2023-10-26 15:48:47.396 +03:00 [INF] Executing ViewResult, running view Monitoring.
+2023-10-26 15:48:47.403 +03:00 [INF] Executed ViewResult - view Monitoring executed in 6.3222ms.
+2023-10-26 15:48:47.447 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/lib/bootstrap/dist/js/bootstrap.js - -
+2023-10-26 15:48:47.448 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/lib/bootstrap/dist/js/bootstrap.bundle.js - -
+2023-10-26 15:48:47.448 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/lib/bootstrap/dist/js/bootstrap.esm.js - -
+2023-10-26 15:48:47.449 +03:00 [INF] Executed action Web.Controllers.InformationSystemController.Monitoring (Web) in 1918.3425ms
+2023-10-26 15:48:47.455 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - - - 200 - text/html;+charset=utf-8 1931.7407ms
+2023-10-26 15:48:47.458 +03:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.js was not modified
+2023-10-26 15:48:47.458 +03:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.js was not modified
+2023-10-26 15:48:47.458 +03:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.esm.js was not modified
+2023-10-26 15:48:47.460 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/lib/bootstrap/dist/js/bootstrap.js - - - 304 - text/javascript 12.5876ms
+2023-10-26 15:48:47.460 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/lib/bootstrap/dist/js/bootstrap.bundle.js - - - 304 - text/javascript 12.6120ms
+2023-10-26 15:48:47.461 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/lib/bootstrap/dist/js/bootstrap.esm.js - - - 304 - text/javascript 13.3057ms
+2023-10-26 15:49:01.267 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:49:28.187 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:49:54.501 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:50:22.817 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/Map/Map - -
+2023-10-26 15:50:22.828 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:50:22.833 +03:00 [INF] Route matched with {action = "Map", controller = "Map"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Map() on controller Web.Controllers.MapController (Web).
+2023-10-26 15:50:23.031 +03:00 [INF] Executed DbCommand (66ms) [Parameters=[@__GetClaimIssuer_0='1'], CommandType='"Text"', CommandTimeout='30']
+SELECT `m`.`idMarker`, `m`.`Latitude`, `m`.`Longitude`, `m`.`Map`, `m`.`Name`, `m`.`Radius`
+FROM `Marker` AS `m`
+WHERE `m`.`Map` = @__GetClaimIssuer_0
+2023-10-26 15:50:23.036 +03:00 [INF] Executing ViewResult, running view Map.
+2023-10-26 15:50:23.054 +03:00 [INF] Executed ViewResult - view Map executed in 19.8411ms.
+2023-10-26 15:50:23.058 +03:00 [INF] Executed action Web.Controllers.MapController.Map (Web) in 223.5012ms
+2023-10-26 15:50:23.060 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/Map/Map - - - 200 - text/html;+charset=utf-8 243.5164ms
+2023-10-26 15:50:23.834 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:50:24.408 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - -
+2023-10-26 15:50:24.411 +03:00 [INF] Accessing expired session, Key:738b554f-d83d-039c-bc31-f79a04895eb7
+2023-10-26 15:50:24.414 +03:00 [INF] Route matched with {action = "Monitoring", controller = "InformationSystem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Monitoring() on controller Web.Controllers.InformationSystemController (Web).
+2023-10-26 15:50:25.598 +03:00 [INF] Executed DbCommand (57ms) [Parameters=[@__p_0='20799'], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`idSatellite`, `s`.`IsOffiicial`, `s`.`Map`, `s`.`SatName`, `s`.`Status`, `s`.`TleLine1`, `s`.`TleLine2`
+FROM `Satellite` AS `s`
+WHERE `s`.`idSatellite` = @__p_0
+LIMIT 1
+2023-10-26 15:50:25.606 +03:00 [INF] Executing ViewResult, running view Monitoring.
+2023-10-26 15:50:25.608 +03:00 [INF] Executed ViewResult - view Monitoring executed in 3.5816ms.
+2023-10-26 15:50:25.621 +03:00 [INF] Executed action Web.Controllers.InformationSystemController.Monitoring (Web) in 1204.7526ms
+2023-10-26 15:50:25.634 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7276/InformationSystem/Monitoring - - - 200 - text/html;+charset=utf-8 1226.1946ms
+2023-10-26 15:50:52.210 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:51:22.134 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:51:47.060 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:52:15.746 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:52:40.919 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:53:10.109 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:53:35.266 +03:00 [DBG] Batch acquisition of 0 triggers
+2023-10-26 15:53:46.089 +03:00 [INF] Application is shutting down...
+2023-10-26 15:53:46.114 +03:00 [INF] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED shutting down.
+2023-10-26 15:53:46.117 +03:00 [INF] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED paused.
+2023-10-26 15:53:46.139 +03:00 [DBG] Shutting down threadpool...
+2023-10-26 15:53:46.140 +03:00 [DBG] Waiting for 0 threads to complete.
+2023-10-26 15:53:46.141 +03:00 [DBG] No executing jobs remaining, all threads stopped.
+2023-10-26 15:53:46.142 +03:00 [DBG] Shutdown of threadpool complete.
+2023-10-26 15:53:46.146 +03:00 [INF] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED Shutdown complete.

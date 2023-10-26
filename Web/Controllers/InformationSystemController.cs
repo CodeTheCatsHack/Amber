@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using SatLib;
+using SGPdotNET.CoordinateSystem;
 using Web.Controllers.Abstraction;
 using Web.SignalRHub;
 
@@ -35,9 +36,12 @@ public class InformationSystemController : AbstractController<HubMaps, ServiceMo
                     Name = "Арх",
                     Radius = 20
                 }
-            }
+            },
+            Satellites = new List<Satellite>()
         };
-        model.Satellites = SatelliteApi.SearchSolution();
+        Coordinate arh = new GeodeticCoordinate(1.58352, 11.52378, 14);
+        foreach (var set in await SatelliteApi.SearchSolutionAsync(arh, SatelliteApi.SatelliteCategory.All))
+            model.Satellites.Add(await DataBaseContext.Satellites.FindAsync(set.Norad));
         return View(model);
     }
 }
