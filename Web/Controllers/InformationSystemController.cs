@@ -1,10 +1,9 @@
-using System.Data.Entity;
-using System.Security.Claims;
 using CoreLibrary.EFContext;
-using CoreLibrary.Models.ConditionalExpressions.Expansion;
+using CoreLibrary.Models.EFModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using SatLib;
 using Web.Controllers.Abstraction;
 using Web.SignalRHub;
 
@@ -12,22 +11,33 @@ namespace Web.Controllers;
 
 public class InformationSystemController : AbstractController<HubMaps, ServiceMonitoringContext>
 {
-    public InformationSystemController(ServiceMonitoringContext context, IHubContext<HubMaps> realApiContext) :
+    public readonly SatelliteApi SatelliteApi;
+
+    public InformationSystemController(ServiceMonitoringContext context, IHubContext<HubMaps> realApiContext,
+        SatelliteApi api) :
         base(context, realApiContext)
     {
+        SatelliteApi = api;
     }
 
     [Authorize]
     public async Task<IActionResult> Monitoring()
     {
-        if (int.TryParse(User.GetClaimIssuer(ClaimTypes.System)?.Value, out var isId))
-            if (isId == 1)
+        var model = new Map
+        {
+            Name = "Карта по умолчанию",
+            Markers = new List<Marker>
             {
-                var model = DataBaseContext.Maps.AsNoTracking().ToList();
-                if (model.Count == 0) model = null;
-                return View(model);
+                new()
+                {
+                    Latitude = 64,
+                    Longitude = 34,
+                    Name = "Арх",
+                    Radius = 20
+                }
             }
-
-        return View();
+        };
+        model.Satellites = SatelliteApi.SearchSolution();
+        return View(model);
     }
 }

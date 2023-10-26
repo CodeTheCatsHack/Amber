@@ -55,12 +55,6 @@
                 @if (User.GetClaimIssuer(ClaimTypes.Rsa)?.Value != null)
                 {
                     @* <li class="nav-item"> *@
-                    @*     <a class="nav-link @ViewData["Active_ShootingAreaTable_Link"]" asp-controller="ShootingArea" asp-action="ShootingАreaTableData"> *@
-                    @*         <i class="fas fa-database"></i><span>Таблица данных локаций</span>&nbsp; *@
-                    @*     </a> *@
-                    @* </li> *@
-                    @* *@
-                    @* <li class="nav-item"> *@
                     @*     <a class="nav-link @ViewData["Active_MarkerTable_Link"]" asp-controller="Marker" asp-action="MarkerTableData"> *@
                     @*         <i class="fas fa-database"></i><span>Таблица данных маркеров</span>&nbsp; *@
                     @*     </a> *@
@@ -72,32 +66,31 @@
                     @*     </a> *@
                     @* </li> *@
                 }
+
                 @if (int.Parse(User.GetClaimIssuer(ClaimTypes.System)!.Value) == 1)
                 {
-                        @* <li class="nav-item"> *@
-                        @*     <a class="nav-link @ViewData["Active_UserTableData_Link"]" asp-controller="Users" asp-action="UserTableData"> *@
-                        @*         <i class="fas fa-address-card"></i><span>Таблица данных пользователей</span>&nbsp; *@
-                        @*     </a> *@
-                        @* </li> *@
-                        @* *@
+                    <li class="nav-item">
+                        <a class="nav-link @ViewData["Active_UserTableData_Link"]" asp-controller="Users" asp-action="UserTableData">
+                            <i class="fas fa-address-card"></i><span>Таблица данных пользователей</span>&nbsp;
+                        </a>
+                    </li>
+
                         @* <li class="nav-item"> *@
                         @*     <a class="nav-link @ViewData["Active_SatelliteTable_Link"]" asp-controller="Satelite" asp-action="SateliteTableData"> *@
                         @*         <i class="far fa-hdd"></i><span>Упр. спутниками</span> *@
                         @*     </a> *@
                         @* </li> *@
-                        @* *@
-
-                    <li class="nav-item">
-                        <a class="nav-link @ViewData["Active_Map_Link"]" asp-controller="Map" asp-action="MapTableData">
-                            <i class="fas fa-map-marked-alt"></i><span>Упр. картами</span>&nbsp;
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @ViewData["Active_Map_Link"]" asp-controller="Map" asp-action="Map">
-                            <i class="fas fa-map-marked-alt"></i><span>Карта</span>&nbsp;
-                        </a>
-                    </li>
                 }
+                <li class="nav-item">
+                    <a class="nav-link @ViewData["Active_Map_Link"]" asp-controller="Map" asp-action="MapTableData">
+                        <i class="fas fa-map-marked-alt"></i><span>Упр. картами</span>&nbsp;
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @ViewData["Active_Map_Link"]" asp-controller="Map" asp-action="Map">
+                        <i class="fas fa-map-marked-alt"></i><span>Карта</span>&nbsp;
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Home" asp-action="Index">

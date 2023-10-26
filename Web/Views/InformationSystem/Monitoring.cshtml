@@ -1,5 +1,5 @@
 ﻿@using CoreLibrary.Models.EFModels
-@model IEnumerable<CoreLibrary.Models.EFModels.Map>?
+@model CoreLibrary.Models.EFModels.Map?
 
 @{
     Layout = "Layout/_LayoutUserAuth";
@@ -50,7 +50,7 @@
                                     <span>Кол-во маркеров</span>
                                 </div>
                                 <div class="text-dark fw-bold h5 mb-0">
-                                    <span>@((Map)Model).Markers.Count</span>
+                                    <span>@Model.Markers.Count</span>
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -84,7 +84,17 @@
                             <canvas data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Direct&quot;,&quot;Social&quot;,&quot;Referral&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;backgroundColor&quot;:[&quot;#4e73df&quot;,&quot;#1cc88a&quot;,&quot;#36b9cc&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;50&quot;,&quot;30&quot;,&quot;15&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}}"></canvas>
                         </div>
                         <div class="text-center small mt-4">
-                            <span class="me-2"><i class="fas fa-circle text-primary"></i>&nbsp;Правительство</span><span class="me-2"><i class="fas fa-circle text-success"></i>&nbsp;Социальное</span><span class="me-2"><i class="fas fa-circle text-info"></i>&nbsp;Рефералы</span>
+                            <span class="me-2">
+                                <i class="fas fa-circle text-primary">
+                                </i>&nbsp;Кол-во спутников
+                            </span>
+                            <span class="me-2">
+                                <i class="fas fa-circle text-success">
+                                </i>&nbsp;Кол-во маркеров
+                            </span>
+                            <span class="me-2">
+                                <i class="fas fa-circle text-info"></i>&nbsp;Кол-во Изображений
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -94,53 +104,100 @@
             <div class="col-lg-6 mb-4" style="height: 100%;">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="text-primary fw-bold m-0">Лист заданий</h6>
+                        <h6 class="text-primary fw-bold m-0">Лист активных спутников</h6>
                     </div>
                     <ul class="list-group list-group-flush">
-                        @* @foreach (var task in map.Tasks) *@
-                        @* { *@
-                        @*     <li class="list-group-item"> *@
-                        @*         <div class="row align-items-center no-gutters"> *@
-                        @*             <div class="col me-2"> *@
-                        @*                 $1$ <h6 class="mb-0"> #1# *@
-                        @*                 $1$     <strong>@task.Title</strong> #1# *@
-                        @*                 $1$ </h6> #1# *@
-                        @*                 $1$ <span class="text-xs">Дата регистрации:@task.DataRegistration</span> #1# *@
-                        @*                 $1$ <span class="text-xs">Дата лайна:@task.Deadline</span> #1# *@
-                        @*             </div> *@
-                        @*         </div> *@
-                        @*     </li> *@
-                        @* } *@
+                        @foreach (var sat in Model.Satellites.ToList())
+                        {
+                            <li class="list-group-item">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2">
+                                        <h6 class="mb-0">
+                                            <strong>Noard ID: @sat.IdSatellite</strong>
+                                            <strong>Нзвание: @sat.SatName</strong>
+                                        </h6>
+                                        <span class="text-xs">Пользовательский: @(sat.IsOffiicial == 1 ? "Да" : "Нет") </span>
+                                        <span class="text-xs">Занятость спутника: @(sat.Status == "Bysy" ? "Занят" : "Не занят")</span>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                        @if (Model.Satellites.Count == 0)
+                        {
+                            <li class="list-group-item">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2">
+                                        <h6 class="mb-0">
+                                            <strong>Нет спутников</strong>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </li>
+                        }
                     </ul>
                 </div>
+            </div>
+            <div class="card-header py-3">
+                <h6 class="text-primary fw-bold m-0">Лист ближайших спутников к метке</h6>
+                <ul class="list-group list-group-flush">
+                    @foreach (var sat in Model.Satellites.ToList())
+                    {
+                        <li class="list-group-item">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col me-2">
+                                    <h6 class="mb-0">
+                                        <strong>Noard ID: @sat.IdSatellite</strong>
+                                        <strong>Нзвание: @sat.SatName</strong>
+                                    </h6>
+                                    <span class="text-xs">Пользовательский: @(sat.IsOffiicial == 1 ? "Да" : "Нет") </span>
+                                    <span class="text-xs">Занятость спутника: @(sat.Status == "Bysy" ? "Занят" : "Не занят")</span>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                    @if (Model.Satellites.Count == 0)
+                    {
+                        <li class="list-group-item">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col me-2">
+                                    <h6 class="mb-0">
+                                        <strong>Нет спутников</strong>
+                                    </h6>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
             </div>
             <div class="col" style="height: 100%;">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="text-primary fw-bold m-0">Недействующие системные объекты</h6>
+                        <h6 class="text-primary fw-bold m-0">Маркеры</h6>
                     </div>
                     <ul class="list-group list-group-flush">
-                        @* @foreach (var systemObject in informationSystem.SystemObjects.Where(x=>x.Condition != ObjectCondition.Serviceable).ToList()) *@
-                        @* { *@
-                        @*     <li class="list-group-item"> *@
-                        @*         <div class="row align-items-center no-gutters"> *@
-                        @*             <div class="col me-2"> *@
-                        @*                 <h6 class="mb-0"> *@
-                        @*                     <strong>@systemObject.Name</strong> *@
-                        @*                 </h6><span class="text-xs">Время отключения:@systemObject.LastUpdate</span> *@
-                        @*             </div> *@
-                        @*         </div> *@
-                        @*     </li> *@
-                        @* } *@
+                        @foreach (var marker in Model.Markers.ToList())
+                        {
+                            <li class="list-group-item">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2">
+                                        <h6 class="mb-0">
+                                            <strong>@marker.Name</strong>
+                                        </h6>
+                                        <span class="text-xs">Широта: @marker.Radius</span>
+                                        <span class="text-xs">Долгота: @marker.Radius</span>
+                                        <span class="text-xs">Радиус: @marker.Radius</span>
+                                    </div>
+                                </div>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
         </div>
     }
-    }
     else
     {
-    <h3>На данный момент карта отсутствует!</h3>
-    <p>Аналитика заработает, после того, как вы создадите!</p>
+        <h3>На данный момент карта отсутствует!</h3>
+        <p>Аналитика заработает, после того, как вы создадите!</p>
     }
 </div>
