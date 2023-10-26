@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoreLibrary.Models.EFModels;
@@ -20,6 +21,7 @@ public class ShootingАrea
 
     public int SatelliteImage { get; set; }
 
+    [JsonIgnore]
     [ForeignKey("MarkerMap")]
     [InverseProperty("ShootingАreas")]
     public virtual Marker MarkerMapNavigation { get; set; } = null!;

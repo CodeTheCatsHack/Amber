@@ -19,7 +19,8 @@ public static class ExpansionClaimsPrincipal
     /// </summary>
     /// <param name="context"></param>
     /// <param name="user"></param>
-    public static ClaimsIdentity? CreateUserClaimIdentityIssuer(this HttpContext context, User user,
+    public static ClaimsIdentity? CreateUserClaimIdentityIssuer(this HttpContext context,
+        ref ServiceMonitoringContext dbContext, User user,
         string shema = CookieAuthenticationDefaults.AuthenticationScheme)
     {
         if (_userIssuer != null)
@@ -27,12 +28,15 @@ public static class ExpansionClaimsPrincipal
             var claimsIdentity = new ClaimsIdentity(new List<Claim>
             {
                 new(ClaimTypes.Sid, user.IdUser.ToString(), nameof(Int32), _userIssuer),
-                new(ClaimTypes.UserData, JsonSerializer.Serialize(user), nameof(User), _userIssuer)
+                new(ClaimTypes.UserData, JsonSerializer.Serialize(user), nameof(User), _userIssuer),
+                new(ClaimTypes.System,
+                    user.GroundStateAdministrator.ToString(), nameof(Int32), _userIssuer)
             }, shema);
 
-            if (user.GroundStateAdministrator == 1)
-                claimsIdentity.AddClaim(new Claim(ClaimTypes.System,
-                    user.GroundStateAdministrator.ToString(), nameof(Int32), _userIssuer));
+            var map = dbContext.Maps.AsNoTracking().ToList().FirstOrDefault(x => x.User == user.IdUser);
+
+            if (map != null)
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Rsa, map.IdMap.ToString(), nameof(Int32), _userIssuer));
 
             return claimsIdentity;
         }

@@ -366,3 +366,5 @@ FodyWeavers.xsd
 
 # [custom]
 /ClientApp/
+
+/.idea

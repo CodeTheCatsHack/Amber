@@ -1,0 +1,75 @@
+﻿@model Web.Models.ModelDataTable<CoreLibrary.Models.EFModels.Map>
+
+@{
+    ViewData["Title"] = "Таблица данных о картах";
+    Layout = "Layout/_LayoutUserAuth";
+    ViewData["Active_LocationTableData_Link"] = "active";
+}
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">Таблица данных</h3>
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">@ViewData["Title"]</p>
+        </div>
+        <div class="card-body">
+            <form asp-action="MapTableData">
+                <div class="row">
+                    <div class="col-md-6 text-nowrap">
+                        <!-- Аналогичный код для показа, пропуска и поиска -->
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Аналогичный код для поиска и кнопки "Применить фильтры" -->
+                    </div>
+                </div>
+                <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                    <table class="table my-0">
+                        <thead>
+                        <tr>
+                            <th>
+                                Название карты
+                            </th>
+                            <th>
+                                Описание
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if (Model.Models.Count == 0)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-action="Create">Создать</a>
+                                </td>
+                            </tr>
+                        }
+                        @foreach (var item in Model.Models)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.IdMap">Редактировать</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.IdMap">Удалить</a> |
+                                    <a asp-action="Create">Создать</a>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Показаны записи с @(Model.Skip + 1) по @Model.Take из @Model.Models.Count</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

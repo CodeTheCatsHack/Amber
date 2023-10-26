@@ -1,35 +1,29 @@
-@model CoreLibrary.Models.EFModels.Marker
+@model CoreLibrary.Models.EFModels.Map
 
 @{
-    ViewData["Title"] = "Создание маркера";
+    ViewData["Title"] = "Создать карту";
     Layout = "Layout/_LayoutUserAuth";
     ViewData["Active_LocationTableData_Link"] = "active";
 }
 
-<div style="padding: 2%">
-    <h1>@ViewData["Title"]</h1>
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">Создать карту</h3>
+    <div class="card shadow">
+        <div class="card-body">
+            <form asp-action="Create">
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control"/>
+                </div>
 
-    <h4>Маркер</h4>
-    <hr/>
-    <div class="row">
-        <div class="col-md-4">
-            @* <form asp-action="Create"> *@
-            @*     <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
-            @*     <div class="form-group"> *@
-            @*         <label asp-for="Latitude" class="control-label"></label> *@
-            @*         <input asp-for="Latitude" class="form-control" /> *@
-            @*         <span asp-validation-for="Latitude" class="text-danger"></span> *@
-            @*     </div> *@
-            @*     <div class="form-group"> *@
-            @*         <label asp-for="Longitude" class="control-label"></label> *@
-            @*         <input asp-for="Longitude" class="form-control" /> *@
-            @*         <span asp-validation-for="Longitude" class="text-danger"></span> *@
-            @*     </div> *@
-            @*     <br/> *@
-            @*     <div class="form-group"> *@
-            @*         <input type="submit" value="Создать" class="btn btn-primary" /> *@
-            @*     </div> *@
-            @* </form> *@
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label"></label>
+                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Создать</button>
+                <a asp-action="MapTableData" class="btn btn-secondary">Отмена</a>
+            </form>
         </div>
     </div>
 </div>

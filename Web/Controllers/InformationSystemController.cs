@@ -22,7 +22,11 @@ public class InformationSystemController : AbstractController<HubMaps, ServiceMo
     {
         if (int.TryParse(User.GetClaimIssuer(ClaimTypes.System)?.Value, out var isId))
             if (isId == 1)
-                return View(await DataBaseContext.Maps.ToListAsync());
+            {
+                var model = DataBaseContext.Maps.AsNoTracking().ToList();
+                if (model.Count == 0) model = null;
+                return View(model);
+            }
 
         return View();
     }

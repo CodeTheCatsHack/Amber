@@ -34,7 +34,7 @@ public class AuthorizationMiddleware
 
                 if (user != null)
                 {
-                    var identity = context.CreateUserClaimIdentityIssuer(user);
+                    var identity = context.CreateUserClaimIdentityIssuer(ref dbContext, user);
                     await context.SignInAsync(new ClaimsPrincipal(identity!));
                 }
             }
