@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Json;
 using CoreLibrary.EFContext;
+using Google.Protobuf.Collections;
 using Microsoft.Extensions.DependencyInjection;
 using NetTopologySuite.Index.HPRtree;
 using SatLib.JsonModel;
@@ -15,64 +16,6 @@ namespace SatLib
     /// </summary>
     public class SatelliteApi
     {
-        public enum SatelliteCategory
-        {
-            All = 0,
-            Brightest = 1,
-            GOES = 2,
-            EarthResources = 3,
-            DisasterMonitoring = 4,
-            Geostationary = 5,
-            Intelsat = 6,
-            Gorizont = 7,
-            Iridium = 8,
-            Globalstar = 9,
-            AmateurRadio = 10,
-            GlobalGPSOperational = 11,
-            GlonassOperational = 12,
-            Galileo = 13,
-            Experimental = 14,
-            Geodetic = 15,
-            Engineering = 16,
-            Education = 17,
-            CubeSats = 18,
-            BeidouNavigationSystem = 19,
-            Gonets = 20,
-            Flock = 21,
-            GlobalGPSConstellation = 22,
-            GlonassConstellation = 23,
-            Celestis = 24,
-            ChineseSpaceStation = 25,
-            ISS = 26,
-            Lemur = 27,
-            Military = 28,
-            Molniya = 29,
-            NavyNavigationSatelliteSystem = 30,
-            NOAA = 31,
-            O3BNetworks = 32,
-            OneWeb = 33,
-            Orbcomm = 34,
-            Parus = 35,
-            QZSS = 36,
-            RadarCalibration = 37,
-            Raduga = 38,
-            RussianLEONavigation = 39,
-            SatelliteBasedAugmentationSystem = 40,
-            SearchAndRescue = 41,
-            SpaceAndEarthScience = 42,
-            Starlink = 43,
-            Strela = 44,
-            TrackingAndDataRelaySatelliteSystem = 45,
-            Tselina = 46,
-            Tsikada = 47,
-            Tsiklon = 48,
-            TV = 49,
-            Weather = 50,
-            WestfordNeedles = 51,
-            XMandSirius = 52,
-            Yaogan = 53
-        }
-
         private Configurator _configurator;
         private IServiceProvider _serviceProvider;
         private Dictionary<int, SatelliteJson> _cache = new Dictionary<int, SatelliteJson>();
@@ -133,7 +76,8 @@ namespace SatLib
                     TleLine1 = satJson.GetTleLine(SatelliteJson.TleLine.first),
                     TleLine2 = satJson.GetTleLine(SatelliteJson.TleLine.second),
                     Status = "Notbusy",
-                    IsOffiicial = 1
+                    IsOffiicial = 1,
+                    Map = 1
                 });
                 ctx.SaveChanges();
                 _cache[satJson.Info.SatId] = satJson;
@@ -267,13 +211,17 @@ namespace SatLib
                             tasks.Add(ScanSatelliteWhileApproachingAsync(earthPoint, sat.SatId));                                                        
                         }
                         await Task.WhenAll(tasks);
-                        List<SatelliteAnswer> list = new List<SatelliteAnswer>(); 
+                        List<SatelliteAnswer> answeredList = new List<SatelliteAnswer>(); 
                         
                         foreach (var task in tasks)
                         {
-                            list.Add(task.Result);
+                            answeredList.Add(task.Result);
                         }
-                        return list;
+                        answeredList = answeredList.Where(answer => answer.Result == SatelliteAnswer.ResultEnum.Success).ToList();
+                        if (answeredList.Count > 0)
+                        {
+                            return answeredList;
+                        }
                     }
                 }
             }
