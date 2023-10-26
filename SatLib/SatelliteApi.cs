@@ -164,7 +164,7 @@ namespace SatLib
         /// <param name="norad">NORAD-id спутника</param>
         /// <param name="time">момент времени по UTC</param>
         /// <returns>Находится ли спутник в зоне конуса</returns>
-        public async Task<bool> CalculateIsPointInConeAsync(Coordinate earthPoint, int norad, DateTime time)
+        public bool CalculateIsPointInCone(Coordinate earthPoint, int norad, DateTime time)
         {
             return CalculateAngle(earthPoint, norad, time) < _configurator.MainConfig.ConeActivationAngle;
         }
@@ -238,7 +238,7 @@ namespace SatLib
             {
                 Console.WriteLine("scanning: " + satelliteJson.SatId);
                 // проверяем каждый спутник, будет ли он через время съёмки все ещё в зоне сканирования (успеет ли засканировать)
-                bool isSuccess = await CalculateIsPointInConeAsync(earthPoint, satelliteJson.SatId,
+                bool isSuccess = CalculateIsPointInCone(earthPoint, satelliteJson.SatId,
                     DateTime.UtcNow.AddSeconds(_configurator.MainConfig.RecordingTime));
                 if (isSuccess)
                 {
