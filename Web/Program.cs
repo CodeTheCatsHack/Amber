@@ -1,7 +1,9 @@
 using System.Security.Claims;
 using CoreLibrary;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using SatLib;
 using Serilog;
+using SGPdotNET.CoordinateSystem;
 using Web.Middleware;
 using Web.SignalRHub;
 using static CoreLibrary.CoreDiConfiguration;
@@ -12,6 +14,9 @@ builder.Host.UseSerilog(ConfigurationSerilog);
 
 builder.Services.AddCoreDi(builder.Configuration, "ShedulerMonitoring")
     .AddSwaggerGen(ConfigurationSwaggerGen);
+
+builder.Services.AddSingleton<Configurator>();
+builder.Services.AddSingleton<SatelliteApi>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddScheme<BasicAuthenticationOptions, BasicAuthenticationMiddleware>("Basic", options => { })

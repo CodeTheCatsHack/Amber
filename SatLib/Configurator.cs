@@ -9,19 +9,24 @@ using System.Threading.Tasks;
 namespace SatLib
 {
     /// <summary>
-    /// Статический класс для работы с конфигурацией приложения
+    /// Класс для работы с конфигурацией приложения
     /// </summary>
-    public static class Configurator
+    public class Configurator
     {
-        private static ConfigJson? _mainConfig;
+        private ConfigJson _mainConfig;
 
         /// <summary>
-        /// Статическое свойство для получения конфига
+        /// Свойство для получения конфига
         /// </summary>
         /// <exception cref="Exception">плохой json-формат</exception>
-        public static ConfigJson MainConfig
+        public ConfigJson MainConfig
         {
-            get => _mainConfig ??= ParseConfig();
+            get => _mainConfig;
+        }
+
+        public Configurator(string configPath = "config/config.json")
+        {
+            _mainConfig = ParseConfig(configPath);
         }
 
         /// <summary>
@@ -29,9 +34,9 @@ namespace SatLib
         /// </summary>
         /// <returns>ConfigJson класс</returns>
         /// <exception cref="Exception">плохой json-формат</exception>
-        static ConfigJson ParseConfig()
+        ConfigJson ParseConfig(string path)
         {
-            return JsonConvert.DeserializeObject<ConfigJson>(File.ReadAllText("config/config.json"))
+            return JsonConvert.DeserializeObject<ConfigJson>(File.ReadAllText(path))
                 ?? throw new Exception("bad config.json parse");
         }
     }

@@ -12,9 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="config\config.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\CoreLibrary\CoreLibrary.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties config_4config_1json__JsonSchema="https://appsemble.app/api.json" /></VisualStudio></ProjectExtensions>

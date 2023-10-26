@@ -10,12 +10,18 @@ namespace SatLib.JsonModel
 {
     public class ConfigJson
     {
-        [JsonPropertyName("apitoken")]
-        public string ApiToken { get; set; } = null!;
+        [JsonPropertyName("n2apitoken")]
+        public string N2ApiToken { get; set; } = null!;
 
-        [JsonPropertyName("baseurl")]
-        public string BaseUrl { get; set; } = null!;
-        
+        [JsonPropertyName("snapitoken")]
+        public string SNApiToken { get; set; } = null!;
+
+        [JsonPropertyName("n2baseurl")]
+        public string N2BaseUrl { get; set; } = null!;
+
+        [JsonPropertyName("snbaseurl")]
+        public string SNBaseUrl { get; set; } = null!;
+
         [JsonPropertyName("coneactivationangle")]
         public double ConeActivationAngle { get; set; }
 
