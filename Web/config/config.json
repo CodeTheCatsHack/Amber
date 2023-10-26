@@ -1,0 +1,8 @@
+﻿{
+  "n2apitoken": "4QFK7P-DJVCFZ-5RSWNL-557A",
+  "snapitoken": "cd26c0daff73748a7d26d63a5fecdcd9bdf55c06",
+  "n2baseurl": "https://api.n2yo.com/rest/v1/satellite/",
+  "snbaseurl": "https://db.satnogs.org/api/",
+  "coneactivationangle": 30,
+  "recordingtime": 20000
+}
