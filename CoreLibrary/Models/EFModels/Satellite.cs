@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreLibrary.Models.EFModels;
 
 [Table("Satellite")]
+[Index("Map", Name = "fk_Satellite_Map1_idx")]
 public class Satellite
 {
     [Key] [Column("idSatellite")] public int IdSatellite { get; set; }
@@ -19,10 +21,12 @@ public class Satellite
 
     public sbyte IsOffiicial { get; set; }
 
+    public int Map { get; set; }
+
+    [ForeignKey("Map")]
+    [InverseProperty("Satellites")]
+    public virtual Map MapNavigation { get; set; } = null!;
+
     [InverseProperty("SatelliteNavigation")]
     public virtual ICollection<SatelliteImage> SatelliteImages { get; set; } = new List<SatelliteImage>();
-
-    [ForeignKey("Satellite")]
-    [InverseProperty("Satellites")]
-    public virtual ICollection<Map> Maps { get; set; } = new List<Map>();
 }

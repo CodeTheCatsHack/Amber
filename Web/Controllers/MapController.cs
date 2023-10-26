@@ -34,7 +34,7 @@ public class MapController : AbstractController<HubMaps, ServiceMonitoringContex
     [Authorize]
     public async Task<IActionResult> Map()
     {
-        var markers = await DataBaseContext.Markers.Include(x => x.ShootingАreas)
+        var markers = await DataBaseContext.Markers
             .Where(x => x.Map == User.GetClaimIssuer<int>(ClaimTypes.Rsa)).ToListAsync();
         if (markers.Count != 0)
             await RealApiContext.Clients.All.SendAsync("UpdateMarkers",
@@ -147,7 +147,6 @@ public class MapController : AbstractController<HubMaps, ServiceMonitoringContex
         if (id == null) return NotFound();
 
         var Marker = await DataBaseContext.Markers
-            .Include(l => l.ShootingАreas)
             .FirstOrDefaultAsync(m => m.IdMarker == id);
         if (Marker == null) return NotFound();
 

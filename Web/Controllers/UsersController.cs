@@ -23,6 +23,237 @@ public class UsersController : AbstractController<HubMaps, ServiceMonitoringCont
     {
     }
 
+    /// <summary>
+    ///     Метод прогрузки страницы регистрации при обращении с url или обновлении.
+    /// </summary>
+    /// <returns></returns>
+    public IActionResult Create()
+    {
+        IsAuth();
+
+        ViewData["Error"] = null;
+        return View();
+    }
+
+    /// <summary>
+    ///     Метод регистрации на сайте, в случае отправки формы.
+    /// </summary>
+    /// <param name="user">регистрируемый поользователь</param>
+    /// <returns></returns>
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create([Bind("IdUser,Login,Password")] User user)
+    {
+        var firstName = Request.Form["first_name"];
+        var lastName = Request.Form["last_name"];
+
+        if (!ModelState.IsValid)
+        {
+            ViewData["Error"] = null;
+            return View(user);
+        }
+
+        if (firstName == "" || lastName == "")
+        {
+            ViewData["Error"] = "заполните пожалуйста все поля!";
+            return View(user);
+        }
+
+        user.InformationUser = new InformationUser
+        {
+            FirstName = firstName!,
+            LastName = lastName!
+        };
+
+        try
+        {
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            await DataBaseContext.Users.AddAsync(user);
+            await DataBaseContext.SaveChangesAsync();
+
+            return View(nameof(Login));
+        }
+        catch (Exception e)
+        {
+            if (e.InnerException != null && e.InnerException.Message.Contains("Duplicate"))
+                ViewData["Error"] = "такой пользователь уже существует!";
+            else
+                ViewData["Error"] = "ошибка во время обработки запроса, попробуйте позже!";
+
+            return View(user);
+        }
+    }
+
+    /// <summary>
+    ///     Метод прогрузки и отображения страницы редактирования профиля.
+    /// </summary>
+    /// <returns></returns>
+    [Authorize]
+    public IActionResult Edit()
+    {
+        return View("Profile", User.GetClaimIssuer<User>(ClaimTypes.UserData));
+    }
+
+
+    /// <summary>
+    ///     Метод редактирования профиля, форма информации об аккаунте.
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    [HttpPost]
+    [Authorize]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit([Bind("IdUser,Login,Password")] User model)
+    {
+        var user = User.GetClaimIssuer<User>(ClaimTypes.UserData);
+
+        var firstName = Request.Form["firstName"];
+        var lastName = Request.Form["lastName"];
+        var middleName = Request.Form["middleName"];
+
+        if (!ModelState.IsValid) return View("Profile", model);
+
+        user!.InformationUser!.FirstName = firstName;
+        user.InformationUser.LastName = lastName;
+        user.InformationUser.MiddleName = middleName;
+
+        user.Login = model.Login;
+
+        if (!user.IsValidPassword(DataBaseContext, model.Password))
+            user.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
+
+        DataBaseContext.Users.Update(user);
+        await DataBaseContext.SaveChangesAsync();
+        await this.NotifyRealApiDeviceUser("Данные аккаунта изменены!", "Пользовательские данные");
+        return RedirectToAction(nameof(Edit), "Users");
+    }
+
+    /// <summary>
+    ///     Метод проверки авторизации, в случае успеха возвращает модальное окно на тех страницах к которым доступ технически
+    ///     закрыт.
+    /// </summary>
+    private async void IsAuth()
+    {
+        if (await this.IsAuthUser())
+            ViewData["ModalWindow"] = new ModalWindow("Предупреждение",
+                "Вы не можете воспользоваться некоторыми страницами будучи авторизованным!\nВы подтверждаете выход из текущего аккаунта?",
+                true, DefaultButtonTemplate.AuthYesNo);
+    }
+
+    /// <summary>
+    ///     Методы выхода из аккаунта.
+    /// </summary>
+    /// <returns></returns>
+    [Authorize]
+    public async Task<IActionResult> Logout()
+    {
+        HttpContext.Session.Clear();
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return RedirectToAction("Index", "Home");
+    }
+
+    /// <summary>
+    ///     Метод прогрузки страницы авторизации при обращении с url или обновлении.
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    public IActionResult Login()
+    {
+        IsAuth();
+
+        ViewData["Error"] = null;
+        ViewData["CodeIsEnable"] ??= false;
+        return View();
+    }
+
+    /// <summary>
+    ///     Метод авторизации на сайте.
+    /// </summary>
+    /// <param name="user">авторизируемый пользователь</param>
+    /// <returns></returns>
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Login([Bind("IdUser,Login,Password")] User user)
+    {
+        if (!ModelState.IsValid)
+        {
+            ViewData["Error"] = null;
+            return View(user);
+        }
+
+        User? userVerify;
+
+        try
+        {
+            userVerify = await DataBaseContext.Users.FindUser(DataBaseContext, user.Login, user.Password);
+        }
+        catch (Exception)
+        {
+            ViewData["Error"] = "ошибка во время обработки запроса, попробуйте позже!";
+
+            return View(user);
+        }
+
+        if (userVerify == null)
+        {
+            ViewData["Error"] = "Неверный логин или пароль!";
+            return View(user);
+        }
+
+        HttpContext.Session.SetInt32("UserId", userVerify.IdUser);
+        return RedirectToAction(nameof(SuccessAuth));
+    }
+
+    /// <summary>
+    ///     Промежуточный метод во избежание проблем с обновлением навигационной панели.
+    /// </summary>
+    /// <returns></returns>
+    [Authorize]
+    public IActionResult SuccessAuth()
+    {
+        return View();
+    }
+
+    /// <summary>
+    ///     Метод скачивания политики конфиденциальности.
+    /// </summary>
+    /// <returns></returns>
+    [HttpPost]
+    public IActionResult SavePrivacy()
+    {
+        return File(@"~/file/Privacy.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "Privacy.docx");
+    }
+
+    /// <summary>
+    ///     Метод изменения автара пользователя на странице.
+    /// </summary>
+    /// <returns></returns>
+    [HttpPost]
+    [Authorize]
+    public async Task<IActionResult> AvatarChanges()
+    {
+        var user = await DataBaseContext.InformationUsers.FirstOrDefaultAsync(x =>
+            x.User.ToString() == User.GetClaimIssuer(ClaimTypes.Sid)!.Value);
+        var avatarNew = Request.Form["avatar"].ToString();
+        if (!string.IsNullOrEmpty(avatarNew) && Uri.TryCreate(avatarNew, UriKind.RelativeOrAbsolute, out var uriAvatar))
+        {
+            var req = new HttpClient();
+            var responseMessage = await req.GetAsync(uriAvatar);
+            var isImage = responseMessage.Content.Headers.ContentType?.MediaType?.ToLower(CultureInfo.InvariantCulture)
+                .StartsWith("image/");
+            if (isImage != null && isImage.Value)
+            {
+                user!.Avatar = avatarNew;
+                await this.NotifyRealApiDeviceUser("Аватар изменён!", "Пользовательские данные");
+                DataBaseContext.InformationUsers.Update(user!);
+                await DataBaseContext.SaveChangesAsync();
+            }
+        }
+
+        return RedirectToAction(nameof(Edit), "Users");
+    }
+
     #region Методы администрирования
 
     /// <summary>
@@ -163,235 +394,4 @@ public class UsersController : AbstractController<HubMaps, ServiceMonitoringCont
     }
 
     #endregion
-
-    /// <summary>
-    ///     Метод проверки авторизации, в случае успеха возвращает модальное окно на тех страницах к которым доступ технически
-    ///     закрыт.
-    /// </summary>
-    private async void IsAuth()
-    {
-        if (await this.IsAuthUser())
-            ViewData["ModalWindow"] = new ModalWindow("Предупреждение",
-                "Вы не можете воспользоваться некоторыми страницами будучи авторизованным!\nВы подтверждаете выход из текущего аккаунта?",
-                true, DefaultButtonTemplate.AuthYesNo);
-    }
-
-    /// <summary>
-    ///     Метод прогрузки страницы регистрации при обращении с url или обновлении.
-    /// </summary>
-    /// <returns></returns>
-    public IActionResult Create()
-    {
-        IsAuth();
-
-        ViewData["Error"] = null;
-        return View();
-    }
-
-    /// <summary>
-    ///     Метод регистрации на сайте, в случае отправки формы.
-    /// </summary>
-    /// <param name="user">регистрируемый поользователь</param>
-    /// <returns></returns>
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("IdUser,Login,Password")] User user)
-    {
-        var firstName = Request.Form["first_name"];
-        var lastName = Request.Form["last_name"];
-
-        if (!ModelState.IsValid)
-        {
-            ViewData["Error"] = null;
-            return View(user);
-        }
-
-        if (firstName == "" || lastName == "")
-        {
-            ViewData["Error"] = "заполните пожалуйста все поля!";
-            return View(user);
-        }
-
-        user.InformationUser = new InformationUser
-        {
-            FirstName = firstName!,
-            LastName = lastName!
-        };
-
-        try
-        {
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            await DataBaseContext.Users.AddAsync(user);
-            await DataBaseContext.SaveChangesAsync();
-
-            return View(nameof(Login));
-        }
-        catch (Exception e)
-        {
-            if (e.InnerException != null && e.InnerException.Message.Contains("Duplicate"))
-                ViewData["Error"] = "такой пользователь уже существует!";
-            else
-                ViewData["Error"] = "ошибка во время обработки запроса, попробуйте позже!";
-
-            return View(user);
-        }
-    }
-
-    /// <summary>
-    ///     Метод прогрузки и отображения страницы редактирования профиля.
-    /// </summary>
-    /// <returns></returns>
-    [Authorize]
-    public IActionResult Edit()
-    {
-        return View("Profile", User.GetClaimIssuer<User>(ClaimTypes.UserData));
-    }
-
-
-    /// <summary>
-    ///     Метод редактирования профиля, форма информации об аккаунте.
-    /// </summary>
-    /// <param name="model"></param>
-    /// <returns></returns>
-    [HttpPost]
-    [Authorize]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit([Bind("IdUser,Login,Password")] User model)
-    {
-        var user = User.GetClaimIssuer<User>(ClaimTypes.UserData);
-
-        var firstName = Request.Form["firstName"];
-        var lastName = Request.Form["lastName"];
-        var middleName = Request.Form["middleName"];
-
-        if (!ModelState.IsValid) return View("Profile", model);
-
-        user!.InformationUser!.FirstName = firstName;
-        user.InformationUser.LastName = lastName;
-        user.InformationUser.MiddleName = middleName;
-
-        user.Login = model.Login;
-
-        if (!user.IsValidPassword(DataBaseContext, model.Password))
-            user.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
-
-        DataBaseContext.Users.Update(user);
-        await DataBaseContext.SaveChangesAsync();
-        await this.NotifyRealApiDeviceUser("Данные аккаунта изменены!", "Пользовательские данные");
-        return RedirectToAction(nameof(Edit), "Users");
-    }
-
-    /// <summary>
-    ///     Методы выхода из аккаунта.
-    /// </summary>
-    /// <returns></returns>
-    [Authorize]
-    public async Task<IActionResult> Logout()
-    {
-        HttpContext.Session.Clear();
-        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("Index", "Home");
-    }
-
-    /// <summary>
-    ///     Метод прогрузки страницы авторизации при обращении с url или обновлении.
-    /// </summary>
-    /// <returns></returns>
-    [HttpGet]
-    public IActionResult Login()
-    {
-        IsAuth();
-
-        ViewData["Error"] = null;
-        ViewData["CodeIsEnable"] ??= false;
-        return View();
-    }
-
-    /// <summary>
-    ///     Метод авторизации на сайте.
-    /// </summary>
-    /// <param name="user">авторизируемый пользователь</param>
-    /// <returns></returns>
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login([Bind("IdUser,Login,Password")] User user)
-    {
-        if (!ModelState.IsValid)
-        {
-            ViewData["Error"] = null;
-            return View(user);
-        }
-
-        User? userVerify;
-
-        try
-        {
-            userVerify = await DataBaseContext.Users.FindUser(DataBaseContext, user.Login, user.Password);
-        }
-        catch (Exception)
-        {
-            ViewData["Error"] = "ошибка во время обработки запроса, попробуйте позже!";
-
-            return View(user);
-        }
-
-        if (userVerify == null)
-        {
-            ViewData["Error"] = "Неверный логин или пароль!";
-            return View(user);
-        }
-
-        HttpContext.Session.SetInt32("UserId", userVerify.IdUser);
-        return RedirectToAction(nameof(SuccessAuth));
-    }
-
-    /// <summary>
-    ///     Промежуточный метод во избежание проблем с обновлением навигационной панели.
-    /// </summary>
-    /// <returns></returns>
-    [Authorize]
-    public IActionResult SuccessAuth()
-    {
-        return View();
-    }
-
-    /// <summary>
-    ///     Метод скачивания политики конфиденциальности.
-    /// </summary>
-    /// <returns></returns>
-    [HttpPost]
-    public IActionResult SavePrivacy()
-    {
-        return File(@"~/file/Privacy.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            "Privacy.docx");
-    }
-
-    /// <summary>
-    ///     Метод изменения автара пользователя на странице.
-    /// </summary>
-    /// <returns></returns>
-    [HttpPost]
-    [Authorize]
-    public async Task<IActionResult> AvatarChanges()
-    {
-        var user = await DataBaseContext.InformationUsers.FirstOrDefaultAsync(x =>
-            x.UserId.ToString() == User.GetClaimIssuer(ClaimTypes.Sid)!.Value);
-        var avatarNew = Request.Form["avatar"].ToString();
-        if (!string.IsNullOrEmpty(avatarNew) && Uri.TryCreate(avatarNew, UriKind.RelativeOrAbsolute, out var uriAvatar))
-        {
-            var req = new HttpClient();
-            var responseMessage = await req.GetAsync(uriAvatar);
-            var isImage = responseMessage.Content.Headers.ContentType?.MediaType?.ToLower(CultureInfo.InvariantCulture)
-                .StartsWith("image/");
-            if (isImage != null && isImage.Value)
-            {
-                user!.Avatar = avatarNew;
-                await this.NotifyRealApiDeviceUser("Аватар изменён!", "Пользовательские данные");
-                DataBaseContext.InformationUsers.Update(user!);
-                await DataBaseContext.SaveChangesAsync();
-            }
-        }
-
-        return RedirectToAction(nameof(Edit), "Users");
-    }
 }

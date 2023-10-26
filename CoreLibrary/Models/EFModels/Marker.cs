@@ -18,10 +18,12 @@ public class Marker
 
     public int Map { get; set; }
 
+    public double Radius { get; set; }
+
     [ForeignKey("Map")]
     [InverseProperty("Markers")]
     public virtual Map MapNavigation { get; set; } = null!;
 
-    [InverseProperty("MarkerMapNavigation")]
-    public virtual ICollection<ShootingАrea> ShootingАreas { get; set; } = new List<ShootingАrea>();
+    [InverseProperty("MarkerNavigation")]
+    public virtual ICollection<SatelliteImage> SatelliteImages { get; set; } = new List<SatelliteImage>();
 }

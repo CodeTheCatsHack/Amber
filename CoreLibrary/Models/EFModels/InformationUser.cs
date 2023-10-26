@@ -1,49 +1,41 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoreLibrary.Models.EFModels;
 
-[PrimaryKey("IdInformationUser", "UserId")]
 [Table("InformationUser")]
-[Index("UserId", Name = "fk_InformationUser_User_idx", IsUnique = true)]
+[Index("User", Name = "fk_InformationUser_User1_idx", IsUnique = true)]
 public class InformationUser
 {
     [Key] [Column("idInformationUser")] public int IdInformationUser { get; set; }
 
     /// <summary>
-    ///     Идентификатор связанного пользователя.
-    /// </summary>
-    [Key]
-    public int UserId { get; set; }
-
-    /// <summary>
-    ///     Имя пользователя.
+    /// Имя пользователя.
     /// </summary>
     [StringLength(50)]
     public string FirstName { get; set; } = null!;
 
     /// <summary>
-    ///     Фамилия пользователя.
+    /// Фамилия пользователя.
     /// </summary>
     [StringLength(50)]
     public string LastName { get; set; } = null!;
 
     /// <summary>
-    ///     Отчество пользователя.
+    /// Отчество пользователя.
     /// </summary>
     [StringLength(50)]
     public string? MiddleName { get; set; }
 
-    [Column(TypeName = "text")]
-    public string Avatar { get; set; } = "https://pixelbox.ru/wp-content/uploads/2021/09/avatar-boys-vk-46.jpg";
+    [Column(TypeName = "text")] public string Avatar { get; set; } = null!;
+
+    public int User { get; set; }
 
     [InverseProperty("InformationUserNavigation")]
-    public virtual ICollection<Map> Maps { get; set; } = new List<Map>();
+    public virtual Map? Map { get; set; }
 
-    [ForeignKey("UserId")]
-    [JsonIgnore]
+    [ForeignKey("User")]
     [InverseProperty("InformationUser")]
-    public virtual User User { get; set; } = null!;
+    public virtual User UserNavigation { get; set; } = null!;
 }
