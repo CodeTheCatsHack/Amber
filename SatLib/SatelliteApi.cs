@@ -1,13 +1,10 @@
-﻿using CoreLibrary.EFContext;
+﻿using System.Net.Http.Json;
+using CoreLibrary.EFContext;
 using Microsoft.Extensions.DependencyInjection;
 using SatLib.JsonModel;
 using SGPdotNET.CoordinateSystem;
 using SGPdotNET.Observation;
 using SGPdotNET.Util;
-using System.Configuration;
-using System.Net;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
 
 namespace SatLib
 {
@@ -16,6 +13,64 @@ namespace SatLib
     /// </summary>
     public class SatelliteApi
     {
+        public enum SatelliteCategory
+        {
+            All = 0,
+            Brightest = 1,
+            GOES = 2,
+            EarthResources = 3,
+            DisasterMonitoring = 4,
+            Geostationary = 5,
+            Intelsat = 6,
+            Gorizont = 7,
+            Iridium = 8,
+            Globalstar = 9,
+            AmateurRadio = 10,
+            GlobalGPSOperational = 11,
+            GlonassOperational = 12,
+            Galileo = 13,
+            Experimental = 14,
+            Geodetic = 15,
+            Engineering = 16,
+            Education = 17,
+            CubeSats = 18,
+            BeidouNavigationSystem = 19,
+            Gonets = 20,
+            Flock = 21,
+            GlobalGPSConstellation = 22,
+            GlonassConstellation = 23,
+            Celestis = 24,
+            ChineseSpaceStation = 25,
+            ISS = 26,
+            Lemur = 27,
+            Military = 28,
+            Molniya = 29,
+            NavyNavigationSatelliteSystem = 30,
+            NOAA = 31,
+            O3BNetworks = 32,
+            OneWeb = 33,
+            Orbcomm = 34,
+            Parus = 35,
+            QZSS = 36,
+            RadarCalibration = 37,
+            Raduga = 38,
+            RussianLEONavigation = 39,
+            SatelliteBasedAugmentationSystem = 40,
+            SearchAndRescue = 41,
+            SpaceAndEarthScience = 42,
+            Starlink = 43,
+            Strela = 44,
+            TrackingAndDataRelaySatelliteSystem = 45,
+            Tselina = 46,
+            Tsikada = 47,
+            Tsiklon = 48,
+            TV = 49,
+            Weather = 50,
+            WestfordNeedles = 51,
+            XMandSirius = 52,
+            Yaogan = 53
+        }
+
         private Configurator _configurator;
         private IServiceProvider _serviceProvider;
         private Dictionary<int, SatelliteJson> _cache = new Dictionary<int, SatelliteJson>();
@@ -42,7 +97,8 @@ namespace SatLib
             using (var scope = _serviceProvider.CreateScope())
             {
                 ServiceMonitoringContext ctx = scope.ServiceProvider.GetRequiredService<ServiceMonitoringContext>();
-                CoreLibrary.Models.EFModels.Satellite? satellite = ctx.Satellites.FirstOrDefault(s => s.IdSatellite == norad);
+                CoreLibrary.Models.EFModels.Satellite? satellite =
+                    ctx.Satellites.FirstOrDefault(s => s.IdSatellite == norad);
 
                 if (satellite is not null)
                 {
@@ -60,10 +116,12 @@ namespace SatLib
                     return json;
                 }
 
-                SatelliteJson satJson = new HttpClient().GetFromJsonAsync<SatelliteJson>($"{_configurator.MainConfig.N2BaseUrl}" +
-                    $"/tle/{norad}" +
-                    $"&apiKey={_configurator.MainConfig.N2ApiToken}").Result
-                    ?? throw new Exception("bad parse tleJson:\n");
+
+                SatelliteJson satJson = new HttpClient().GetFromJsonAsync<SatelliteJson>(
+                                            $"{_configurator.MainConfig.N2BaseUrl}" +
+                                            $"/tle/{norad}" +
+                                            $"&apiKey={_configurator.MainConfig.N2ApiToken}").Result
+                                        ?? throw new Exception("bad parse tleJson:\n");
                 Console.WriteLine($"Caching " + satJson.Info.SatId);
 
                 ctx.Satellites.Add(new CoreLibrary.Models.EFModels.Satellite()
@@ -119,14 +177,16 @@ namespace SatLib
         /// <param name="category">Категория требуемых спутников</param>
         /// <returns>Список спутников, или null, если нет</returns>
         /// <exception cref="Exception"></exception>
-        public AboveJson? RequestNearestSatellites(Coordinate observerCoordinates, double searchDegrees, SatelliteCategory category)
+        public AboveJson? RequestNearestSatellites(Coordinate observerCoordinates, double searchDegrees,
+            SatelliteCategory category)
         {
             return new HttpClient().GetFromJsonAsync<AboveJson>($"{_configurator.MainConfig.N2BaseUrl}" +
-                $"/above/{observerCoordinates.ToGeodetic().Latitude.Degrees}" +
-                $"/{observerCoordinates.ToGeodetic().Longitude.Degrees}" +
-                $"/{observerCoordinates.ToGeodetic().Altitude}" +
-                $"/{searchDegrees}/{(int)category}" +
-                $"&apiKey={_configurator.MainConfig.N2ApiToken}").Result;
+                                                                $"/above/{observerCoordinates.ToGeodetic().Latitude.Degrees}" +
+                                                                $"/{observerCoordinates.ToGeodetic().Longitude.Degrees}" +
+                                                                $"/{observerCoordinates.ToGeodetic().Altitude}" +
+                                                                $"/{searchDegrees}/{(int)category}" +
+                                                                $"&apiKey={_configurator.MainConfig.N2ApiToken}")
+                .Result;
         }
 
         /// <summary>
@@ -145,7 +205,8 @@ namespace SatLib
             Vector3 modificator = earthPoint.ToSphericalEcef();
 
             EciCoordinate modifiedEciEarthPoint = new EciCoordinate(DateTime.UtcNow, earthPoint.ToSphericalEcef());
-            EciCoordinate modifiedEciSatellitePoint = new EciCoordinate(DateTime.UtcNow, satellitePoint.ToSphericalEcef() - modificator);
+            EciCoordinate modifiedEciSatellitePoint =
+                new EciCoordinate(DateTime.UtcNow, satellitePoint.ToSphericalEcef() - modificator);
 
             return modifiedEciEarthPoint.AngleTo(modifiedEciSatellitePoint).Degrees;
         }
@@ -194,14 +255,7 @@ namespace SatLib
                     } // sit2
                     else
                     {
-                        foreach (AboveJson.SatelliteJson sat in aboveWithCurrentAngle.Above)
-                        {
-                            int result = ScanSatelliteWhileApproaching(earthPoint, sat.SatId);
-                            if (result > 0)
-                            {
-                                return result;
-                            }
-                        }
+
                     }
                 }
             }
@@ -215,63 +269,17 @@ namespace SatLib
         {
             foreach (AboveJson.SatelliteJson satelliteJson in above.Above)
             {
-                Console.WriteLine("проверка : " + satelliteJson.SatId);
-                if (CheckTiming(earthPoint, satelliteJson.SatId))
+                Console.WriteLine("scanning: " + satelliteJson.SatId);
+                // проверяем каждый спутник, будет ли он через время съёмки все ещё в зоне сканирования (успеет ли засканировать)
+                bool isSuccess = CalculateIsPointInCone(earthPoint, satelliteJson.SatId,
+                    DateTime.UtcNow.AddSeconds(_configurator.MainConfig.RecordingTime));
+                if (isSuccess)
                 {
                     return satelliteJson.SatId;
-                }                
+                }
             }
             return -1;
         }
-
-        public int ScanSatelliteWhileApproaching(Coordinate earthPoint, int norad)
-        {
-            Satellite satellite = RequestSatellite(norad);
-            int modMins = 1;
-
-            GeodeticCoordinate prevGeo, nextGeo = satellite.Predict().ToGeodetic();
-
-            while (!CalculateIsPointInCone(earthPoint, norad, DateTime.UtcNow.AddMinutes(modMins)))
-            {
-                prevGeo = nextGeo;
-                nextGeo = satellite.Predict(DateTime.UtcNow.AddMinutes(modMins)).ToGeodetic();
-
-                
-                double prevDist = earthPoint.DistanceTo(prevGeo);
-                double nextDist = earthPoint.DistanceTo(nextGeo);                
-
-                Console.WriteLine(prevDist + " > " + nextDist + "?");
-                if (prevDist  < nextDist)
-                {
-                    Console.WriteLine("слетел (отдалется от точки): " + norad);
-                    return -2;
-                }
-                modMins += 5;                
-            }
-
-            if (CalculateIsPointInCone(earthPoint, norad, DateTime.UtcNow.AddMinutes(modMins)))
-            {
-                if (CheckTiming(earthPoint, norad))
-                {
-                    return modMins;
-                }
-                Console.WriteLine("не поместился в тайминг: " + norad);
-                return -3;
-            }
-            return -1;
-        }
-
-        /// <summary>
-        /// Проверяет спутник, будет ли он через время съёмки все ещё в зоне конуса (успеет ли засканировать)
-        /// </summary>
-        /// <param name="earthPoint"></param>
-        /// <param name="norad"></param>
-        /// <returns></returns>
-        public bool CheckTiming(Coordinate earthPoint, int norad)
-        {
-            return CalculateIsPointInCone(earthPoint, norad, DateTime.UtcNow.AddSeconds(_configurator.MainConfig.RecordingTime));
-        }
-        
 
         public enum SatelliteCategory
         {

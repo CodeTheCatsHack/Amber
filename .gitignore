@@ -365,8 +365,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # [custom]
-/TestConsoleApp/
-/DimaConsoleSolution/
-
-# hide Web profiles
-/Web/appsettings*
+/ClientApp/

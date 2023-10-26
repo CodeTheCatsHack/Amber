@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CoreLibrary.Models.EFModels;
 
 [Table("Map")]
-[Index("InformationUser", "User", Name = "fk_Map_InformationUser1_idx")]
+[Index("InformationUser", Name = "fk_Map_InformationUser1_idx", IsUnique = true)]
 public class Map
 {
     [Key] [Column("idMap")] public int IdMap { get; set; }
@@ -14,17 +14,16 @@ public class Map
 
     [Column(TypeName = "text")] public string? Description { get; set; }
 
-    public int InformationUser { get; set; }
-
     public int User { get; set; }
 
-    [ForeignKey("InformationUser, User")]
-    [InverseProperty("Maps")]
+    public int InformationUser { get; set; }
+
+    [ForeignKey("InformationUser")]
+    [InverseProperty("Map")]
     public virtual InformationUser InformationUserNavigation { get; set; } = null!;
 
     [InverseProperty("MapNavigation")] public virtual ICollection<Marker> Markers { get; set; } = new List<Marker>();
 
-    [ForeignKey("Map")]
-    [InverseProperty("Maps")]
+    [InverseProperty("MapNavigation")]
     public virtual ICollection<Satellite> Satellites { get; set; } = new List<Satellite>();
 }

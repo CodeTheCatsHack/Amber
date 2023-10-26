@@ -11,7 +11,7 @@ namespace Web.Middleware;
 
 public class BasicAuthenticationMiddleware : AuthenticationHandler<BasicAuthenticationOptions>
 {
-    private readonly ServiceMonitoringContext _context;
+    private ServiceMonitoringContext _context;
 
     public BasicAuthenticationMiddleware(
         IOptionsMonitor<BasicAuthenticationOptions> options,
@@ -41,7 +41,7 @@ public class BasicAuthenticationMiddleware : AuthenticationHandler<BasicAuthenti
 
                 if (user != null)
                 {
-                    var identity = Context.SetIssuer().CreateUserClaimIdentityIssuer(user);
+                    var identity = Context.SetIssuer().CreateUserClaimIdentityIssuer(ref _context, user);
 
                     if (identity != null)
                     {

@@ -11,18 +11,18 @@ public class User
     [Key] [Column("idUser")] public int IdUser { get; set; }
 
     /// <summary>
-    ///     Логин пользователя.
+    /// Логин пользователя.
     /// </summary>
     [StringLength(100)]
     public string Login { get; set; } = null!;
 
     /// <summary>
-    ///     Пароль пользователя.
+    /// Пароль пользователя.
     /// </summary>
     [StringLength(255)]
     public string Password { get; set; } = null!;
 
     public sbyte GroundStateAdministrator { get; set; }
 
-    [InverseProperty("User")] public virtual InformationUser? InformationUser { get; set; }
+    [InverseProperty("UserNavigation")] public virtual InformationUser? InformationUser { get; set; }
 }

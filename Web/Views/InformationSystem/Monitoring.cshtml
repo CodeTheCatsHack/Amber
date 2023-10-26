@@ -1,4 +1,5 @@
-﻿@model IEnumerable<CoreLibrary.Models.EFModels.Map>?
+﻿@using CoreLibrary.Models.EFModels
+@model IEnumerable<CoreLibrary.Models.EFModels.Map>?
 
 @{
     Layout = "Layout/_LayoutUserAuth";
@@ -7,197 +8,12 @@
 }
 
 <div class="container-fluid">
-<div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="text-dark mb-0">Панель мониторинга</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Выгрузить статистику</a>
-</div>
-@if (Model != null)
-{
-    if (Model.Count() > 1)
-    {
-        foreach (var informationSystem in Model.ToList())
-        {
-            <br/>
-            <div class="card shadow border-start-primary py-2">
-                <div class="card-header">
-                    <h6>@informationSystem</h6>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6 col-xl-3 mb-4">
-                            <div class="card shadow border-start-primary py-2">
-                                <div class="card-body">
-                                    <div class="row align-items-center no-gutters">
-                                        <div class="col me-2">
-                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1">
-                                                <span>Кол-во СО/Кол-во активных СО</span>
-                                            </div>
-                                            <div class="text-dark fw-bold h5 mb-0">
-                                                @* @if (informationSystem.SystemObjects.Count != 0) *@
-                                                @* { *@
-                                                @*     <span>@informationSystem.SystemObjects.Count/@informationSystem.SystemObjects.Where(x => x.Condition == ObjectCondition.Serviceable)!.Count()</span> *@
-                                                @* } *@
-                                                @* else *@
-                                                @* { *@
-                                                @*     <span>Объекты отсутствуют</span> *@
-                                                @* } *@
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-chart-line fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-3 mb-4">
-                            <div class="card shadow border-start-success py-2">
-                                <div class="card-body">
-                                    <div class="row align-items-center no-gutters">
-                                        <div class="col me-2">
-                                            <div class="text-uppercase text-success fw-bold text-xs mb-1">
-                                                <span>Кол-во чатов организации</span>
-                                            </div>
-                                            @* <div class="text-dark fw-bold h5 mb-0"> *@
-                                            @*     <span>@informationSystem.Chats.Count</span> *@
-                                            @* </div> *@
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-3 mb-4">
-                            <div class="card shadow border-start-info py-2">
-                                <div class="card-body">
-                                    @* <div class="row align-items-center no-gutters"> *@
-                                    @*     <div class="col me-2"> *@
-                                    @*         <div class="text-uppercase text-info fw-bold text-xs mb-1"> *@
-                                    @*             <span>Задач организации выполнено</span> *@
-                                    @*         </div> *@
-                                    @*         <div class="row g-0 align-items-center"> *@
-                                    @*             <div class="col-auto"> *@
-                                    @*                 <div class="text-dark fw-bold h5 mb-0 me-3"> *@
-                                    @*                     @if (informationSystem.Tasks.Count != 0) *@
-                                    @*                     { *@
-                                    @*                         <span>@(informationSystem.Tasks.Where(x => x.Status == TaskStatus.Completed)!.Count() / @informationSystem.Tasks.Count * 100)%</span> *@
-                                    @*                     } *@
-                                    @*                     else *@
-                                    @*                     { *@
-                                    @*                         <span>100 %</span> *@
-                                    @*                     } *@
-                                    @*                 </div> *@
-                                    @*             </div> *@
-                                    @*             <div class="col"> *@
-                                    @*                 <div class="progress progress-sm"> *@
-                                    @*                     @if (informationSystem.Tasks.Count != 0) *@
-                                    @*                     { *@
-                                    @*                         <div class="progress-bar bg-info" aria-valuenow="@informationSystem.Tasks.Where(x => x.Status == TaskStatus.Completed)!.Count()" aria-valuemin="0" aria-valuemax="@informationSystem.Tasks.Count" style="width: @(informationSystem.Tasks.Where(x => x.Status == TaskStatus.Completed)!.Count() / informationSystem.Tasks.Count * 100)%;"> *@
-                                    @*                             <span class="visually-hidden">@(informationSystem.Tasks.Where(x => x.Status == TaskStatus.Completed)!.Count() / informationSystem.Tasks.Count * 100)%</span> *@
-                                    @*                         </div> *@
-                                    @*                     } *@
-                                    @*                     else *@
-                                    @*                     { *@
-                                    @*                         <div class="progress-bar bg-info" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> *@
-                                    @*                             <span class="visually-hidden">100%</span> *@
-                                    @*                         </div> *@
-                                    @*                     } *@
-                                    @*                 </div> *@
-                                    @*             </div> *@
-                                    @*         </div> *@
-                                    @*     </div> *@
-                                    @*     <div class="col-auto"> *@
-                                    @*         <i class="fas fa-clipboard-list fa-2x text-gray-300"></i> *@
-                                    @*     </div> *@
-                                    @* </div> *@
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-7 col-xl-8">
-                            <div class="card shadow mb-4">
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h6 class="text-primary fw-bold m-0">График дохода с ИС</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas data-bss-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}]}}}"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 col-xl-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h6 class="text-primary fw-bold m-0">Отношение</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Direct&quot;,&quot;Social&quot;,&quot;Referral&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;backgroundColor&quot;:[&quot;#4e73df&quot;,&quot;#1cc88a&quot;,&quot;#36b9cc&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;50&quot;,&quot;30&quot;,&quot;15&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}}"></canvas>
-                                    </div>
-                                    <div class="text-center small mt-4">
-                                        <span class="me-2"><i class="fas fa-circle text-primary"></i>&nbsp;Правительство</span><span class="me-2"><i class="fas fa-circle text-success"></i>&nbsp;Социальное</span><span class="me-2"><i class="fas fa-circle text-info"></i>&nbsp;Рефералы</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 mb-4" style="height: 100%;">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary fw-bold m-0">Лист заданий</h6>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    @* @foreach (var task in informationSystem.Tasks) *@
-                                    @* { *@
-                                    @*     <li class="list-group-item"> *@
-                                    @*         <div class="row align-items-center no-gutters"> *@
-                                    @*             <div class="col me-2"> *@
-                                    @*                 $1$ <h6 class="mb-0"> #1# *@
-                                    @*                 $1$     <strong>@task.Title</strong> #1# *@
-                                    @*                 $1$ </h6> #1# *@
-                                    @*                 $1$ <span class="text-xs">Дата регистрации:@task.DataRegistration</span> #1# *@
-                                    @*                 $1$ <span class="text-xs">Дата лайна:@task.Deadline</span> #1# *@
-                                    @*             </div> *@
-                                    @*         </div> *@
-                                    @*     </li> *@
-                                    @* } *@
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col" style="height: 100%;">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary fw-bold m-0">Недействующие системные объекты</h6>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    @* @foreach (var systemObject in informationSystem.SystemObjects.Where(x => x.Condition != ObjectCondition.Serviceable).ToList()) *@
-                                    @* { *@
-                                    @*     <li class="list-group-item"> *@
-                                    @*         <div class="row align-items-center no-gutters"> *@
-                                    @*             <div class="col me-2"> *@
-                                    @*                 <h6 class="mb-0"> *@
-                                    @*                     <strong>@systemObject.Name</strong> *@
-                                    @*                 </h6><span class="text-xs">Время отключения:@systemObject.LastUpdate</span> *@
-                                    @*             </div> *@
-                                    @*         </div> *@
-                                    @*     </li> *@
-                                    @* } *@
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    }
-    else
-    {
-        var informationSystem = Model.ToList()[0];
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0">Панель мониторинга</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Выгрузить статистику</a>
+    </div>
 
+    @if (Model != null)
+    {
         <div class="row">
             <div class="col-md-6 col-xl-3 mb-4">
                 <div class="card shadow border-start-primary py-2">
@@ -205,17 +21,17 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col me-2">
                                 <div class="text-uppercase text-primary fw-bold text-xs mb-1">
-                                    <span>Кол-во СО/Кол-во активных СО</span>
+                                    <span>Кол-во Спутников</span>
                                 </div>
                                 <div class="text-dark fw-bold h5 mb-0">
-                                    @* @if (informationSystem.SystemObjects.Count != 0) *@
-                                    @* { *@
-                                    @*     <span>@informationSystem.SystemObjects.Count/@informationSystem.SystemObjects.Where(x => x.Condition == ObjectCondition.Serviceable)!.Count()</span> *@
-                                    @* } *@
-                                    @* else *@
-                                    @* { *@
-                                    @*     <span>Объекты отсутствуют</span> *@
-                                    @* } *@
+                                    @if (((Map)Model).Satellites.Count != 0)
+                                    {
+                                        <span>@((Map)Model).Satellites.Count</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Объекты отсутствуют</span>
+                                    }
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -231,60 +47,14 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col me-2">
                                 <div class="text-uppercase text-success fw-bold text-xs mb-1">
-                                    <span>Кол-во чатов организации</span>
+                                    <span>Кол-во маркеров</span>
                                 </div>
-                                @* <div class="text-dark fw-bold h5 mb-0"> *@
-                                @*     <span>@informationSystem.Chats.Count</span> *@
-                                @* </div> *@
+                                <div class="text-dark fw-bold h5 mb-0">
+                                    <span>@((Map)Model).Markers.Count</span>
+                                </div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-3 mb-4">
-                <div class="card shadow border-start-info py-2">
-                    <div class="card-body">
-                        <div class="row align-items-center no-gutters">
-                            <div class="col me-2">
-                                <div class="text-uppercase text-info fw-bold text-xs mb-1">
-                                    <span>Задач организации выполнено</span>
-                                </div>
-                                <div class="row g-0 align-items-center">
-                                    <div class="col-auto">
-                                        <div class="text-dark fw-bold h5 mb-0 me-3">
-                                            @* @if (informationSystem.Tasks.Count != 0) *@
-                                            @* { *@
-                                            @*     <span>@(informationSystem.Tasks.Where(x => x.Status == TaskStatus.Completed)!.Count() / @informationSystem.Tasks.Count * 100)%</span> *@
-                                            @* } *@
-                                            @* else *@
-                                            @* { *@
-                                            @*     <span>100 %</span> *@
-                                            @* } *@
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="progress progress-sm">
-                                            @* @if (informationSystem.Tasks.Count != 0) *@
-                                            @* { *@
-                                            @*     <div class="progress-bar bg-info" aria-valuenow="@(informationSystem.Tasks.Where(x => x.Status == TaskStatus.Completed)!.Count())" aria-valuemin="0" aria-valuemax="@informationSystem.Tasks.Count" style="width: @(informationSystem.Tasks.Where(x => x.Status == TaskStatus.Completed)!.Count() / informationSystem.Tasks.Count * 100)%;"> *@
-                                            @*         <span class="visually-hidden">@(informationSystem.Tasks.Where(x => x.Status == TaskStatus.Completed)!.Count() / informationSystem.Tasks.Count * 100)%</span> *@
-                                            @*     </div> *@
-                                            @* } *@
-                                            @* else *@
-                                            @* { *@
-                                            @*     <div class="progress-bar bg-info" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> *@
-                                            @*         <span class="visually-hidden">100%</span><span class="visually-hidden">100%</span> *@
-                                            @*     </div> *@
-                                            @* } *@
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -327,7 +97,7 @@
                         <h6 class="text-primary fw-bold m-0">Лист заданий</h6>
                     </div>
                     <ul class="list-group list-group-flush">
-                        @* @foreach (var task in informationSystem.Tasks) *@
+                        @* @foreach (var task in map.Tasks) *@
                         @* { *@
                         @*     <li class="list-group-item"> *@
                         @*         <div class="row align-items-center no-gutters"> *@
@@ -367,10 +137,10 @@
             </div>
         </div>
     }
-}
-else
-{
+    }
+    else
+    {
     <h3>На данный момент карта отсутствует!</h3>
     <p>Аналитика заработает, после того, как вы создадите!</p>
-}
+    }
 </div>

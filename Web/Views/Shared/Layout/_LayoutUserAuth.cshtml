@@ -6,16 +6,16 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>@ViewData["Title"] - IntelliTrackSolutions</title>
+    <title>@ViewData["Title"] - Amber</title>
     <link rel="canonical" href="@ViewData[" Url_Domen"]"/>
     <meta property="og:url" content="@ViewData[" Url_Domen"]">
-    <meta name="twitter:title" content="IntelliTrack Solutions">
+    <meta name="twitter:title" content="Amber">
     <meta name="twitter:image" content="/img/webLogo/favicon.png">
     <meta property="og:type" content="website">
     <meta property="og:image" content="/img/webLogo/favicon.png">
-    <meta name="description" content="IntelliTrack Solutions: Инновационные решения для геопозиционирования и управления информационными объектами.">
+    <meta name="description" content="Amber: Инновационные решения для геопозиционирования и снимков областей.">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:description" content="IntelliTrack Solutions: Инновационные решения для геопозиционирования и управления информационными объектами.">
+    <meta name="twitter:description" content="Amber: Инновационные решения для геопозиционирования и снимков областей.">
 
     <link rel="icon" type="image/png" sizes="512x512" href="~/img/webLogo/favicon.png?h=fd1ff92a7ceb3bd2dda94ea3792eb55c">
     <link rel="icon" type="image/png" sizes="512x512" href="~/img/webLogo/favicon.png?h=fd1ff92a7ceb3bd2dda94ea3792eb55c">
@@ -36,14 +36,14 @@
         <div class="container-fluid d-flex flex-column p-0">
             <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" asp-controller="Home" asp-action="Index" style="position: relative;width: auto;padding-right: 100px;">
                 <div class="text-start sidebar-brand-text mx-3" style="width: 100%;height: 100%;">
-                    <span class="text-start" style="width: 100%;height: 100%;">Intelli Track</span>
+                    <span class="text-start" style="width: 100%;height: 100%;">Amber</span>
                 </div>
             </a>
             <ul class="navbar-nav text-light d-xxl-flex justify-content-xxl-start align-items-xxl-start" id="accordionSidebar" style="width: 100%;height: 100%;margin-right: 40%;">
                 <li class="nav-item">
-                    @* <a class="nav-link @ViewData["Active_Monitor_Link"]" asp-controller="InformationSystem" asp-action="Monitoring"> *@
-                    @*     <i class="fas fa-tachometer-alt"></i><span>Панель мониторинга</span> *@
-                    @* </a> *@
+                    <a class="nav-link @ViewData["Active_Monitor_Link"]" asp-controller="InformationSystem" asp-action="Monitoring">
+                        <i class="fas fa-tachometer-alt"></i><span>Панель мониторинга</span>
+                    </a>
                 </li>
 
                 <li class="nav-item">
@@ -52,54 +52,50 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link @ViewData["Active_TableData_Link"]" asp-controller="" asp-action="">
-                        <i class="fas fa-database"></i><span>Таблица данных ИС</span>&nbsp;
-                    </a>
-                </li>
-
-                @if (User.GetClaimIssuer(ClaimTypes.System) != null)
+                @if (User.GetClaimIssuer(ClaimTypes.Rsa)?.Value != null)
                 {
-                    <li class="nav-item">
-                        @* <a class="nav-link @ViewData["Active_LocationTableData_Link"]" asp-controller="Map" asp-action="MarkerTableData"> *@
-                        @*     <i class="fas fa-database"></i><span>Таблица данных локаций</span>&nbsp; *@
-                        @* </a> *@
-                    </li>
+                    @* <li class="nav-item"> *@
+                    @*     <a class="nav-link @ViewData["Active_ShootingAreaTable_Link"]" asp-controller="ShootingArea" asp-action="ShootingАreaTableData"> *@
+                    @*         <i class="fas fa-database"></i><span>Таблица данных локаций</span>&nbsp; *@
+                    @*     </a> *@
+                    @* </li> *@
+                    @* *@
+                    @* <li class="nav-item"> *@
+                    @*     <a class="nav-link @ViewData["Active_MarkerTable_Link"]" asp-controller="Marker" asp-action="MarkerTableData"> *@
+                    @*         <i class="fas fa-database"></i><span>Таблица данных маркеров</span>&nbsp; *@
+                    @*     </a> *@
+                    @* </li> *@
+                    @* *@
+                    @* <li class="nav-item"> *@
+                    @*     <a class="nav-link @ViewData["Active_SateliteImageTable_Link"]" asp-controller="SateliteImage" asp-action="SateliteImageTableData"> *@
+                    @*         <i class="fas fa-database"></i><span>Таблица снимков</span>&nbsp; *@
+                    @*     </a> *@
+                    @* </li> *@
+                }
+                @if (int.Parse(User.GetClaimIssuer(ClaimTypes.System)!.Value) == 1)
+                {
+                        @* <li class="nav-item"> *@
+                        @*     <a class="nav-link @ViewData["Active_UserTableData_Link"]" asp-controller="Users" asp-action="UserTableData"> *@
+                        @*         <i class="fas fa-address-card"></i><span>Таблица данных пользователей</span>&nbsp; *@
+                        @*     </a> *@
+                        @* </li> *@
+                        @* *@
+                        @* <li class="nav-item"> *@
+                        @*     <a class="nav-link @ViewData["Active_SatelliteTable_Link"]" asp-controller="Satelite" asp-action="SateliteTableData"> *@
+                        @*         <i class="far fa-hdd"></i><span>Упр. спутниками</span> *@
+                        @*     </a> *@
+                        @* </li> *@
+                        @* *@
 
                     <li class="nav-item">
-                        <a class="nav-link @ViewData["Active_SystemObjectTableData_Link"]" asp-controller="" asp-action="">
-                            <i class="fas fa-database"></i><span>Таблица данных СО</span>&nbsp;
+                        <a class="nav-link @ViewData["Active_Map_Link"]" asp-controller="Map" asp-action="MapTableData">
+                            <i class="fas fa-map-marked-alt"></i><span>Упр. картами</span>&nbsp;
                         </a>
                     </li>
-
-                    @if (int.Parse(User.GetClaimIssuer(ClaimTypes.PrimaryGroupSid)!.Value) >= 5)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link @ViewData["Active_UserTableData_Link"]" asp-controller="Users" asp-action="UserTableData">
-                                <i class="fas fa-address-card"></i><span>Таблица данных пользователей</span>&nbsp;
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link @ViewData["Active_ChatTableData_Link"]" asp-controller="" asp-action="">
-                                <i class="fas fa-comments"></i><span>Таблица чатов</span>&nbsp;
-                            </a>
-                        </li>
-                    }
-
-                    @if (User.IsInOrganization(1) && int.Parse(User.GetClaimIssuer(ClaimTypes.PrimaryGroupSid)!.Value) >= 5)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link @ViewData["Active_IS_Table_Link"]" asp-controller="InformationSystem" asp-action="Monitoring">
-                                <i class="far fa-hdd"></i><span>Упр. подключёнными ИС</span>
-                            </a>
-                        </li>
-                    }
-
                     <li class="nav-item">
-                        @* <a class="nav-link @ViewData["Active_Map_Link"]" asp-controller="Map" asp-action="Map"> *@
-                        @*     <i class="fas fa-map-marked-alt"></i><span>Карта объектов ИС</span>&nbsp; *@
-                        @* </a> *@
+                        <a class="nav-link @ViewData["Active_Map_Link"]" asp-controller="Map" asp-action="Map">
+                            <i class="fas fa-map-marked-alt"></i><span>Карта</span>&nbsp;
+                        </a>
                     </li>
                 }
 
@@ -118,7 +114,7 @@
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">
                 <div class="text-center my-auto copyright">
-                    <span>Copyright © IntelliTrackSolutions 2023</span>
+                    <span>Copyright © Amber 2023</span>
                 </div>
             </div>
         </footer>

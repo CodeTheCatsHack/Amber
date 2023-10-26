@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CoreLibrary.Models.EFModels;
 
 [Table("SatelliteImage")]
+[Index("Marker", Name = "fk_SatelliteImage_Marker1_idx")]
 [Index("Satellite", Name = "fk_SatelliteImage_Satellite1_idx")]
 public class SatelliteImage
 {
@@ -14,10 +15,13 @@ public class SatelliteImage
 
     public int Satellite { get; set; }
 
+    public int Marker { get; set; }
+
+    [ForeignKey("Marker")]
+    [InverseProperty("SatelliteImages")]
+    public virtual Marker MarkerNavigation { get; set; } = null!;
+
     [ForeignKey("Satellite")]
     [InverseProperty("SatelliteImages")]
     public virtual Satellite SatelliteNavigation { get; set; } = null!;
-
-    [InverseProperty("SatelliteImageNavigation")]
-    public virtual ICollection<ShootingАrea> ShootingАreas { get; set; } = new List<ShootingАrea>();
 }

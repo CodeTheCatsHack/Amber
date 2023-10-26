@@ -21,9 +21,8 @@ public partial class ServiceMonitoringContext : DbContext
 
     public virtual DbSet<SatelliteImage> SatelliteImages { get; set; }
 
-    public virtual DbSet<ShootingАrea> ShootingАreas { get; set; }
-
     public virtual DbSet<User> Users { get; set; }
+
 
     public IQueryable<string> SelectExpression(string nameFunction, List<string> parametrList)
     {
@@ -47,6 +46,7 @@ public partial class ServiceMonitoringContext : DbContext
         return SelectExpression(nameof(EncryptPassword), soli).ToList()[0];
     }
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -55,17 +55,15 @@ public partial class ServiceMonitoringContext : DbContext
 
         modelBuilder.Entity<InformationUser>(entity =>
         {
-            entity.HasKey(e => new { e.IdInformationUser, e.UserId })
-                .HasName("PRIMARY")
-                .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+            entity.HasKey(e => e.IdInformationUser).HasName("PRIMARY");
 
-            entity.Property(e => e.IdInformationUser).ValueGeneratedOnAdd();
-            entity.Property(e => e.UserId).HasComment("Идентификатор связанного пользователя.");
             entity.Property(e => e.FirstName).HasComment("Имя пользователя.");
             entity.Property(e => e.LastName).HasComment("Фамилия пользователя.");
             entity.Property(e => e.MiddleName).HasComment("Отчество пользователя.");
 
-            entity.HasOne(d => d.User).WithOne(p => p.InformationUser).HasConstraintName("fk_InformationUser_User1");
+            entity.HasOne(d => d.UserNavigation).WithOne(p => p.InformationUser)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_InformationUser_User1");
         });
 
         modelBuilder.Entity<Map>(entity =>
@@ -74,7 +72,7 @@ public partial class ServiceMonitoringContext : DbContext
 
             entity.Property(e => e.IdMap).ValueGeneratedNever();
 
-            entity.HasOne(d => d.InformationUserNavigation).WithMany(p => p.Maps)
+            entity.HasOne(d => d.InformationUserNavigation).WithOne(p => p.Map)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_Map_InformationUser1");
         });
@@ -96,50 +94,22 @@ public partial class ServiceMonitoringContext : DbContext
 
             entity.Property(e => e.IdSatellite).ValueGeneratedNever();
 
-            entity.HasMany(d => d.Maps).WithMany(p => p.Satellites)
-                .UsingEntity<Dictionary<string, object>>(
-                    "MapListSatellite",
-                    r => r.HasOne<Map>().WithMany()
-                        .HasForeignKey("Map")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("fk_Satellite_has_Map_Map1"),
-                    l => l.HasOne<Satellite>().WithMany()
-                        .HasForeignKey("Satellite")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("fk_Satellite_has_Map_Satellite1"),
-                    j =>
-                    {
-                        j.HasKey("Satellite", "Map")
-                            .HasName("PRIMARY")
-                            .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
-                        j.ToTable("MapListSatellite");
-                        j.HasIndex(new[] { "Map" }, "fk_Satellite_has_Map_Map1_idx");
-                        j.HasIndex(new[] { "Satellite" }, "fk_Satellite_has_Map_Satellite1_idx");
-                    });
+            entity.HasOne(d => d.MapNavigation).WithMany(p => p.Satellites)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_Satellite_Map1");
         });
 
         modelBuilder.Entity<SatelliteImage>(entity =>
         {
             entity.HasKey(e => e.IdSatelliteImage).HasName("PRIMARY");
 
+            entity.HasOne(d => d.MarkerNavigation).WithMany(p => p.SatelliteImages)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_SatelliteImage_Marker1");
+
             entity.HasOne(d => d.SatelliteNavigation).WithMany(p => p.SatelliteImages)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_SatelliteImage_Satellite1");
-        });
-
-        modelBuilder.Entity<ShootingАrea>(entity =>
-        {
-            entity.HasKey(e => new { e.IdShootingАrea, e.MarkerMap })
-                .HasName("PRIMARY")
-                .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
-
-            entity.HasOne(d => d.MarkerMapNavigation).WithMany(p => p.ShootingАreas)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_ShootingАrea_Marker1");
-
-            entity.HasOne(d => d.SatelliteImageNavigation).WithMany(p => p.ShootingАreas)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_ShootingАrea_SatelliteImage1");
         });
 
         modelBuilder.Entity<User>(entity =>
