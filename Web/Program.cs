@@ -1,9 +1,8 @@
-using System.Security.Claims;
 using CoreLibrary;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using SatLib;
 using Serilog;
-using SGPdotNET.CoordinateSystem;
+using System.Security.Claims;
 using Web.Middleware;
 using Web.SignalRHub;
 using static CoreLibrary.CoreDiConfiguration;

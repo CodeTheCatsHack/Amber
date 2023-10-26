@@ -18,7 +18,7 @@ public static class CoreDi
     public static IServiceCollection AddCoreDi(this IServiceCollection services, IConfiguration configuration,
         string nameSheduler)
     {
-        return services.AddLoggers()
+        return services//.AddLoggers()
             .AddDataBaseContext(configuration)
             .AddQuartzIntegrated(configuration, nameSheduler)
             .AddSignalRIntegrated()

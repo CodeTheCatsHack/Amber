@@ -4,8 +4,10 @@ using SatLib.JsonModel;
 using SGPdotNET.CoordinateSystem;
 using SGPdotNET.Observation;
 using SGPdotNET.Util;
+using System.Configuration;
+using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using ZstdSharp.Unsafe;
 
 namespace SatLib
 {
@@ -16,6 +18,7 @@ namespace SatLib
     {
         private Configurator _configurator;
         private IServiceProvider _serviceProvider;
+        private Dictionary<int, SatelliteJson> _cache = new Dictionary<int, SatelliteJson>();
 
         public SatelliteApi(Configurator configurator, IServiceProvider provider)
         {
@@ -31,6 +34,11 @@ namespace SatLib
         /// <exception cref="Exception"></exception>
         internal SatelliteJson RequestSatelliteJson(int norad)
         {
+            if (_cache.ContainsKey(norad))
+            {
+                return _cache[norad];
+            }
+
             using (var scope = _serviceProvider.CreateScope())
             {
                 ServiceMonitoringContext ctx = scope.ServiceProvider.GetRequiredService<ServiceMonitoringContext>();
@@ -38,8 +46,8 @@ namespace SatLib
 
                 if (satellite is not null)
                 {
-                    Console.WriteLine($"From cache {satellite.IdSatellite}");
-                    return new SatelliteJson()
+                    Console.WriteLine($"From db {satellite.IdSatellite}");
+                    SatelliteJson json = new SatelliteJson()
                     {
                         Info = new SatelliteJson.InfoJson()
                         {
@@ -48,9 +56,10 @@ namespace SatLib
                         },
                         Tle = satellite.TleLine1 + "\n" + satellite.TleLine2
                     };
+                    _cache[norad] = json;
+                    return json;
                 }
 
-                
                 SatelliteJson satJson = new HttpClient().GetFromJsonAsync<SatelliteJson>($"{_configurator.MainConfig.N2BaseUrl}" +
                     $"/tle/{norad}" +
                     $"&apiKey={_configurator.MainConfig.N2ApiToken}").Result
@@ -67,6 +76,7 @@ namespace SatLib
                     IsOffiicial = 1
                 });
                 ctx.SaveChanges();
+                _cache[satJson.Info.SatId] = satJson;
                 return satJson;
             }
         }
@@ -78,7 +88,7 @@ namespace SatLib
                 satJson.Info.SatName,
                 satJson.GetTleLine(SatelliteJson.TleLine.first),
                 satJson.GetTleLine(SatelliteJson.TleLine.second));
-        }
+        }        
 
         /// <summary>
         /// Функция для получения текущих координат спутника
@@ -156,7 +166,7 @@ namespace SatLib
         /// Функция поиска решения для фотографии заданной местности
         /// </summary>
         /// <param name="earthPoint">заданная местность</param>
-        public int SearchSolution(Coordinate earthPoint)
+        public int SearchSolution(Coordinate earthPoint, SatelliteCategory category)
         {
             double step = 5.0;
             double currentAngle = 0;
@@ -165,12 +175,12 @@ namespace SatLib
             do
             {
                 currentAngle += step;
-                Console.WriteLine("currentAngle:" + currentAngle);
+                Console.WriteLine("Текущий угол просмотра конуса:" + currentAngle);
 
                 aboveWithCurrentAngle = RequestNearestSatellites(
                     earthPoint,
                     currentAngle,
-                    SatelliteCategory.All);
+                    category);
 
                 if (aboveWithCurrentAngle is not null)
                 {
@@ -181,10 +191,17 @@ namespace SatLib
                         {
                             return requiredSatelliteId;
                         }
-                    }
+                    } // sit2
                     else
                     {
-
+                        foreach (AboveJson.SatelliteJson sat in aboveWithCurrentAngle.Above)
+                        {
+                            int result = ScanSatelliteWhileApproaching(earthPoint, sat.SatId);
+                            if (result > 0)
+                            {
+                                return result;
+                            }
+                        }
                     }
                 }
             }
@@ -198,16 +215,63 @@ namespace SatLib
         {
             foreach (AboveJson.SatelliteJson satelliteJson in above.Above)
             {
-                Console.WriteLine("scanning: " + satelliteJson.SatId);
-                // проверяем каждый спутник, будет ли он через время съёмки все ещё в зоне сканирования (успеет ли засканировать)
-                bool isSuccess = CalculateIsPointInCone(earthPoint, satelliteJson.SatId, DateTime.UtcNow.AddSeconds(_configurator.MainConfig.RecordingTime));
-                if (isSuccess)
+                Console.WriteLine("проверка : " + satelliteJson.SatId);
+                if (CheckTiming(earthPoint, satelliteJson.SatId))
                 {
                     return satelliteJson.SatId;
-                }
+                }                
             }
             return -1;
         }
+
+        public int ScanSatelliteWhileApproaching(Coordinate earthPoint, int norad)
+        {
+            Satellite satellite = RequestSatellite(norad);
+            int modMins = 1;
+
+            GeodeticCoordinate prevGeo, nextGeo = satellite.Predict().ToGeodetic();
+
+            while (!CalculateIsPointInCone(earthPoint, norad, DateTime.UtcNow.AddMinutes(modMins)))
+            {
+                prevGeo = nextGeo;
+                nextGeo = satellite.Predict(DateTime.UtcNow.AddMinutes(modMins)).ToGeodetic();
+
+                
+                double prevDist = earthPoint.DistanceTo(prevGeo);
+                double nextDist = earthPoint.DistanceTo(nextGeo);                
+
+                Console.WriteLine(prevDist + " > " + nextDist + "?");
+                if (prevDist  < nextDist)
+                {
+                    Console.WriteLine("слетел (отдалется от точки): " + norad);
+                    return -2;
+                }
+                modMins += 5;                
+            }
+
+            if (CalculateIsPointInCone(earthPoint, norad, DateTime.UtcNow.AddMinutes(modMins)))
+            {
+                if (CheckTiming(earthPoint, norad))
+                {
+                    return modMins;
+                }
+                Console.WriteLine("не поместился в тайминг: " + norad);
+                return -3;
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Проверяет спутник, будет ли он через время съёмки все ещё в зоне конуса (успеет ли засканировать)
+        /// </summary>
+        /// <param name="earthPoint"></param>
+        /// <param name="norad"></param>
+        /// <returns></returns>
+        public bool CheckTiming(Coordinate earthPoint, int norad)
+        {
+            return CalculateIsPointInCone(earthPoint, norad, DateTime.UtcNow.AddSeconds(_configurator.MainConfig.RecordingTime));
+        }
+        
 
         public enum SatelliteCategory
         {
