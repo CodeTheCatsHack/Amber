@@ -1,8 +1,6 @@
 ﻿using System.Net.Http.Json;
 using CoreLibrary.EFContext;
-using Google.Protobuf.Collections;
 using Microsoft.Extensions.DependencyInjection;
-using NetTopologySuite.Index.HPRtree;
 using SatLib.JsonModel;
 using SatLib.Model;
 using SGPdotNET.CoordinateSystem;
@@ -16,9 +14,67 @@ namespace SatLib
     /// </summary>
     public class SatelliteApi
     {
+        public enum SatelliteCategory
+        {
+            All = 0,
+            Brightest = 1,
+            GOES = 2,
+            EarthResources = 3,
+            DisasterMonitoring = 4,
+            Geostationary = 5,
+            Intelsat = 6,
+            Gorizont = 7,
+            Iridium = 8,
+            Globalstar = 9,
+            AmateurRadio = 10,
+            GlobalGPSOperational = 11,
+            GlonassOperational = 12,
+            Galileo = 13,
+            Experimental = 14,
+            Geodetic = 15,
+            Engineering = 16,
+            Education = 17,
+            CubeSats = 18,
+            BeidouNavigationSystem = 19,
+            Gonets = 20,
+            Flock = 21,
+            GlobalGPSConstellation = 22,
+            GlonassConstellation = 23,
+            Celestis = 24,
+            ChineseSpaceStation = 25,
+            ISS = 26,
+            Lemur = 27,
+            Military = 28,
+            Molniya = 29,
+            NavyNavigationSatelliteSystem = 30,
+            NOAA = 31,
+            O3BNetworks = 32,
+            OneWeb = 33,
+            Orbcomm = 34,
+            Parus = 35,
+            QZSS = 36,
+            RadarCalibration = 37,
+            Raduga = 38,
+            RussianLEONavigation = 39,
+            SatelliteBasedAugmentationSystem = 40,
+            SearchAndRescue = 41,
+            SpaceAndEarthScience = 42,
+            Starlink = 43,
+            Strela = 44,
+            TrackingAndDataRelaySatelliteSystem = 45,
+            Tselina = 46,
+            Tsikada = 47,
+            Tsiklon = 48,
+            TV = 49,
+            Weather = 50,
+            WestfordNeedles = 51,
+            XMandSirius = 52,
+            Yaogan = 53
+        }
+
+        private Dictionary<int, SatelliteJson> _cache = new Dictionary<int, SatelliteJson>();
         private Configurator _configurator;
         private IServiceProvider _serviceProvider;
-        private Dictionary<int, SatelliteJson> _cache = new Dictionary<int, SatelliteJson>();
 
         public SatelliteApi(Configurator configurator, IServiceProvider provider)
         {
@@ -92,7 +148,7 @@ namespace SatLib
                 satJson.Info.SatName,
                 satJson.GetTleLine(SatelliteJson.TleLine.first),
                 satJson.GetTleLine(SatelliteJson.TleLine.second));
-        }        
+        }
 
         /// <summary>
         /// Функция для получения текущих координат спутника
@@ -193,7 +249,8 @@ namespace SatLib
                 {
                     if (currentAngle <= _configurator.MainConfig.ConeActivationAngle)
                     {
-                        SatelliteAnswer requiredSat = await GetFirstRelevantSatelliteIdAsync(aboveWithCurrentAngle, earthPoint);
+                        SatelliteAnswer requiredSat =
+                            await GetFirstRelevantSatelliteIdAsync(aboveWithCurrentAngle, earthPoint);
                         if (requiredSat.Result == SatelliteAnswer.ResultEnum.Success)
                         {
                             return new List<SatelliteAnswer>() { requiredSat };
@@ -204,24 +261,26 @@ namespace SatLib
                         List<Task<SatelliteAnswer>> tasks = new List<Task<SatelliteAnswer>>();
                         foreach (AboveJson.SatelliteJson sat in aboveWithCurrentAngle.Above)
                         {
-                            tasks.Add(ScanSatelliteWhileApproachingAsync(earthPoint, sat.SatId));                                                        
+                            tasks.Add(ScanSatelliteWhileApproachingAsync(earthPoint, sat.SatId));
                         }
+
                         await Task.WhenAll(tasks);
-                        List<SatelliteAnswer> answeredList = new List<SatelliteAnswer>(); 
-                        
+                        List<SatelliteAnswer> answeredList = new List<SatelliteAnswer>();
+
                         foreach (var task in tasks)
                         {
                             answeredList.Add(task.Result);
                         }
-                        answeredList = answeredList.Where(answer => answer.Result == SatelliteAnswer.ResultEnum.Success).ToList();
+
+                        answeredList = answeredList.Where(answer => answer.Result == SatelliteAnswer.ResultEnum.Success)
+                            .ToList();
                         if (answeredList.Count > 0)
                         {
                             return answeredList;
                         }
                     }
                 }
-            }
-            while (currentAngle < 90.0);
+            } while (currentAngle < 90.0);
 
             return null;
         }
@@ -242,16 +301,17 @@ namespace SatLib
                     DateTime.UtcNow.AddSeconds(_configurator.MainConfig.RecordingTime));
                 if (isSuccess)
                 {
-                    return new SatelliteAnswer() 
-                    { 
+                    return new SatelliteAnswer()
+                    {
                         Norad = satelliteJson.SatId,
                         MinutesToArrive = 0,
-                        Result = SatelliteAnswer.ResultEnum.Success 
+                        Result = SatelliteAnswer.ResultEnum.Success
                     };
-                }                
+                }
             }
+
             return new SatelliteAnswer()
-            {                
+            {
                 MinutesToArrive = 0,
                 Result = SatelliteAnswer.ResultEnum.Other
             };
@@ -274,20 +334,21 @@ namespace SatLib
             {
                 prevGeo = nextGeo;
                 nextGeo = satellite.Predict(DateTime.UtcNow.AddMinutes(modMins)).ToGeodetic();
-                
+
                 double prevDist = earthPoint.DistanceTo(prevGeo);
-                double nextDist = earthPoint.DistanceTo(nextGeo);                
+                double nextDist = earthPoint.DistanceTo(nextGeo);
 
                 Console.WriteLine(prevDist + " > " + nextDist + "?");
                 if (prevDist < nextDist)
                 {
                     Console.WriteLine("слетел (отдалется от точки): " + norad);
-                    return Task.FromResult(new SatelliteAnswer() 
+                    return Task.FromResult(new SatelliteAnswer()
                     {
-                        Result = SatelliteAnswer.ResultEnum.Takeoff 
+                        Result = SatelliteAnswer.ResultEnum.Takeoff
                     });
                 }
-                modMins += 5;                
+
+                modMins += 5;
             }
 
             if (CalculateIsPointInCone(earthPoint, norad, DateTime.UtcNow.AddMinutes(modMins)))
@@ -301,6 +362,7 @@ namespace SatLib
                         MinutesToArrive = modMins
                     });
                 }
+
                 Console.WriteLine("не поместился в тайминг: " + norad);
                 return Task.FromResult(new SatelliteAnswer()
                 {
@@ -309,13 +371,14 @@ namespace SatLib
                     MinutesToArrive = modMins
                 });
             }
+
             return Task.FromResult(new SatelliteAnswer()
             {
                 Result = SatelliteAnswer.ResultEnum.Other,
                 Norad = norad,
                 MinutesToArrive = modMins
             });
-        }        
+        }
 
         /// <summary>
         /// Проверяет спутник, будет ли он через время съёмки все ещё в зоне конуса (успеет ли засканировать)
@@ -325,66 +388,8 @@ namespace SatLib
         /// <returns></returns>
         public bool CheckTiming(Coordinate earthPoint, int norad)
         {
-            return CalculateIsPointInCone(earthPoint, norad, DateTime.UtcNow.AddSeconds(_configurator.MainConfig.RecordingTime));
-        }
-        
-
-        public enum SatelliteCategory
-        {
-            All = 0,
-            Brightest = 1,
-            GOES = 2,
-            EarthResources = 3,
-            DisasterMonitoring = 4,
-            Geostationary = 5,
-            Intelsat = 6,
-            Gorizont = 7,
-            Iridium = 8,
-            Globalstar = 9,
-            AmateurRadio = 10,
-            GlobalGPSOperational = 11,
-            GlonassOperational = 12,
-            Galileo = 13,
-            Experimental = 14,
-            Geodetic = 15,
-            Engineering = 16,
-            Education = 17,
-            CubeSats = 18,
-            BeidouNavigationSystem = 19,
-            Gonets = 20,
-            Flock = 21,
-            GlobalGPSConstellation = 22,
-            GlonassConstellation = 23,
-            Celestis = 24,
-            ChineseSpaceStation = 25,
-            ISS = 26,
-            Lemur = 27,
-            Military = 28,
-            Molniya = 29,
-            NavyNavigationSatelliteSystem = 30,
-            NOAA = 31,
-            O3BNetworks = 32,
-            OneWeb = 33,
-            Orbcomm = 34,
-            Parus = 35,
-            QZSS = 36,
-            RadarCalibration = 37,
-            Raduga = 38,
-            RussianLEONavigation = 39,
-            SatelliteBasedAugmentationSystem = 40,
-            SearchAndRescue = 41,
-            SpaceAndEarthScience = 42,
-            Starlink = 43,
-            Strela = 44,
-            TrackingAndDataRelaySatelliteSystem = 45,
-            Tselina = 46,
-            Tsikada = 47,
-            Tsiklon = 48,
-            TV = 49,
-            Weather = 50,
-            WestfordNeedles = 51,
-            XMandSirius = 52,
-            Yaogan = 53
+            return CalculateIsPointInCone(earthPoint, norad,
+                DateTime.UtcNow.AddSeconds(_configurator.MainConfig.RecordingTime));
         }
     }
 }

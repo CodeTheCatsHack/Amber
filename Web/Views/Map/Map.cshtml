@@ -5,90 +5,29 @@
 }
 
 <head>
-    <title>Яндекс Карта</title>
+    <title>Карта с координатами</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=7090a039-9bef-4c3d-bb95-260d617ceaf1&lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
-<div id="map" class="map"></div>
-</body>
+<div id="map" style="width: 100%; height: 400px;"></div>
+<p>Latitude: <span id="latitude">0</span></p>
+<p>Longitude: <span id="longitude">0</span></p>
 
-@section Scripts{
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=7090a039-9bef-4c3d-bb95-260d617ceaf1&lang=ru_RU" type="text/javascript"></script>
-    <script>
-        ymaps.ready(init);
-        
-const connection = new signalR.HubConnectionBuilder()
-    .withUrl("https://localhost:7276/api")
-    .withAutomaticReconnect()
-    .build();
-
- connection.on("UpdateMarkers", function (listMarker) {
- var markerList = JSON.parse(listMarker);
- 
- // Теперь у вас есть массив объектов `markerList`, содержащий данные маркеров
- for (var i = 0; i < markerList.length; i++) {
-     console.log(markerList[i].IdMarker);     // Выводит значение IdMarker
-     console.log(markerList[i].Name);         // Выводит значение Name
-     console.log(markerList[i].Latitude);     // Выводит значение Latitude
-     console.log(markerList[i].Longitude);    // Выводит значение Longitude
-     console.log(markerList[i].ShootingАreas[0].Radius);
-     console.log(markerList[i].ShootingАreas[0].NameArea);
-  
-      // Создаем метку.
-              var myPlacemark = new ymaps.Placemark([markerList[i].Latitude, markerList[i].Longitude], {
-                  iconContent: markerList[i].ShootingАreas[0].NameArea
-              }, {
-                  // Красная иконка, растягивающаяся под содержимое.
-                  preset: "islands#redStretchyIcon"
-              });
-          
-        // Создаем круг.
-            var myCircle = new ymaps.Circle([
-                // Координаты центра круга.
-                [markerList[i].Latitude, markerList[i].Longitude],
-                // Радиус круга в метрах.
-                markerList[i].ShootingАreas[0].Radius
-                
-            ], {
-                // Описываем свойства круга.
-                // Содержимое балуна.
-                balloonContent: "Радиус круга -" + markerList[i].ShootingАreas[0].Radius + " км",
-                // Содержимое хинта.
-                hintContent: "Не двигай!"
-            }, {
-                // Задаем опции круга.
-                // Включаем возможность перетаскивания круга.
-                draggable: false,
-                // Цвет заливки.
-                // Последний байт (77) определяет прозрачность.
-                // Прозрачность заливки также можно задать используя опцию "fillOpacity".
-                fillColor: "#DB709377",
-                // Цвет обводки.
-                strokeColor: "#990066",
-                // Прозрачность обводки.
-                strokeOpacity: 0.8,
-                // Ширина обводки в пикселях.
-                strokeWidth: 5
-            });
-        
-            // Добавляем круг на карту.
-            myMap.geoObjects.add(myCircle);
- }        
- });
-try {
-        await connection.start();
-        console.assert(connection.state === signalR.HubConnectionState.Connected);
-        console.log("SignalR Connected.");
-    } catch (err) {
-        console.assert(connection.state === signalR.HubConnectionState.Disconnected);
-        console.log(err);
-    }
-    
-        function init() {
+<script>
+        ymaps.ready(function () {
             var map = new ymaps.Map('map', {
                 center: [55.755814, 37.617635], // Координаты центра карты
-                zoom: 10 // Уровень масштабирования
+                zoom: 12 // Уровень масштабирования
             });
-        }
+
+            map.events.add('click', function (e) {
+                var coords = e.get('coords');
+                var latitude = coords[0].toPrecision(6);
+                var longitude = coords[1].toPrecision(6);
+
+                document.getElementById('latitude').textContent = latitude;
+                document.getElementById('longitude').textContent = longitude;
+            });
+        });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
-}
+</body>

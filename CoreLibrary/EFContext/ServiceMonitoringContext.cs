@@ -23,7 +23,6 @@ public partial class ServiceMonitoringContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-
     public IQueryable<string> SelectExpression(string nameFunction, List<string> parametrList)
     {
         return Database.SqlQueryRaw<string>(
@@ -45,7 +44,6 @@ public partial class ServiceMonitoringContext : DbContext
     {
         return SelectExpression(nameof(EncryptPassword), soli).ToList()[0];
     }
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
