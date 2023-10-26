@@ -34,7 +34,7 @@ builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
-Coordinate arh = new GeodeticCoordinate(64.58352, 40.52378, 14);
+Coordinate arh = new GeodeticCoordinate(1.58352, 11.52378, 14);
 await app.Services.GetRequiredService<SatelliteApi>().SearchSolutionAsync(arh, SatelliteApi.SatelliteCategory.All);
 
 if (app.Environment.IsDevelopment())

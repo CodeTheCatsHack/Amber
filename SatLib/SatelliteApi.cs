@@ -164,7 +164,7 @@ namespace SatLib
         /// <param name="norad">NORAD-id спутника</param>
         /// <param name="time">момент времени по UTC</param>
         /// <returns>Находится ли спутник в зоне конуса</returns>
-        public bool CalculateIsPointInCone(Coordinate earthPoint, int norad, DateTime time)
+        public async Task<bool> CalculateIsPointInConeAsync(Coordinate earthPoint, int norad, DateTime time)
         {
             return CalculateAngle(earthPoint, norad, time) < _configurator.MainConfig.ConeActivationAngle;
         }
@@ -193,16 +193,12 @@ namespace SatLib
                 {
                     if (currentAngle <= _configurator.MainConfig.ConeActivationAngle)
                     {
-                        int requiredSatelliteId = GetFirstRelevantSatelliteId(aboveWithCurrentAngle, earthPoint);
-                        if (requiredSatelliteId > 0)
+                        SatelliteAnswer requiredSat = await GetFirstRelevantSatelliteIdAsync(aboveWithCurrentAngle, earthPoint);
+                        if (requiredSat.Result == SatelliteAnswer.ResultEnum.Success)
                         {
-                            return new List<SatelliteAnswer>() {
-                                        new SatelliteAnswer() {
-                                            Norad = requiredSatelliteId
-                                        }
-                                    };
+                            return new List<SatelliteAnswer>() { requiredSat };
                         }
-                    } // sit2
+                    }
                     else
                     {
                         List<Task<SatelliteAnswer>> tasks = new List<Task<SatelliteAnswer>>();
@@ -236,20 +232,29 @@ namespace SatLib
         /// <param name="above"></param>
         /// <param name="earthPoint"></param>
         /// <returns></returns>
-        int GetFirstRelevantSatelliteId(AboveJson above, Coordinate earthPoint)
+        async Task<SatelliteAnswer> GetFirstRelevantSatelliteIdAsync(AboveJson above, Coordinate earthPoint)
         {
             foreach (AboveJson.SatelliteJson satelliteJson in above.Above)
             {
                 Console.WriteLine("scanning: " + satelliteJson.SatId);
                 // проверяем каждый спутник, будет ли он через время съёмки все ещё в зоне сканирования (успеет ли засканировать)
-                bool isSuccess = CalculateIsPointInCone(earthPoint, satelliteJson.SatId,
+                bool isSuccess = await CalculateIsPointInConeAsync(earthPoint, satelliteJson.SatId,
                     DateTime.UtcNow.AddSeconds(_configurator.MainConfig.RecordingTime));
                 if (isSuccess)
                 {
-                    return satelliteJson.SatId;
+                    return new SatelliteAnswer() 
+                    { 
+                        Norad = satelliteJson.SatId,
+                        MinutesToArrive = 0,
+                        Result = SatelliteAnswer.ResultEnum.Success 
+                    };
                 }                
             }
-            return -1;
+            return new SatelliteAnswer()
+            {                
+                MinutesToArrive = 0,
+                Result = SatelliteAnswer.ResultEnum.Other
+            };
         }
 
         /// <summary>
