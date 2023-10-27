@@ -366,4 +366,4 @@ FodyWeavers.xsd
 
 # [custom]
 /ClientApp/
-/Web/
+/Web/appsettings*
